@@ -32,7 +32,7 @@ export default function Hero() {
           {/* Main Heading - Two Lines Only */}
           <h1 className="max-w-4xl mx-auto mb-3 sm:mb-5">
             <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight">
-              Discover the World's
+              Discover the World&apos;s
             </span>
             <span className="relative inline-block">
               <span className="relative z-10 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#4A8BCF] via-[#7BAEE0] to-[#4A8BCF] leading-[1.1] tracking-tight italic">
