@@ -28,14 +28,14 @@ export default function Footer() {
   ];
 
   const legalLinks = [
-    { name: "Terms & Condition", href: "/terms" },
-    { name: "Privacy Policy", href: "/privacy" },
-    { name: "Price Match Promise", href: "/price-match" },
-    { name: "Fulfillment Policy", href: "/fulfillment" },
-    { name: "Fare Disclosure", href: "/fare-disclosure" },
-    { name: "Advertiser Disclosure", href: "/advertiser-disclosure" },
+    { name: "Terms & Condition", href: "/terms-of-service" },
+    { name: "Privacy Policy", href: "/privacy-policy" },
+    { name: "Price Match Promise", href: "/price-match-policy" },
+    { name: "Fulfillment Policy", href: "/fulfillment-policy" },
+    { name: "Fare Disclosure", href: "/fare-disclosure-policy" },
+    { name: "Advertiser Disclosure", href: "/advertiser-disclosure-policy" },
     { name: "Cookies Policy", href: "/cookies" },
-    { name: "Cancellation and Refund", href: "/cancellation-refund" },
+    { name: "Cancellation and Refund", href: "/cancellation-refund-policy" },
     { name: "Post Ticketing Service Fees", href: "/post-ticketing-fees" },
     { name: "Taxes and Fees", href: "/taxes-fees" },
   ];
@@ -227,11 +227,11 @@ export default function Footer() {
                 &copy; {COMPANY.year} {COMPANY.name}. All rights reserved.
               </p>
               <div className="flex items-center gap-4">
-                <Link href="/privacy" className="hover:text-[#1A3A6B] transition-colors">
+                <Link href="/privacy-policy" className="hover:text-[#1A3A6B] transition-colors">
                   Privacy Policy
                 </Link>
                 <span className="w-px h-3 bg-[#1A3A6B]/10" />
-                <Link href="/terms" className="hover:text-[#1A3A6B] transition-colors">
+                <Link href="/terms-of-service" className="hover:text-[#1A3A6B] transition-colors">
                   Terms of Service
                 </Link>
                 <span className="w-px h-3 bg-[#1A3A6B]/10" />

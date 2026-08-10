@@ -158,7 +158,7 @@ export default function WhyPayMoreSection() {
           <img
             src="/images/bookyourflight.png"
             alt="Book your next flight - domestic and international travel"
-            className="w-full h-auto object-cover transition-transform duration-700 hover:scale-105"
+            className="w-full h-auto object-cover"
           />
         </div>
       </div>
