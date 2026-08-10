@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   Plane,
   MapPin,
@@ -45,6 +45,26 @@ interface Deal {
 export default function TravelDealsSection() {
   const [selectedDeal, setSelectedDeal] = useState<Deal | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const deals: Deal[] = [
     {
@@ -168,28 +188,52 @@ export default function TravelDealsSection() {
   };
 
   return (
-    <section className="py-16 sm:py-20 lg:py-20 bg-gradient-to-b from-[#F5F9FF] to-white">
+    <section ref={sectionRef} className="py-16 sm:py-20 lg:py-20 bg-gradient-to-b from-[#F5F9FF] to-white overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Heading - Left Aligned */}
           <div className="mb-6 sm:mb-8">
-            <div className="inline-flex items-center gap-2 bg-[#E8F0FE] rounded-full px-4 py-1.5 mb-4">
+            <div
+              className={`
+                inline-flex items-center gap-2 bg-[#E8F0FE] rounded-full px-4 py-1.5 mb-4
+                transition-all duration-700
+                ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}
+              `}
+            >
               <Tag size={16} className="text-[#1A3A6B]" />
               <span className="text-[#1A3A6B] text-xs sm:text-sm font-semibold tracking-wider uppercase">
                 Limited Time Offers
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0A1628] leading-tight">
+            <h2
+              className={`
+                text-3xl sm:text-4xl md:text-5xl font-bold text-[#0A1628] leading-tight
+                transition-all duration-700 delay-100
+                ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}
+              `}
+            >
               Travel Deals Under{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF]">
                 $158
               </span>
             </h2>
-            <div className="w-12 h-1 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-full mt-3" />
+            <div
+              className={`
+                w-12 h-1 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-full mt-3
+                transition-all duration-700 delay-200
+                ${isVisible ? "opacity-100 w-12" : "opacity-0 w-0"}
+              `}
+            />
           </div>
 
           {/* Content Description - Left Aligned */}
-          <div className="mb-8 sm:mb-10 max-w-full">
+          <div
+            className={`
+              mb-8 sm:mb-10 max-w-full
+              transition-all duration-700 delay-150
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
+            `}
+          >
             <p className="text-[#0A1628]/70 text-base sm:text-lg leading-relaxed">
               Discover amazing getaways without breaking the bank! Find travel
               deals under $158 to top destinations worldwide. Enjoy smooth
@@ -200,10 +244,14 @@ export default function TravelDealsSection() {
 
           {/* Deals Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {deals.map((deal) => (
+            {deals.map((deal, index) => (
               <div
                 key={deal.id}
-                className="group bg-white  overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 flex flex-col border border-[#E2E8F0] hover:border-[#4A8BCF]/30"
+                className={`
+                  group bg-white overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 flex flex-col border border-[#E2E8F0] hover:border-[#4A8BCF]/30
+                  ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}
+                `}
+                style={{ transitionDelay: `${(index + 1) * 80}ms` }}
               >
                 {/* Image */}
                 <div className="relative h-48 overflow-hidden flex-shrink-0">
@@ -215,12 +263,12 @@ export default function TravelDealsSection() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/70 via-transparent to-transparent" />
                   
                   {/* Tag */}
-                  <div className="absolute top-3 left-3 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] text-white text-xs font-bold px-3 py-1.5 ">
+                  <div className="absolute top-3 left-3 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] text-white text-xs font-bold px-3 py-1.5 animate-in zoom-in duration-500" style={{ animationDelay: `${(index + 1) * 50}ms` }}>
                     {deal.tag}
                   </div>
 
                   {/* Price */}
-                  <div className="absolute bottom-3 right-3 bg-[#0A1628]/80 backdrop-blur-sm  px-3 py-1.5">
+                  <div className="absolute bottom-3 right-3 bg-[#0A1628]/80 backdrop-blur-sm px-3 py-1.5 animate-in slide-in-from-right duration-500" style={{ animationDelay: `${(index + 1) * 60}ms` }}>
                     <div className="text-white font-bold text-lg">{deal.price}</div>
                     <div className="text-white/60 text-xs line-through">
                       {deal.originalPrice}
@@ -228,7 +276,7 @@ export default function TravelDealsSection() {
                   </div>
 
                   {/* Rating */}
-                  <div className="absolute bottom-3 left-3 flex items-center gap-1 bg-[#0A1628]/60 backdrop-blur-sm  px-3 py-1">
+                  <div className="absolute bottom-3 left-3 flex items-center gap-1 bg-[#0A1628]/60 backdrop-blur-sm px-3 py-1 animate-in slide-in-from-left duration-500" style={{ animationDelay: `${(index + 1) * 70}ms` }}>
                     <Star size={12} className="text-yellow-400 fill-yellow-400" />
                     <span className="text-white text-xs font-semibold">{deal.rating}</span>
                     <span className="text-white/60 text-xs">({deal.reviews})</span>
@@ -277,10 +325,10 @@ export default function TravelDealsSection() {
 
                   {/* Amenities */}
                   <div className="flex flex-wrap gap-1 mb-3">
-                    {deal.amenities.slice(0, 2).map((item, index) => (
+                    {deal.amenities.slice(0, 2).map((item, idx) => (
                       <span
-                        key={index}
-                        className="text-xs bg-[#F5F9FF] text-[#0A1628]/60 px-2 py-0.5 "
+                        key={idx}
+                        className="text-xs bg-[#F5F9FF] text-[#0A1628]/60 px-2 py-0.5"
                       >
                         {item}
                       </span>
@@ -295,10 +343,10 @@ export default function TravelDealsSection() {
                   {/* Book Now Button */}
                   <button
                     onClick={() => handleBookNow(deal)}
-                    className="w-full bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] hover:from-[#2B5A9E] hover:to-[#7BAEE0] text-white font-semibold py-2 transition-all duration-300 flex items-center justify-center gap-2 text-sm mt-auto shadow-lg shadow-[#1A3A6B]/20 hover:shadow-[#1A3A6B]/30"
+                    className="w-full bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] hover:from-[#2B5A9E] hover:to-[#7BAEE0] text-white font-semibold py-2 transition-all duration-300 flex items-center justify-center gap-2 text-sm mt-auto shadow-lg shadow-[#1A3A6B]/20 hover:shadow-[#1A3A6B]/30 hover:scale-[1.02] active:scale-95"
                   >
                     <span>Book Now</span>
-                    <ArrowRight size={14} />
+                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
                   </button>
                 </div>
               </div>
@@ -312,16 +360,16 @@ export default function TravelDealsSection() {
         <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
           {/* Overlay */}
           <div
-            className="absolute inset-0 bg-[#0A1628]/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-[#0A1628]/60 backdrop-blur-sm animate-in fade-in duration-300"
             onClick={closeModal}
           />
 
           {/* Modal */}
-          <div className="relative bg-white  max-w-md w-full shadow-2xl animate-in slide-in-from-bottom-4 duration-300 border border-[#E2E8F0]">
+          <div className="relative bg-white max-w-md w-full shadow-2xl animate-in slide-in-from-bottom-8 duration-400 ease-out border border-[#E2E8F0]">
             {/* Close Button */}
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 text-[#0A1628]/40 hover:text-[#0A1628] transition-colors z-10"
+              className="absolute top-4 right-4 text-[#0A1628]/40 hover:text-[#0A1628] transition-all duration-300 hover:scale-110 active:scale-90 z-10"
             >
               <X size={24} />
             </button>
@@ -329,12 +377,14 @@ export default function TravelDealsSection() {
             {/* Header */}
             <div className="bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-t-lg p-6 text-white">
               <div className="flex items-center gap-3">
-                <div className="bg-white/20 p-2 ">
+                <div className="bg-white/20 p-2 rounded-lg animate-in zoom-in duration-500">
                   <Plane size={20} />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold">Book Your Trip</h3>
-                  <p className="text-white/80 text-sm">
+                  <h3 className="text-lg font-bold animate-in slide-in-from-left duration-300">
+                    Book Your Trip
+                  </h3>
+                  <p className="text-white/80 text-sm animate-in slide-in-from-left duration-400 delay-100">
                     {selectedDeal.title}
                   </p>
                 </div>
@@ -344,7 +394,7 @@ export default function TravelDealsSection() {
             {/* Content */}
             <div className="p-6">
               {/* Deal Summary */}
-              <div className="bg-[#F5F9FF]  p-4 mb-6">
+              <div className="bg-[#F5F9FF] rounded-lg p-4 mb-6 animate-in fade-in duration-500 delay-150">
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-sm text-[#0A1628]/60">Destination</span>
                   <span className="text-sm font-semibold text-[#0A1628]">
@@ -373,15 +423,15 @@ export default function TravelDealsSection() {
                 
                 <div className="space-y-3">
                   {/* Phone */}
-                  <div className="flex items-center gap-4 p-3 bg-[#F5F9FF]  hover:bg-[#E8F0FE] transition-colors">
-                    <div className="bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] p-2  text-white">
+                  <div className="flex items-center gap-4 p-3 bg-[#F5F9FF] rounded-lg hover:bg-[#E8F0FE] transition-all duration-300 hover:shadow-md animate-in slide-in-from-left duration-400 delay-200">
+                    <div className="bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] p-2 rounded-lg text-white transition-transform duration-300 hover:scale-105">
                       <Phone size={18} />
                     </div>
                     <div>
                       <p className="text-xs text-[#0A1628]/60">Call Us Now</p>
                       <a
                         href="tel:+18888450220"
-                        className="text-sm font-semibold text-[#0A1628] hover:text-[#1A3A6B] transition-colors"
+                        className="text-sm font-semibold text-[#0A1628] hover:text-[#1A3A6B] transition-colors duration-300"
                       >
                         +1-888-845-0220
                       </a>
@@ -389,15 +439,15 @@ export default function TravelDealsSection() {
                   </div>
 
                   {/* Email */}
-                  <div className="flex items-center gap-4 p-3 bg-[#F5F9FF]  hover:bg-[#E8F0FE] transition-colors">
-                    <div className="bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] p-2  text-white">
+                  <div className="flex items-center gap-4 p-3 bg-[#F5F9FF] rounded-lg hover:bg-[#E8F0FE] transition-all duration-300 hover:shadow-md animate-in slide-in-from-left duration-400 delay-250">
+                    <div className="bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] p-2 rounded-lg text-white transition-transform duration-300 hover:scale-105">
                       <Mail size={18} />
                     </div>
                     <div>
                       <p className="text-xs text-[#0A1628]/60">Email Us</p>
                       <a
                         href="mailto:bookings@skyluxejourney.com"
-                        className="text-sm font-semibold text-[#0A1628] hover:text-[#1A3A6B] transition-colors"
+                        className="text-sm font-semibold text-[#0A1628] hover:text-[#1A3A6B] transition-colors duration-300"
                       >
                         bookings@skyluxejourney.com
                       </a>
@@ -406,7 +456,7 @@ export default function TravelDealsSection() {
                 </div>
 
                 {/* Special Request Note */}
-                <div className="mt-4 p-3 bg-[#E8F0FE]  border border-[#4A8BCF]/20">
+                <div className="mt-4 p-3 bg-[#E8F0FE] rounded-lg border border-[#4A8BCF]/20 animate-in fade-in duration-500 delay-300">
                   <p className="text-xs text-[#0A1628]/70 text-center">
                     📞 Call now for instant confirmation & best rates!
                   </p>
@@ -416,14 +466,14 @@ export default function TravelDealsSection() {
                 <div className="flex gap-3 mt-4">
                   <a
                     href="tel:+18888450220"
-                    className="flex-1 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] hover:from-[#2B5A9E] hover:to-[#7BAEE0] text-white font-semibold py-3  transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-[#1A3A6B]/20"
+                    className="flex-1 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] hover:from-[#2B5A9E] hover:to-[#7BAEE0] text-white font-semibold py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-[#1A3A6B]/20 hover:shadow-[#1A3A6B]/30 hover:scale-[1.02] active:scale-95"
                   >
                     <Phone size={16} />
                     <span>Call Now</span>
                   </a>
                   <button
                     onClick={closeModal}
-                    className="flex-1 bg-[#F5F9FF] hover:bg-[#E8F0FE] text-[#0A1628] font-semibold py-3  transition-colors"
+                    className="flex-1 bg-[#F5F9FF] hover:bg-[#E8F0FE] text-[#0A1628] font-semibold py-3 rounded-lg transition-all duration-300 hover:shadow-md active:scale-95"
                   >
                     Close
                   </button>

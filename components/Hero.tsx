@@ -1,11 +1,19 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import SearchEngine from "./SearchEngine";
 import Image from "next/image";
 import { Phone, Headphones } from "lucide-react";
 import { CONTACT } from "../app/constants"; // Adjust import as needed
 
 export default function Hero() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Trigger entrance animations after component mounts
+    setTimeout(() => setIsVisible(true), 100);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-20 sm:pt-24">
       {/* Background Image with Light Overlay */}
@@ -14,7 +22,7 @@ export default function Hero() {
           src="/images/heropremium.jpg"
           alt="Ticket to Ocean - Travel Experiences"
           fill
-          className="object-cover object-center"
+          className="object-cover object-center scale-105 animate-in zoom-in duration-1000"
           priority
           quality={100}
         />
@@ -31,43 +39,80 @@ export default function Hero() {
       <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="max-w-6xl mx-auto text-center">
           {/* Tagline */}
-          <p className="text-[11px] sm:text-xs md:text-sm font-semibold text-white/80 tracking-[0.3em] uppercase mb-3 sm:mb-4">
+          <p
+            className={`
+              text-[11px] sm:text-xs md:text-sm font-semibold text-white/80 tracking-[0.3em] uppercase mb-3 sm:mb-4
+              transition-all duration-700 ease-out
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
+            `}
+          >
             FLY BEYOND BOUNDARIES
           </p>
 
           {/* Main Heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.05] tracking-tight mb-4 sm:mb-6">
+          <h1
+            className={`
+              text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.05] tracking-tight mb-4 sm:mb-6
+              transition-all duration-700 ease-out delay-100
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
+            `}
+          >
             WHERE JOURNEYS
             <br />
             <span className="relative inline-block">
               <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-white via-[#4A8BCF] to-white">
                 TAKE FLIGHT
               </span>
-              <span className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-[#4A8BCF]/60 via-white/40 to-[#4A8BCF]/60 rounded-full blur-sm" />
+              <span className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-[#4A8BCF]/60 via-white/40 to-[#4A8BCF]/60 rounded-full blur-sm scale-x-0 animate-in scale-x-100 duration-700 delay-300" />
             </span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-white/90 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-8 sm:mb-10 font-light tracking-wide leading-relaxed">
+          <p
+            className={`
+              text-white/90 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-8 sm:mb-10 font-light tracking-wide leading-relaxed
+              transition-all duration-700 ease-out delay-200
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
+            `}
+          >
             Discover seamless travel experiences, curated for your comfort and style.
           </p>
 
           {/* Search Engine Component - Full Width */}
-          <div className="relative z-20 w-full max-w-6xl mx-auto">
+          <div
+            className={`
+              relative z-20 w-full max-w-6xl mx-auto
+              transition-all duration-700 ease-out delay-300
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}
+            `}
+          >
             <SearchEngine />
           </div>
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/30 hover:text-[#4A8BCF]/60 transition-colors cursor-pointer z-20">
+      <div
+        className={`
+          absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/30 hover:text-[#4A8BCF]/60 transition-all duration-700 cursor-pointer z-20
+          ${isVisible ? "opacity-100" : "opacity-0"}
+        `}
+        style={{ transitionDelay: "500ms" }}
+      >
         <div className="w-4 h-6 border border-white/20 rounded-full flex justify-center p-1">
           <div className="w-0.5 h-1.5 bg-white/50 rounded-full animate-bounce" />
         </div>
       </div>
 
       {/* Professional Floating Call Widget - chat card is inside the button */}
-      <div className="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-50">
+      <div
+        className={`
+          fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-50
+          transition-all duration-700 ease-out
+          ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-16"}
+        `}
+        style={{ transitionDelay: "600ms" }}
+      >
         <a
           href={`tel:${CONTACT.phoneRaw}`}
           aria-label="Call support"
@@ -111,9 +156,9 @@ export default function Hero() {
             "
           >
             <div className="flex items-start gap-3">
-              <div className="relative mt-0.5 flex h-10 w-10 items-center justify-center rounded-full bg-[#EEF4FF] transition-transform duration-300">
+              <div className="relative mt-0.5 flex h-10 w-10 items-center justify-center rounded-full bg-[#EEF4FF] transition-transform duration-300 group-hover:scale-105">
                 <span className="absolute inset-0 rounded-full bg-[#4A8BCF]/20 animate-ping"></span>
-                <Headphones className="relative z-10 h-5 w-5 text-[#1A3A6B]" />
+                <Headphones className="relative z-10 h-5 w-5 text-[#1A3A6B] transition-transform duration-300 group-hover:rotate-12" />
               </div>
 
               <div className="min-w-0 flex-1">

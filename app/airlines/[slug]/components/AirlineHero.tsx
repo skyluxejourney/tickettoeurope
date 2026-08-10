@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import SearchEngine from "@/components/SearchEngine";
 import { Phone, Headphones } from "lucide-react";
@@ -11,11 +12,18 @@ interface AirlineHeroProps {
 }
 
 export default function AirlineHero({ airline }: AirlineHeroProps) {
+  const [isVisible, setIsVisible] = useState(false);
+  
   // Extract airline name from the title
   const airlineName = airline.airline.name;
   
   // Split the title to highlight the airline name
   const titleParts = airline.hero.title.split(airlineName);
+
+  useEffect(() => {
+    // Trigger entrance animations after component mounts
+    setTimeout(() => setIsVisible(true), 100);
+  }, []);
 
   return (
     <section className="relative min-h-[70vh] flex items-center overflow-hidden pt-20 sm:pt-24">
@@ -25,7 +33,7 @@ export default function AirlineHero({ airline }: AirlineHeroProps) {
           src="/images/herobackground.jpg"
           alt={`${airline.airline.name} flights - Ticket to Europe`}
           fill
-          className="object-cover object-center"
+          className="object-cover object-center scale-105 animate-in zoom-in duration-1000"
           priority
           quality={100}
         />
@@ -34,42 +42,90 @@ export default function AirlineHero({ airline }: AirlineHeroProps) {
         <div className="absolute inset-0 bg-black/20" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <div className="w-full">
-        <h1 className="mb-4 sm:mb-5">
-  <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.2] tracking-tight">
-    {titleParts[0]}
-    <span 
-      className="text-transparent bg-clip-text italic"
-      style={{
-        background: `linear-gradient(to right, #4A8BCF, #27548F, #3060a8)`,
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent'
-      }}
-    >
-      {airlineName}
-    </span>
-    <span className="text-white">{titleParts[1]}</span>
-  </span>
-</h1>
+      {/* Blurry Gradient at Bottom - connects hero to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 sm:h-48 md:h-64 bg-gradient-to-t from-white via-white/80 to-transparent z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-24 backdrop-blur-[2px] z-10" />
 
-          <p className="text-white/70 text-sm sm:text-base md:text-lg italic w-full mb-4 sm:mb-6 font-light tracking-wide">
+      {/* Content */}
+      <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="w-full">
+          <h1
+            className={`
+              mb-4 sm:mb-5
+              transition-all duration-700 ease-out delay-100
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
+            `}
+          >
+            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.2] tracking-tight">
+              {titleParts[0]}
+              <span 
+                className="text-transparent bg-clip-text italic animate-in zoom-in duration-700 delay-200"
+                style={{
+                  background: `linear-gradient(to right, #4A8BCF, #27548F, #3060a8)`,
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent'
+                }}
+              >
+                {airlineName}
+              </span>
+              <span className="text-white">{titleParts[1]}</span>
+            </span>
+          </h1>
+
+          <p
+            className={`
+              text-white/70 text-sm sm:text-base md:text-lg italic w-full mb-4 sm:mb-6 font-light tracking-wide
+              transition-all duration-700 ease-out delay-200
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
+            `}
+          >
             {airline.hero.disclaimer}
           </p>
 
-          <p className="text-white/80 text-sm sm:text-base md:text-lg italic w-full mb-6 sm:mb-8 font-light tracking-wide leading-relaxed">
+          <p
+            className={`
+              text-white/80 text-sm sm:text-base md:text-lg italic w-full mb-6 sm:mb-8 font-light tracking-wide leading-relaxed
+              transition-all duration-700 ease-out delay-300
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
+            `}
+          >
             {airline.hero.subtitle}
           </p>
 
-          <div className="relative z-20 w-full">
+          <div
+            className={`
+              relative z-20 w-full
+              transition-all duration-700 ease-out delay-400
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}
+            `}
+          >
             <SearchEngine />
           </div>
         </div>
       </div>
 
+      {/* Scroll Indicator */}
+      <div
+        className={`
+          absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/30 hover:text-[#4A8BCF]/60 transition-all duration-700 cursor-pointer z-20
+          ${isVisible ? "opacity-100" : "opacity-0"}
+        `}
+        style={{ transitionDelay: "500ms" }}
+      >
+        <div className="w-4 h-6 border border-white/20 rounded-full flex justify-center p-1">
+          <div className="w-0.5 h-1.5 bg-white/50 rounded-full animate-bounce" />
+        </div>
+      </div>
+
       {/* Professional Floating Call Widget - chat card is inside the button */}
-      <div className="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-50">
+      <div
+        className={`
+          fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-50
+          transition-all duration-700 ease-out
+          ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-16"}
+        `}
+        style={{ transitionDelay: "600ms" }}
+      >
         <a
           href={`tel:${airline.hero.ctaPhone}`}
           aria-label="Call support"
@@ -114,9 +170,9 @@ export default function AirlineHero({ airline }: AirlineHeroProps) {
           >
             <div className="flex items-start gap-3">
               {/* Support Icon with subtle animation */}
-              <div className="relative mt-0.5 flex h-10 w-10 items-center justify-center rounded-full bg-[#EEF4FF] transition-transform duration-300">
+              <div className="relative mt-0.5 flex h-10 w-10 items-center justify-center rounded-full bg-[#EEF4FF] transition-transform duration-300 group-hover:scale-105">
                 <span className="absolute inset-0 rounded-full bg-[#4A8BCF]/20 animate-ping"></span>
-                <Headphones className="relative z-10 h-5 w-5 text-[#1A3A6B]" />
+                <Headphones className="relative z-10 h-5 w-5 text-[#1A3A6B] transition-transform duration-300 group-hover:rotate-12" />
               </div>
 
               {/* Text */}

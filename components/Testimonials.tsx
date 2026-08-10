@@ -1,11 +1,31 @@
 "use client";
 
 import { Star, Quote, ChevronDown, ChevronUp } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { BRAND } from "@/app/constants"; 
 
 export default function TestimonialsSection() {
   const [expandedId, setExpandedId] = useState<number | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const testimonials = [
     {
@@ -39,28 +59,49 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section className="py-8 sm:py-10 lg:py-12 bg-white">
+    <section ref={sectionRef} className="py-8 sm:py-10 lg:py-12 bg-white overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           {/* Heading - Left Aligned */}
           <div className="mb-4">
-            <div className="inline-flex items-center gap-2 bg-[#E8F0FE] px-4 py-1.5 mb-4 ">
+            <div
+              className={`
+                inline-flex items-center gap-2 bg-[#E8F0FE] px-4 py-1.5 mb-4 transition-all duration-700
+                ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}
+              `}
+            >
               <Quote size={16} className="text-[#1A3A6B]" />
               <span className="text-[#1A3A6B] text-xs sm:text-sm font-semibold tracking-wider uppercase">
                 Testimonials
               </span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0A1628] leading-tight">
+            <h2
+              className={`
+                text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0A1628] leading-tight
+                transition-all duration-700 delay-100
+                ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}
+              `}
+            >
               What Our Customers Say About{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF]">
                 {BRAND.name}
               </span>
             </h2>
-            <div className="w-12 h-1 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] mt-3 " />
+            <div
+              className={`
+                w-12 h-1 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] mt-3 transition-all duration-700 delay-200
+                ${isVisible ? "opacity-100 w-12" : "opacity-0 w-0"}
+              `}
+            />
           </div>
 
           {/* Content - Left Aligned */}
-          <div className="mb-6 sm:mb-8">
+          <div
+            className={`
+              mb-6 sm:mb-8 transition-all duration-700 delay-150
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
+            `}
+          >
             <p className="text-[#0A1628]/70 text-sm sm:text-base max-w-2xl">
               Nothing speaks louder than the voices of our happy travelers. Here's
               what real customers are saying about their experience booking with us.
@@ -71,10 +112,14 @@ export default function TestimonialsSection() {
         {/* Three Testimonial Cards */}
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
-            {testimonials.map((testimonial) => (
+            {testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.id}
-                className="bg-[#F5F9FF] p-5 sm:p-6  shadow-lg hover:shadow-xl transition-all duration-300 hover:border-[#4A8BCF]/30 border border-[#E2E8F0]"
+                className={`
+                  bg-[#F5F9FF] p-5 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-[#4A8BCF]/30 border border-[#E2E8F0]
+                  ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}
+                `}
+                style={{ transitionDelay: `${(index + 1) * 100}ms` }}
               >
                 {/* Rating Stars */}
                 <div className="flex mb-3">
@@ -82,14 +127,15 @@ export default function TestimonialsSection() {
                     <Star
                       key={i}
                       size={16}
-                      className="text-[#1A3A6B] fill-[#1A3A6B]"
+                      className="text-[#1A3A6B] fill-[#1A3A6B] animate-in zoom-in duration-300"
+                      style={{ animationDelay: `${(index + 1) * 50 + i * 50}ms` }}
                     />
                   ))}
                 </div>
 
                 {/* Testimonial Text - Short or Full */}
                 <div className="mb-3">
-                  <p className="text-[#0A1628]/80 text-sm sm:text-base leading-relaxed">
+                  <p className="text-[#0A1628]/80 text-sm sm:text-base leading-relaxed transition-all duration-300">
                     "{expandedId === testimonial.id ? testimonial.fullText : testimonial.shortText}"
                   </p>
                 </div>
@@ -108,17 +154,17 @@ export default function TestimonialsSection() {
                   {/* View Testimonial Link */}
                   <button
                     onClick={() => toggleExpand(testimonial.id)}
-                    className="flex items-center gap-1 text-[#1A3A6B] hover:text-[#4A8BCF] font-medium text-xs sm:text-sm transition-colors whitespace-nowrap ml-2"
+                    className="flex items-center gap-1 text-[#1A3A6B] hover:text-[#4A8BCF] font-medium text-xs sm:text-sm transition-all duration-300 whitespace-nowrap ml-2 hover:scale-105 active:scale-95"
                   >
                     {expandedId === testimonial.id ? (
                       <>
                         <span>Show Less</span>
-                        <ChevronUp size={14} />
+                        <ChevronUp size={14} className="transition-transform duration-300 rotate-0" />
                       </>
                     ) : (
                       <>
                         <span>View Testimonial</span>
-                        <ChevronDown size={14} />
+                        <ChevronDown size={14} className="transition-transform duration-300 group-hover:translate-y-0.5" />
                       </>
                     )}
                   </button>
@@ -126,7 +172,7 @@ export default function TestimonialsSection() {
 
                 {/* Expand/Collapse Animation */}
                 {expandedId === testimonial.id && (
-                  <div className="mt-3 pt-3 border-t border-[#E2E8F0]">
+                  <div className="mt-3 pt-3 border-t border-[#E2E8F0] animate-in slide-in-from-top-2 duration-300">
                     <div className="flex items-center gap-2 text-xs text-[#0A1628]/40">
                       <Quote size={12} className="text-[#1A3A6B]" />
                       <span>Full review</span>

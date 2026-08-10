@@ -23,6 +23,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [selectedTab, setSelectedTab] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,6 +32,8 @@ export default function Header() {
     };
 
     window.addEventListener("scroll", handleScroll);
+    // Trigger entrance animation
+    setTimeout(() => setIsVisible(true), 100);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -57,8 +60,9 @@ export default function Header() {
       <header
         className={`
           fixed top-0 left-0 w-full z-50 px-4 sm:px-6
-          transition-all duration-500 ease-in-out
+          transition-all duration-700 ease-out
           ${scrolled ? "pt-1" : "pt-4"}
+          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"}
         `}
       >
         <div
@@ -68,6 +72,7 @@ export default function Header() {
               ? "border-[#E2E8F0] bg-white shadow-lg"
               : "border-[#E2E8F0] bg-white shadow-md"
             }
+            hover:shadow-xl transition-shadow duration-300
           `}
         >
           <div
@@ -85,7 +90,7 @@ export default function Header() {
                   alt={BRAND.name}
                   width={scrolled ? 30 : 34}
                   height={scrolled ? 30 : 34}
-                  className="transition-all duration-500 group-hover:scale-105"
+                  className="transition-all duration-500 group-hover:scale-105 group-hover:rotate-3"
                   priority
                 />
               </div>
@@ -95,10 +100,12 @@ export default function Header() {
                   className={`
                     font-bold
                     text-[#0A1628]
+                    italic
                     tracking-tight
                     leading-tight
                     transition-all duration-500 ease-in-out
                     ${scrolled ? "text-sm" : "text-base"}
+                    group-hover:text-[#1A3A6B] transition-colors duration-300
                   `}
                 >
                   {BRAND.name}
@@ -121,7 +128,7 @@ export default function Header() {
 
             {/* DESKTOP NAV */}
             <nav className="hidden lg:flex items-center justify-center flex-1 gap-2 px-4">
-              {navItems.map((item) => (
+              {navItems.map((item, index) => (
                 <button
                   key={item.name}
                   onClick={() => handleNavClick(item)}
@@ -129,21 +136,23 @@ export default function Header() {
                     relative
                     font-medium
                     transition-all
-                    duration-200
+                    duration-300
                     px-2.5
                     py-1.5
                     text-xs
                     tracking-wider
-                    ${
-                      item.isActive
-                        ? "text-[#1A3A6B]"
-                        : "text-[#0A1628]/70 hover:text-[#1A3A6B]"
+                    ${item.isActive
+                      ? "text-[#1A3A6B]"
+                      : "text-[#0A1628]/70 hover:text-[#1A3A6B]"
                     }
+                    hover:scale-105 active:scale-95
+                    ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"}
                   `}
+                  style={{ transitionDelay: `${index * 50}ms` }}
                 >
                   {item.name}
                   {item.isActive && (
-                    <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-full" />
+                    <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-full animate-pulse" />
                   )}
                   {!item.isActive && (
                     <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center rounded-full" />
@@ -168,17 +177,19 @@ export default function Header() {
                   shadow-md
                   hover:shadow-lg
                   group
+                  ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}
                 `}
+                style={{ transitionDelay: "150ms" }}
               >
-                <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
-                  <Phone size={12} className="text-white" />
+                <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-white/30 group-hover:scale-110">
+                  <Phone size={12} className="text-white transition-transform duration-300 group-hover:rotate-12" />
                 </div>
                 
                 <div className="flex flex-col">
                   <span className="text-[7px] font-bold text-white/70 tracking-[0.1em] uppercase">
                     Call Only Deals
                   </span>
-                  <span className="text-[10px] font-bold text-white">
+                  <span className="text-[10px] font-bold text-white transition-colors duration-300 group-hover:text-[#9AC4E8]">
                     {CONTACT.phone}
                   </span>
                 </div>
@@ -192,15 +203,21 @@ export default function Header() {
                 lg:hidden
                 text-[#0A1628]
                 hover:text-[#1A3A6B]
-                transition-colors
+                transition-all
+                duration-300
                 p-1.5
                 rounded-lg
                 hover:bg-[#E8F0FE]
                 flex-shrink-0
+                hover:scale-110 active:scale-90
               "
               aria-label="Toggle menu"
             >
-              {open ? <X size={20} /> : <Menu size={20} />}
+              {open ? (
+                <X size={20} className="animate-in spin-in duration-300" />
+              ) : (
+                <Menu size={20} className="animate-in slide-in-from-left duration-300" />
+              )}
             </button>
           </div>
 
@@ -214,11 +231,12 @@ export default function Header() {
                 space-y-1
                 animate-in
                 slide-in-from-top-2
-                duration-200
+                duration-300
+                fade-in
               "
             >
               <div className="pt-2 border-t border-[#E8F0FE]">
-                {navItems.map((item) => (
+                {navItems.map((item, index) => (
                   <button
                     key={item.name}
                     onClick={() => {
@@ -228,22 +246,24 @@ export default function Header() {
                       w-full
                       flex items-center justify-between
                       transition-all
-                      duration-200
+                      duration-300
                       px-3 py-2.5
                       rounded-lg
                       text-sm
                       font-medium
                       tracking-wider
-                      ${
-                        item.isActive
-                          ? "text-[#1A3A6B] bg-[#E8F0FE]"
-                          : "text-[#0A1628]/70 hover:text-[#1A3A6B] hover:bg-[#E8F0FE]"
+                      ${item.isActive
+                        ? "text-[#1A3A6B] bg-[#E8F0FE]"
+                        : "text-[#0A1628]/70 hover:text-[#1A3A6B] hover:bg-[#E8F0FE]"
                       }
+                      hover:scale-[1.02] active:scale-95
+                      animate-in slide-in-from-left duration-300
                     `}
+                    style={{ animationDelay: `${index * 50}ms` }}
                   >
                     <span>{item.name}</span>
                     {item.isActive && (
-                      <span className="w-1 h-1 rounded-full bg-[#1A3A6B]" />
+                      <span className="w-1 h-1 rounded-full bg-[#1A3A6B] animate-pulse" />
                     )}
                   </button>
                 ))}
@@ -251,9 +271,9 @@ export default function Header() {
                 <div className="mt-3 pt-3 border-t border-[#E8F0FE]">
                   <a
                     href={`tel:${CONTACT.phoneRaw}`}
-                    className="flex items-center gap-3 bg-[#1A3A6B] rounded-lg px-4 py-3 hover:bg-[#2B5A9E] transition-all duration-300"
+                    className="flex items-center gap-3 bg-[#1A3A6B] rounded-lg px-4 py-3 hover:bg-[#2B5A9E] transition-all duration-300 hover:scale-[1.02] active:scale-95"
                   >
-                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-white/30">
                       <Phone size={14} className="text-white" />
                     </div>
                     <div>
