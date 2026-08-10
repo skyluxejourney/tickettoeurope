@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import {
   Menu,
   X,
-  PhoneCall,
   Phone,
 } from "lucide-react";
 import ContactModal from "./ContactModal";
@@ -57,37 +56,36 @@ export default function Header() {
     <>
       <header
         className={`
-          fixed top-2 left-0 w-full z-50 px-3 sm:px-6
+          fixed top-0 left-0 w-full z-50 px-4 sm:px-6
           transition-all duration-500 ease-in-out
-          ${scrolled ? "pt-0.5 sm:pt-1" : "pt-1 sm:pt-2"}
+          ${scrolled ? "pt-1" : "pt-4"}
         `}
       >
         <div
           className={`
-          max-w-7xl mx-auto rounded-2xl xl:rounded-full border transition-all duration-500 ease-in-out
-            ${
-              scrolled
-                ? "border-white/30 bg-white/95 backdrop-blur-xl shadow-2xl py-0"
-                : "border-white/20 bg-white/80 backdrop-blur-xl shadow-lg"
+            max-w-[90vw] mx-auto rounded-lg border transition-all duration-500 ease-in-out
+            ${scrolled
+              ? "border-[#E2E8F0] bg-white shadow-lg"
+              : "border-[#E2E8F0] bg-white shadow-md"
             }
           `}
         >
           <div
             className={`
-              flex items-center justify-between px-2 sm:px-4 md:px-6
+              flex items-center justify-between px-3 sm:px-4 md:px-5
               transition-all duration-500 ease-in-out
-              ${scrolled ? "py-1 sm:py-1.5" : "py-1.5 sm:py-2"}
+              ${scrolled ? "py-1.5" : "py-2"}
             `}
           >
             {/* LOGO - Ticket to Europe with Homepage Link */}
-            <Link href="/" className="flex items-center gap-2 sm:gap-3 md:gap-4 group cursor-pointer flex-shrink-0">
+            <Link href="/" className="flex items-center gap-2 sm:gap-3 group cursor-pointer flex-shrink-0">
               <div className="relative flex-shrink-0">
                 <Image
                   src={BRAND.logo}
                   alt={BRAND.name}
-                  width={scrolled ? 32 : 36}
-                  height={scrolled ? 32 : 48}
-                  className="transition-all duration-500 group-hover:scale-105 group-hover:rotate-6"
+                  width={scrolled ? 30 : 34}
+                  height={scrolled ? 30 : 34}
+                  className="transition-all duration-500 group-hover:scale-105"
                   priority
                 />
               </div>
@@ -95,29 +93,25 @@ export default function Header() {
               <div>
                 <h1
                   className={`
-                    font-heading
                     font-bold
-                    italic
                     text-[#0A1628]
                     tracking-tight
                     leading-tight
                     transition-all duration-500 ease-in-out
-                    relative
-                    ${scrolled ? "text-sm sm:text-base" : "text-base sm:text-lg md:text-xl"}
+                    ${scrolled ? "text-sm" : "text-base"}
                   `}
                 >
                   {BRAND.name}
                 </h1>
                 <p
                   className={`
-                    font-body
-                    text-[#2B5A9E]
+                    text-[#4A8BCF]
                     leading-tight
                     font-medium
-                    tracking-[0.15em] sm:tracking-[0.2em]
+                    tracking-[0.15em]
                     uppercase
                     transition-all duration-500 ease-in-out
-                    ${scrolled ? "text-[6px] sm:text-[7px]" : "text-[7px] sm:text-[8px]"}
+                    ${scrolled ? "text-[6px]" : "text-[7px]"}
                   `}
                 >
                   {BRAND.tagline}
@@ -126,93 +120,65 @@ export default function Header() {
             </Link>
 
             {/* DESKTOP NAV */}
-            <nav className="hidden xl:flex items-center justify-center flex-1 gap-1.5 lg:gap-3 xl:gap-4 px-4">
+            <nav className="hidden lg:flex items-center justify-center flex-1 gap-2 px-4">
               {navItems.map((item) => (
                 <button
                   key={item.name}
                   onClick={() => handleNavClick(item)}
                   className={`
-                    group
-                    flex items-center
-                    font-body
+                    relative
                     font-medium
                     transition-all
                     duration-200
-                    px-1.5 lg:px-2.5
-                    py-1
-                    rounded-full
-                    hover:bg-[#E8F0FE]
-                    ${scrolled ? "text-[7px] lg:text-[8px] xl:text-[10px]" : "text-[8px] lg:text-[9px] xl:text-[12px]"}
+                    px-2.5
+                    py-1.5
+                    text-xs
                     tracking-wider
-                    relative
                     ${
                       item.isActive
-                        ? "text-[#1A3A6B] bg-[#E8F0FE]"
-                        : "text-[#0A1628] hover:text-[#1A3A6B]"
+                        ? "text-[#1A3A6B]"
+                        : "text-[#0A1628]/70 hover:text-[#1A3A6B]"
                     }
                   `}
                 >
                   {item.name}
                   {item.isActive && (
-                    <span className="absolute inset-x-2 -bottom-0.5 h-0.5 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF]" />
+                    <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-full" />
                   )}
                   {!item.isActive && (
-                    <span className="absolute inset-x-2 -bottom-0.5 h-0.5 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center" />
+                    <span className="absolute inset-x-0 -bottom-0.5 h-0.5 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center rounded-full" />
                   )}
                 </button>
               ))}
             </nav>
 
             {/* RIGHT SIDE - Call Only Deals */}
-            <div className="hidden xl:flex items-center gap-2 sm:gap-3">
+            <div className="hidden lg:flex items-center">
               <a
                 href={`tel:${CONTACT.phoneRaw}`}
                 className={`
-                  flex items-center gap-1.5 sm:gap-2 md:gap-3
-                  bg-gradient-to-r from-[#0A1628] to-[#1A3A6B]
-                  hover:from-[#1A3A6B] hover:to-[#2B5A9E]
+                  flex items-center gap-2
+                  bg-[#1A3A6B]
+                  hover:bg-[#2B5A9E]
                   transition-all duration-300
-                  rounded-full
-                  border border-[#4A8BCF]/30
-                  ${scrolled ? "px-2 sm:px-3 py-0.5 sm:py-1" : "px-2.5 sm:px-3.5 py-1 sm:py-1.5"}
+                  rounded-lg
+                  px-3 py-1.5
                   cursor-pointer
                   hover:scale-105 active:scale-95
+                  shadow-md
+                  hover:shadow-lg
                   group
-                  shadow-lg
-                  shadow-[#1A3A6B]/20
                 `}
               >
-                <div className="flex-shrink-0">
-                  <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gradient-to-br from-[#4A8BCF] to-[#1A3A6B] flex items-center justify-center shadow-lg">
-                    <Phone
-                      size={scrolled ? 10 : 12}
-                      className="text-white sm:w-3 sm:h-3"
-                    />
-                  </div>
+                <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+                  <Phone size={12} className="text-white" />
                 </div>
                 
                 <div className="flex flex-col">
-                  <span
-                    className={`
-                      font-body
-                      font-bold
-                      text-white/80
-                      transition-all duration-300
-                      ${scrolled ? "text-[6px] sm:text-[7px]" : "text-[7px] sm:text-[8px]"}
-                    `}
-                  >
+                  <span className="text-[7px] font-bold text-white/70 tracking-[0.1em] uppercase">
                     Call Only Deals
                   </span>
-                  <span
-                    className={`
-                      font-body
-                      font-bold
-                      text-[#7BAEE0]
-                      transition-all duration-300
-                      ${scrolled ? "text-[6px] sm:text-[7px]" : "text-[7px] sm:text-[8px]"}
-                      group-hover:text-[#9AC4E8]
-                    `}
-                  >
+                  <span className="text-[10px] font-bold text-white">
                     {CONTACT.phone}
                   </span>
                 </div>
@@ -223,18 +189,18 @@ export default function Header() {
             <button
               onClick={() => setOpen(!open)}
               className="
-                xl:hidden
+                lg:hidden
                 text-[#0A1628]
                 hover:text-[#1A3A6B]
                 transition-colors
-                p-1
-                rounded-full
+                p-1.5
+                rounded-lg
                 hover:bg-[#E8F0FE]
                 flex-shrink-0
               "
               aria-label="Toggle menu"
             >
-              {open ? <X size={18} className="sm:w-5 sm:h-5" /> : <Menu size={18} className="sm:w-5 sm:h-5" />}
+              {open ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
 
@@ -242,9 +208,9 @@ export default function Header() {
           {open && (
             <div
               className="
-                xl:hidden
+                lg:hidden
                 px-4 sm:px-6
-                pb-4 sm:pb-6
+                pb-4
                 space-y-1
                 animate-in
                 slide-in-from-top-2
@@ -260,25 +226,24 @@ export default function Header() {
                     }}
                     className={`
                       w-full
-                      flex items-center gap-3
+                      flex items-center justify-between
                       transition-all
                       duration-200
-                      px-3 py-2.5 sm:py-3
-                      rounded-xl
-                      font-body
-                      text-xs sm:text-sm
-                      font-semibold
+                      px-3 py-2.5
+                      rounded-lg
+                      text-sm
+                      font-medium
                       tracking-wider
                       ${
                         item.isActive
                           ? "text-[#1A3A6B] bg-[#E8F0FE]"
-                          : "text-[#0A1628] hover:text-[#1A3A6B] hover:bg-[#E8F0FE]"
+                          : "text-[#0A1628]/70 hover:text-[#1A3A6B] hover:bg-[#E8F0FE]"
                       }
                     `}
                   >
-                    {item.name}
+                    <span>{item.name}</span>
                     {item.isActive && (
-                      <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#1A3A6B]" />
+                      <span className="w-1 h-1 rounded-full bg-[#1A3A6B]" />
                     )}
                   </button>
                 ))}
@@ -286,16 +251,16 @@ export default function Header() {
                 <div className="mt-3 pt-3 border-t border-[#E8F0FE]">
                   <a
                     href={`tel:${CONTACT.phoneRaw}`}
-                    className="flex items-center gap-3 bg-gradient-to-r from-[#0A1628] to-[#1A3A6B] rounded-xl px-4 py-3 hover:from-[#1A3A6B] hover:to-[#2B5A9E] transition-all duration-300 border border-[#4A8BCF]/20"
+                    className="flex items-center gap-3 bg-[#1A3A6B] rounded-lg px-4 py-3 hover:bg-[#2B5A9E] transition-all duration-300"
                   >
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#4A8BCF] to-[#1A3A6B] flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
                       <Phone size={14} className="text-white" />
                     </div>
                     <div>
-                      <p className="font-body text-[10px] font-medium text-white/60">
+                      <p className="text-[9px] font-medium text-white/70 tracking-[0.1em] uppercase">
                         Call Only Deals
                       </p>
-                      <p className="font-body text-xs font-bold text-[#7BAEE0]">
+                      <p className="text-xs font-bold text-white">
                         {CONTACT.phone}
                       </p>
                     </div>

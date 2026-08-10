@@ -289,7 +289,7 @@ export default function AirlinePolicy({ airline }: AirlinePolicyProps) {
           <div className="lg:w-[30%] flex items-start justify-center">
             <div className="sticky top-24">
               <Image
-                src="/images/reviewposter.png"
+                src="/images/travelwithusposter.png"
                 alt={`Review Us Now - ${BRAND.name}`}
                 width={400}
                 height={600}

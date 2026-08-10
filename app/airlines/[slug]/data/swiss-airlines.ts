@@ -22,13 +22,15 @@ export const swissData = {
     description: "Need help with SWISS International Air Lines flight changes, cancellations, or upgrades? Get expert assistance with your LX booking modifications and travel adjustments.",
     keywords: "SWISS International Air Lines, Swiss Air, flight change, cancellation, upgrade, LX booking, travel assistance",
   },
-  hero: {
-    title: "Need Help With a Swiss Airways Flight Change, Cancellation & Upgrades?",
-    subtitle: "Ticket to Europe is an independent travel agency. Our agents can help you understand Airline's published change, cancellation, name-correction, and upgrade policies so you can decide on the right next step for your trip.",
-    ctaText: "Call for Travel Assistance",
-    ctaPhone: "+1 (888) 996-0735",
-    disclaimer: "Ticket to Europe is an independent travel assistance provider and is not affiliated with Swiss Air. Travelers may also choose to manage their reservation directly through Swiss Air' official website or customer support.",
-  },
+hero: {
+ 
+  title: "Need Help With a SWISS International Air Lines Flight Change, Cancellation & Upgrades?",
+
+  subtitle: "Ticket to Europe is an independent travel agency. Our agents can help you understand Airline's published change, cancellation, name-correction, and upgrade policies so you can decide on the right next step for your trip.",
+  ctaText: "Call for Travel Assistance",
+  ctaPhone: "+1 (888) 996-0735",
+  disclaimer: "Ticket to Europe is an independent travel assistance provider and is not affiliated with Swiss Air. Travelers may also choose to manage their reservation directly through Swiss Air' official website or customer support.",
+},
   introduction: {
     title: "Swiss Air Flight Change – What You Need to Know",
     content: {

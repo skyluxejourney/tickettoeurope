@@ -20,10 +20,24 @@ export default function Footer() {
   const [selectedLink, setSelectedLink] = useState("");
 
   const quickLinks = [
-    { name: "About Us", href: "#" },
-    { name: "Flights", href: "#" },
-    { name: "Blog", href: "#" },
-    { name: "Contact", href: "#" },
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/about" },
+    { name: "Disclaimer", href: "/disclaimer" },
+    { name: "Contact Us", href: "#", isModal: true },
+    { name: "Site Map", href: "/sitemap" },
+  ];
+
+  const legalLinks = [
+    { name: "Terms & Condition", href: "/terms" },
+    { name: "Privacy Policy", href: "/privacy" },
+    { name: "Price Match Promise", href: "/price-match" },
+    { name: "Fulfillment Policy", href: "/fulfillment" },
+    { name: "Fare Disclosure", href: "/fare-disclosure" },
+    { name: "Advertiser Disclosure", href: "/advertiser-disclosure" },
+    { name: "Cookies Policy", href: "/cookies" },
+    { name: "Cancellation and Refund", href: "/cancellation-refund" },
+    { name: "Post Ticketing Service Fees", href: "/post-ticketing-fees" },
+    { name: "Taxes and Fees", href: "/taxes-fees" },
   ];
 
   const topAirlines = [
@@ -36,10 +50,12 @@ export default function Footer() {
     { name: "Virgin Atlantic", slug: "virgin-atlantic" },
   ];
 
-  const handleLinkClick = (e: React.MouseEvent, linkName: string) => {
-    e.preventDefault();
-    setSelectedLink(linkName);
-    setShowModal(true);
+  const handleLinkClick = (e: React.MouseEvent, linkName: string, isModal?: boolean) => {
+    if (isModal) {
+      e.preventDefault();
+      setSelectedLink(linkName);
+      setShowModal(true);
+    }
   };
 
   const closeModal = () => {
@@ -52,7 +68,7 @@ export default function Footer() {
       <footer className="bg-[#F8F5EF] text-[#0A1628]/80">
         {/* Main Footer */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 xl:gap-8">
             {/* Brand & About */}
             <div>
               <div className="flex items-center gap-4 mb-4">
@@ -99,14 +115,36 @@ export default function Footer() {
               <ul className="space-y-2.5">
                 {quickLinks.map((link) => (
                   <li key={link.name}>
-                    <a
-                      href={link.href}
-                      onClick={(e) => handleLinkClick(e, link.name)}
-                      className="text-sm text-[#0A1628]/60 hover:text-[#1A3A6B] transition-colors duration-200 flex items-center gap-2 group cursor-pointer"
-                    >
-                      <span className="w-1 h-1 bg-[#1A3A6B]/40 rounded-full group-hover:bg-[#1A3A6B] transition-colors" />
-                      {link.name}
-                    </a>
+                    {link.isModal ? (
+                      <a
+                        href={link.href}
+                        onClick={(e) => handleLinkClick(e, link.name, true)}
+                        className="text-sm text-[#0A1628]/60 hover:text-[#1A3A6B] transition-colors duration-200 flex items-center gap-2 group cursor-pointer"
+                      >
+                        <span className="w-1 h-1 bg-[#1A3A6B]/40 rounded-full group-hover:bg-[#1A3A6B] transition-colors" />
+                        {link.name}
+                      </a>
+                    ) : link.name === "Home" ? (
+                      <a
+                        href={link.href}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                        className="text-sm text-[#0A1628]/60 hover:text-[#1A3A6B] transition-colors duration-200 flex items-center gap-2 group cursor-pointer"
+                      >
+                        <span className="w-1 h-1 bg-[#1A3A6B]/40 rounded-full group-hover:bg-[#1A3A6B] transition-colors" />
+                        {link.name}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-sm text-[#0A1628]/60 hover:text-[#1A3A6B] transition-colors duration-200 flex items-center gap-2 group"
+                      >
+                        <span className="w-1 h-1 bg-[#1A3A6B]/40 rounded-full group-hover:bg-[#1A3A6B] transition-colors" />
+                        {link.name}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -133,29 +171,24 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Contact Us */}
+            {/* Legal Links */}
             <div>
               <h3 className="text-[#0A1628] font-semibold text-lg mb-4 relative">
-                Contact Us
+                Legal Links
                 <span className="absolute -bottom-1 left-0 w-8 h-0.5 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-full" />
               </h3>
-              <ul className="space-y-3.5">
-                <li className="flex items-start gap-3 text-sm text-[#0A1628]/60 hover:text-[#0A1628] transition-colors group">
-                  <Phone size={16} className="text-[#1A3A6B] flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
-                  <span>{CONTACT.phone}</span>
-                </li>
-                <li className="flex items-start gap-3 text-sm text-[#0A1628]/60 hover:text-[#0A1628] transition-colors group">
-                  <Mail size={16} className="text-[#1A3A6B] flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
-                  <span>{COMPANY.email}</span>
-                </li>
-                <li className="flex items-start gap-3 text-sm text-[#0A1628]/60 hover:text-[#0A1628] transition-colors group">
-                  <MapPin size={16} className="text-[#1A3A6B] flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
-                  <span>{COMPANY.address}</span>
-                </li>
-                <li className="flex items-start gap-3 text-sm text-[#0A1628]/60 hover:text-[#0A1628] transition-colors group">
-                  <Clock size={16} className="text-[#1A3A6B] flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
-                  <span>{CONTACT.supportHours}</span>
-                </li>
+              <ul className="space-y-2.5">
+                {legalLinks.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-[#0A1628]/60 hover:text-[#1A3A6B] transition-colors duration-200 flex items-center gap-2 group"
+                    >
+                      <span className="w-1 h-1 bg-[#1A3A6B]/40 rounded-full group-hover:bg-[#1A3A6B] transition-colors" />
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -194,17 +227,17 @@ export default function Footer() {
                 &copy; {COMPANY.year} {COMPANY.name}. All rights reserved.
               </p>
               <div className="flex items-center gap-4">
-                <a href="#" className="hover:text-[#1A3A6B] transition-colors">
+                <Link href="/privacy" className="hover:text-[#1A3A6B] transition-colors">
                   Privacy Policy
-                </a>
+                </Link>
                 <span className="w-px h-3 bg-[#1A3A6B]/10" />
-                <a href="#" className="hover:text-[#1A3A6B] transition-colors">
+                <Link href="/terms" className="hover:text-[#1A3A6B] transition-colors">
                   Terms of Service
-                </a>
+                </Link>
                 <span className="w-px h-3 bg-[#1A3A6B]/10" />
-                <a href="#" className="hover:text-[#1A3A6B] transition-colors">
+                <Link href="/cookies" className="hover:text-[#1A3A6B] transition-colors">
                   Cookie Policy
-                </a>
+                </Link>
               </div>
             </div>
           </div>

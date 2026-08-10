@@ -37,25 +37,22 @@ export default function AirlineHero({ airline }: AirlineHeroProps) {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="w-full">
-          <h1 className="mb-4 sm:mb-5">
-            {titleParts.length > 1 ? (
-              // If airline name is found in title
-              <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.2] tracking-tight">
-                {titleParts[0]}
-                <span className="italic bg-gradient-to-r from-[#4A8BCF] via-[#27548F] to-[#3060a8] bg-clip-text text-transparent">
-                  {airlineName}
-                </span>
-                {titleParts[1]}
-              </span>
-            ) : (
-              // Fallback: If airline name not found, show full title with gradient
-              <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.2] tracking-tight">
-                <span className="italic bg-gradient-to-r from-[#4A8BCF] via-[#27548F] to-[#1A3A6B] bg-clip-text text-transparent">
-                  {airline.hero.title}
-                </span>
-              </span>
-            )}
-          </h1>
+        <h1 className="mb-4 sm:mb-5">
+  <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-[1.2] tracking-tight">
+    {titleParts[0]}
+    <span 
+      className="text-transparent bg-clip-text italic"
+      style={{
+        background: `linear-gradient(to right, #4A8BCF, #27548F, #3060a8)`,
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent'
+      }}
+    >
+      {airlineName}
+    </span>
+    <span className="text-white">{titleParts[1]}</span>
+  </span>
+</h1>
 
           <p className="text-white/70 text-sm sm:text-base md:text-lg italic w-full mb-4 sm:mb-6 font-light tracking-wide">
             {airline.hero.disclaimer}
@@ -71,71 +68,13 @@ export default function AirlineHero({ airline }: AirlineHeroProps) {
         </div>
       </div>
 
-      {/* Professional Floating Call Widget */}
-      <div className="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-50 group flex items-center gap-3">
-
-        {/* Chat Card - appears on hover with optimized animation */}
-        <div
-          className="
-            hidden sm:block
-            w-[260px]
-            rounded-2xl
-            border border-gray-200/80
-            bg-white/95
-            backdrop-blur-xl
-            p-4
-            shadow-[0_20px_60px_rgba(15,23,42,0.18)]
-            opacity-0
-            translate-x-4
-            scale-95
-            pointer-events-none
-            transition-all duration-400 
-            ease-[cubic-bezier(0.34,1.56,0.64,1)]
-            group-hover:opacity-100
-            group-hover:translate-x-0
-            group-hover:scale-100
-            group-hover:pointer-events-auto
-            will-change-transform
-          "
-        >
-          <div className="flex items-start gap-3">
-
-            {/* Support Icon with subtle animation */}
-            <div className="relative mt-0.5 flex h-10 w-10 items-center justify-center rounded-full bg-[#EEF4FF] group-hover:scale-105 transition-transform duration-300">
-              <span className="absolute inset-0 rounded-full bg-[#4A8BCF]/20 animate-ping"></span>
-              <Headphones className="relative z-10 h-5 w-5 text-[#1A3A6B] group-hover:rotate-12 transition-transform duration-300" />
-            </div>
-
-            {/* Text */}
-            <div className="min-w-0 flex-1">
-              <div className="mb-1 flex items-center gap-2">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping"></span>
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
-                </span>
-
-                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-500">
-                  24/7 Call Assistance
-                </p>
-              </div>
-
-              <p className="text-base font-bold text-gray-900 group-hover:text-[#1A3A6B] transition-colors duration-300">
-                {airline.hero.ctaPhone}
-              </p>
-
-              <p className="mt-1 text-xs leading-relaxed text-gray-500">
-                Flight booking, changes and cancellations.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Circle Call Button with visible wave rings */}
+      {/* Professional Floating Call Widget - chat card is inside the button */}
+      <div className="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-50">
         <a
           href={`tel:${airline.hero.ctaPhone}`}
           aria-label="Call support"
           className="
-            relative flex h-16 w-16 items-center justify-center
+            group relative flex h-16 w-16 items-center justify-center
             rounded-full
             bg-gradient-to-br from-[#1A3A6B] via-[#27548F] to-[#4A8BCF]
             text-white
@@ -149,6 +88,59 @@ export default function AirlineHero({ airline }: AirlineHeroProps) {
             will-change-transform
           "
         >
+          {/* Chat Card - positioned slightly higher, appears only when button is hovered */}
+          <div
+            className="
+              absolute right-full mr-3 top-1/2 -translate-y-[70%]
+              hidden sm:block
+              w-[260px]
+              rounded-sm 
+              border border-gray-200/80
+              bg-white
+              p-4
+              shadow-[0_20px_60px_rgba(15,23,42,0.18)]
+              opacity-0
+              translate-x-4
+              scale-95
+              pointer-events-none
+              transition-all duration-400 
+              ease-[cubic-bezier(0.34,1.56,0.64,1)]
+              group-hover:opacity-100
+              group-hover:translate-x-0
+              group-hover:scale-100
+              group-hover:pointer-events-auto
+              will-change-transform
+            "
+          >
+            <div className="flex items-start gap-3">
+              {/* Support Icon with subtle animation */}
+              <div className="relative mt-0.5 flex h-10 w-10 items-center justify-center rounded-full bg-[#EEF4FF] transition-transform duration-300">
+                <span className="absolute inset-0 rounded-full bg-[#4A8BCF]/20 animate-ping"></span>
+                <Headphones className="relative z-10 h-5 w-5 text-[#1A3A6B]" />
+              </div>
+
+              {/* Text */}
+              <div className="min-w-0 flex-1">
+                <div className="mb-1 flex items-center gap-2">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping"></span>
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
+                  </span>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-500">
+                    24/7 Call Assistance
+                  </p>
+                </div>
+
+                <p className="text-base font-bold text-gray-900 group-hover:text-[#1A3A6B] transition-colors duration-300">
+                  {airline.hero.ctaPhone}
+                </p>
+
+                <p className="mt-1 text-xs leading-relaxed text-gray-500">
+                  Flight booking, changes and cancellations.
+                </p>
+              </div>
+            </div>
+          </div>
 
           {/* Wave Rings - with dark/colored borders for visibility */}
           <span className="absolute inset-0 rounded-full border-2 border-[#4A8BCF]/60 animate-[ping_2s_ease-in-out_infinite]"></span>
