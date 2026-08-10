@@ -15,7 +15,8 @@ export default function Home() {
         <Hero />
         <WhyChooseUs />
         <TravelDeals />
-        <ExclusiveDeals />
+        <ExclusiveDeals   isOpen={false}
+          onClose={() => {}} />
         <Whypaymore />
         <Testimonials />
       </main>
