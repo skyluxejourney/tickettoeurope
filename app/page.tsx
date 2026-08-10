@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import WhyChooseUs from "@/components/WhyChooseUs";
@@ -6,8 +9,22 @@ import TravelDeals from "@/components/TravelDeals";
 import ExclusiveDeals from "@/components/ExclusiveDeals";
 import Whypaymore from "@/components/Whypaymoresection";
 import Testimonials from "@/components/Testimonials";
+import ContactModal from "@/components/ContactModal";
 
 export default function Home() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState("");
+
+  const handleOpenModal = (itemName: string) => {
+    setSelectedItem(itemName);
+    setIsContactModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsContactModalOpen(false);
+    setSelectedItem("");
+  };
+
   return (
     <>
       <Header />
@@ -15,12 +32,22 @@ export default function Home() {
         <Hero />
         <WhyChooseUs />
         <TravelDeals />
-        <ExclusiveDeals   isOpen={false}
-          onClose={() => {}} />
+        <ExclusiveDeals 
+          isOpen={isContactModalOpen}
+          onClose={handleCloseModal}
+        
+        />
         <Whypaymore />
         <Testimonials />
       </main>
       <Footer />
+      
+      {/* Contact Modal */}
+      <ContactModal 
+        isOpen={isContactModalOpen}
+        onClose={handleCloseModal}
+        selectedItem={selectedItem}
+      />
     </>
   );
 }
