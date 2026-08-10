@@ -1,114 +1,232 @@
 "use client";
 
-import { Phone, Mail, Ticket, PhoneCall, X as XIcon } from "lucide-react";
+import { Phone, ArrowRight, Star, Users, Shield, Tag, Sparkles, Clock, Award, Plane, Globe } from "lucide-react";
 import { COMPANY, CONTACT } from "@/app/constants";
 
-interface ContactModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  selectedItem?: string;
-}
-
-export default function ContactModal({ isOpen, onClose, selectedItem = "" }: ContactModalProps) {
-  if (!isOpen) return null;
+export default function ExclusiveDealsPoster() {
+  // Use static positions instead of Math.random() to avoid hydration mismatches
+  const particles = [
+    { left: "10%", top: "20%", delay: "0s", duration: "4s" },
+    { left: "25%", top: "45%", delay: "0.5s", duration: "5s" },
+    { left: "40%", top: "15%", delay: "1s", duration: "3.5s" },
+    { left: "55%", top: "60%", delay: "1.5s", duration: "4.5s" },
+    { left: "70%", top: "25%", delay: "0.3s", duration: "5.5s" },
+    { left: "85%", top: "50%", delay: "0.8s", duration: "4s" },
+    { left: "15%", top: "75%", delay: "1.2s", duration: "3s" },
+    { left: "35%", top: "85%", delay: "0.6s", duration: "6s" },
+    { left: "50%", top: "35%", delay: "1.8s", duration: "4.2s" },
+    { left: "65%", top: "80%", delay: "0.2s", duration: "5s" },
+    { left: "80%", top: "15%", delay: "0.9s", duration: "3.8s" },
+    { left: "5%", top: "50%", delay: "1.4s", duration: "4.7s" },
+    { left: "45%", top: "70%", delay: "0.7s", duration: "5.2s" },
+    { left: "75%", top: "40%", delay: "1.1s", duration: "3.3s" },
+    { left: "95%", top: "30%", delay: "0.4s", duration: "4.8s" },
+    { left: "20%", top: "10%", delay: "1.6s", duration: "5.8s" },
+    { left: "60%", top: "90%", delay: "0.1s", duration: "3.9s" },
+    { left: "30%", top: "55%", delay: "1.3s", duration: "4.3s" },
+    { left: "88%", top: "70%", delay: "0.5s", duration: "5.1s" },
+    { left: "12%", top: "90%", delay: "0.8s", duration: "4.6s" },
+  ];
 
   return (
-    <div className="fixed inset-0 z-[999] flex items-center justify-center px-4">
-      {/* Overlay */}
-      <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300"
-        onClick={onClose}
-      />
-
-      {/* Modal */}
-      <div className="relative bg-white rounded-2xl max-w-md w-full shadow-2xl animate-in slide-in-from-bottom-8 duration-400 ease-out border border-[#E2E8F0]">
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-white/80 hover:text-white transition-all duration-300 hover:scale-110 active:scale-90 z-10"
+    <section className="py-8 sm:py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div 
+          className="relative overflow-hidden shadow-2xl"
+          style={{
+            background: `linear-gradient(135deg, #1A3A6B, #4A8BCF, #6BA3D6)`
+          }}
         >
-          <XIcon size={24} />
-        </button>
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-20">
+            <div 
+              className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl"
+              style={{ backgroundColor: '#6BA3D6' }}
+            />
+            <div 
+              className="absolute bottom-0 left-0 w-72 h-72 rounded-full blur-3xl"
+              style={{ backgroundColor: '#E8F0FE' }}
+            />
+            <div 
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl"
+              style={{ backgroundColor: '#4A8BCF33' }}
+            />
+          </div>
 
-        {/* Header */}
-        <div className="bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-t-2xl p-6 text-white">
-          <div className="flex items-center gap-3">
-            <div className="bg-white/20 p-2 rounded-xl animate-in zoom-in duration-500">
-              <Ticket size={24} className="text-white" />
-            </div>
-            <div>
-              <h3 className="text-lg font-bold !text-white animate-in slide-in-from-left duration-300">
-                Contact Us
-              </h3>
-              <p className="text-white/80 text-sm animate-in slide-in-from-left duration-400 delay-100">
-                {selectedItem} - Get in touch with us
+          {/* Decorative Pattern Lines */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#E8F0FE] to-transparent" />
+            <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#E8F0FE] to-transparent" />
+            <div className="absolute top-1/2 left-0 w-px h-full bg-gradient-to-b from-transparent via-[#E8F0FE] to-transparent" />
+            <div className="absolute top-1/2 right-0 w-px h-full bg-gradient-to-b from-transparent via-[#E8F0FE] to-transparent" />
+          </div>
+
+          {/* Static Particles */}
+          <div className="absolute inset-0 overflow-hidden">
+            {particles.map((particle, i) => (
+              <div
+                key={i}
+                className="absolute rounded-full animate-float"
+                style={{
+                  left: particle.left,
+                  top: particle.top,
+                  animationDelay: particle.delay,
+                  animationDuration: particle.duration,
+                  backgroundColor: i % 2 === 0 ? '#E8F0FE4D' : '#6BA3D633',
+                  width: i % 3 === 0 ? '3px' : '2px',
+                  height: i % 3 === 0 ? '3px' : '2px',
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="relative flex flex-col lg:flex-row items-stretch">
+            {/* Left Content */}
+            <div className="flex-1 p-6 sm:p-8 lg:p-10 xl:p-12 text-center lg:text-left">
+              {/* Premium Badge */}
+              <div className="inline-flex items-center gap-2 backdrop-blur-sm rounded-full px-5 py-2 mb-6 border border-[#E8F0FE]/20" style={{ backgroundColor: '#1A3A6B66' }}>
+                <Award size={16} style={{ color: '#E8F0FE' }} />
+                <span className="text-white text-xs font-semibold tracking-[0.2em] uppercase">
+                  Premium Travel Deals
+                </span>
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white !text-white mb-4 leading-tight">
+                Exclusive{" "}
+                <span className="relative">
+                  <span className="relative z-10" style={{ color: '#E8F0FE' }}>
+                    Savings
+                  </span>
+                  <span 
+                    className="absolute -bottom-1 left-0 w-full h-1 rounded-full blur-sm"
+                    style={{ backgroundColor: '#E8F0FE4D' }}
+                  />
+                </span>
+                <br />
+                <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light opacity-90">
+                  Up to <span className="font-bold" style={{ color: '#E8F0FE' }}>20%</span> Off
+                </span>
+              </h2>
+
+              <p className="text-white/90 !text-white/90 text-sm sm:text-base lg:text-lg max-w-lg mx-auto lg:mx-0 mb-6 leading-relaxed">
+                Call now and let our professional agents book your ticket at the best price.
+                Limited time offer – don't miss out!
               </p>
+
+              {/* Trust Badges */}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 mb-6">
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10" style={{ backgroundColor: '#1A3A6B4D' }}>
+                  <Star size={14} className="text-yellow-400 fill-yellow-400" />
+                  <span className="text-white/90 text-xs font-medium">4.9/5 Rating</span>
+                </div>
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10" style={{ backgroundColor: '#1A3A6B4D' }}>
+                  <Users size={14} className="text-white/80" />
+                  <span className="text-white/90 text-xs font-medium">2.5M+ Bookings</span>
+                </div>
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10" style={{ backgroundColor: '#1A3A6B4D' }}>
+                  <Shield size={14} className="text-white/80" />
+                  <span className="text-white/90 text-xs font-medium">Secure Payment</span>
+                </div>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4">
+                <a
+                  href={`tel:${CONTACT.phoneRaw}`}
+                  className="flex items-center gap-3 backdrop-blur-sm rounded-full px-5 sm:px-6 py-3 w-full sm:w-auto transition-all duration-300 border border-white/20 hover:scale-105"
+                  style={{ backgroundColor: '#1A3A6B66' }}
+                >
+                  <Phone size={20} className="animate-pulse" style={{ color: '#E8F0FE' }} />
+                  <span className="text-white !text-white font-bold text-base sm:text-lg tracking-wider">
+                    {CONTACT.phone}
+                  </span>
+                </a>
+                <a
+                  href={`tel:${CONTACT.phoneRaw}`}
+                  className="text-[#1A3A6B] px-6 sm:px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 whitespace-nowrap w-full sm:w-auto flex items-center justify-center gap-2"
+                  style={{
+                    background: `linear-gradient(135deg, #E8F0FE, #FFFFFF)`,
+                    boxShadow: `0 10px 20px -5px #0000004D`
+                  }}
+                >
+                  <span>Call Now</span>
+                  <ArrowRight size={18} />
+                </a>
+              </div>
+            </div>
+
+            {/* Right Image */}
+            <div className="relative lg:w-1/2 min-h-[250px] sm:min-h-[300px] lg:min-h-[350px] xl:min-h-[400px]">
+              <img
+                src="/images/exclusivedeal.jpg"
+                alt="Exclusive Travel Deals"
+                className="w-full h-full object-cover"
+              />
+              <div 
+                className="absolute inset-0"
+                style={{ background: `linear-gradient(to right, #1A3A6B99, transparent 40%, transparent)` }}
+              />
+              
+              {/* Floating Savings Badge */}
+              <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 bg-white p-3 sm:p-4 shadow-2xl rotate-3 rounded-lg">
+                <div 
+                  className="px-4 sm:px-6 py-2 sm:py-3 text-white text-center rounded"
+                  style={{
+                    background: `linear-gradient(135deg, #1A3A6B, #4A8BCF)`
+                  }}
+                >
+                  <div className="text-xs sm:text-sm font-bold tracking-wider">Save Up To</div>
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-extrabold">20%</div>
+                  <div className="text-[8px] sm:text-[10px] opacity-80">Limited Time</div>
+                </div>
+              </div>
+
+              {/* Floating Trust Badge */}
+              <div className="absolute bottom-6 left-4 backdrop-blur-sm px-4 py-2.5 border border-white/10" style={{ backgroundColor: '#1A3A6BCC' }}>
+                <div className="flex items-center gap-3 text-white">
+                  <div className="flex items-center gap-1">
+                    <Clock size={14} style={{ color: '#4A8BCF' }} />
+                    <span className="text-xs font-medium">24/7 Support</span>
+                  </div>
+                  <span className="w-px h-4 bg-white/20" />
+                  <div className="flex items-center gap-1">
+                    <Tag size={14} style={{ color: '#4A8BCF' }} />
+                    <span className="text-xs font-medium">Exclusive Deals</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Corner Accent */}
+              <div className="absolute top-6 left-6 w-12 h-12 border-t-2 border-l-2 border-[#E8F0FE]/20" />
+              <div className="absolute bottom-6 right-6 w-12 h-12 border-b-2 border-r-2 border-[#E8F0FE]/20" />
             </div>
           </div>
-        </div>
-
-        {/* Content */}
-        <div className="p-6">
-          <div className="text-center mb-6 animate-in slide-in-from-bottom-4 duration-400 delay-100">
-            <p className="text-[#0A1628]/70 text-sm leading-relaxed">
-              Our team is ready to assist you with any questions about{" "}
-              <span className="font-semibold text-[#1A3A6B]">{selectedItem}</span>.
-              Call us now for immediate support!
-            </p>
-          </div>
-
-          {/* Contact Options */}
-          <div className="space-y-3">
-            {/* Phone */}
-            <a
-              href={`tel:${CONTACT.phoneRaw}`}
-              className="flex items-center gap-4 p-4 bg-[#F5F9FF] rounded-xl hover:bg-[#E8F0FE] transition-all duration-300 group border border-[#E2E8F0] hover:border-[#4A8BCF]/30 hover:shadow-md animate-in slide-in-from-left duration-400 delay-150"
-            >
-              <div className="bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] p-3 rounded-xl text-white shadow-lg shadow-[#1A3A6B]/20 group-hover:shadow-[#1A3A6B]/30 transition-all duration-300 group-hover:scale-105">
-                <Phone size={20} />
-              </div>
-              <div className="flex-1">
-                <p className="text-xs text-[#0A1628]/60">Call Us Now</p>
-                <p className="text-sm font-semibold text-[#0A1628] group-hover:text-[#1A3A6B] transition-colors duration-300">
-                  {CONTACT.phone}
-                </p>
-              </div>
-              <PhoneCall size={16} className="text-[#4A8BCF] opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1" />
-            </a>
-
-            {/* Email */}
-            <a
-              href={`mailto:${COMPANY.email}`}
-              className="flex items-center gap-4 p-4 bg-[#F5F9FF] rounded-xl hover:bg-[#E8F0FE] transition-all duration-300 group border border-[#E2E8F0] hover:border-[#4A8BCF]/30 hover:shadow-md animate-in slide-in-from-left duration-400 delay-200"
-            >
-              <div className="bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] p-3 rounded-xl text-white shadow-lg shadow-[#1A3A6B]/20 group-hover:shadow-[#1A3A6B]/30 transition-all duration-300 group-hover:scale-105">
-                <Mail size={20} />
-              </div>
-              <div className="flex-1">
-                <p className="text-xs text-[#0A1628]/60">Email Us</p>
-                <p className="text-sm font-semibold text-[#0A1628] group-hover:text-[#1A3A6B] transition-colors duration-300">
-                  {COMPANY.email}
-                </p>
-              </div>
-            </a>
-          </div>
-
-          {/* Special Note */}
-          <div className="mt-6 p-4 bg-[#E8F0FE] rounded-xl border border-[#4A8BCF]/20 animate-in fade-in duration-500 delay-300">
-            <p className="text-xs text-[#0A1628]/70 text-center">
-              {CONTACT.supportHours} for all your travel needs
-            </p>
-          </div>
-
-          {/* Close Button */}
-          <button
-            onClick={onClose}
-            className="w-full mt-4 bg-[#F5F9FF] hover:bg-[#E8F0FE] text-[#0A1628] font-semibold py-3 rounded-xl transition-all duration-300 border border-[#E2E8F0] hover:border-[#4A8BCF]/30 hover:shadow-md active:scale-95"
-          >
-            Close
-          </button>
         </div>
       </div>
-    </div>
+
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { 
+            transform: translateY(0) translateX(0) rotate(0deg); 
+            opacity: 0.3; 
+          }
+          25% { 
+            transform: translateY(-15px) translateX(8px) rotate(3deg); 
+            opacity: 0.7; 
+          }
+          50% { 
+            transform: translateY(0) translateX(-8px) rotate(0deg); 
+            opacity: 0.3; 
+          }
+          75% { 
+            transform: translateY(15px) translateX(8px) rotate(-3deg); 
+            opacity: 0.7; 
+          }
+        }
+        .animate-float {
+          animation: float 5s ease-in-out infinite;
+        }
+      `}</style>
+    </section>
   );
 }

@@ -32,11 +32,7 @@ export default function Home() {
         <Hero />
         <WhyChooseUs />
         <TravelDeals />
-        <ExclusiveDeals 
-          isOpen={isContactModalOpen}
-          onClose={handleCloseModal}
-        
-        />
+        <ExclusiveDeals  />
         <Whypaymore />
         <Testimonials />
       </main>
