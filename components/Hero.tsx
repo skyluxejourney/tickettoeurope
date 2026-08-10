@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import SearchEngine from "./SearchEngine";
 import Image from "next/image";
 import { Phone, Headphones } from "lucide-react";
-import { CONTACT } from "../app/constants"; // Adjust import as needed
+import { CONTACT } from "../app/constants"; 
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
