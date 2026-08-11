@@ -343,7 +343,7 @@ export default function AirlinePolicy({ airline }: AirlinePolicyProps) {
                 `}
               >
                 <Image
-                  src="/images/travelwithus.png"
+                  src="/images/travelwithusposter.png"
                   alt={`Review Us Now - ${BRAND.name}`}
                   width={400}
                   height={600}

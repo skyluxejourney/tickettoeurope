@@ -1,4 +1,4 @@
-    // app/fulfillment/page.tsx
+// app/fulfillment/page.tsx
 "use client";
 
 import { 
@@ -53,17 +53,17 @@ export default function FulfillmentPage() {
         "Assisted Booking",
         "Customers may also receive assistance through available telephone, chat, email, or other customer-service channels.",
         "Assisted booking may include help with:",
-        "• Route selection",
-        "• Fare and itinerary information",
-        "• Manual booking support",
-        "• Passenger information",
-        "• Payment processing",
-        "• Documentation requirements",
-        "• Complex itineraries",
-        "• Multi-passenger reservations",
-        "• Special-service requests",
-        "• Schedule-change situations",
-        "• Post-booking support",
+        { label: "Route selection", value: "Route selection" },
+        { label: "Fare and itinerary", value: "Fare and itinerary information" },
+        { label: "Manual booking", value: "Manual booking support" },
+        { label: "Passenger info", value: "Passenger information" },
+        { label: "Payment processing", value: "Payment processing" },
+        { label: "Documentation", value: "Documentation requirements" },
+        { label: "Complex itineraries", value: "Complex itineraries" },
+        { label: "Multi-passenger", value: "Multi-passenger reservations" },
+        { label: "Special requests", value: "Special-service requests" },
+        { label: "Schedule changes", value: "Schedule-change situations" },
+        { label: "Post-booking support", value: "Post-booking support" },
         "Assisted booking may involve a different service fee than self-service booking. Any applicable service fee should be disclosed to the customer before payment authorization."
       ],
       twoColumn: true
@@ -103,11 +103,11 @@ export default function FulfillmentPage() {
       content: [
         "Noam Flyers Inc. processes payments for bookings made through Tickettooeurope.com using applicable payment-processing systems and authorized payment providers.",
         "Depending on the payment pathway, a customer may see:",
-        "• A payment authorization",
-        "• A completed charge",
-        "• Multiple component charges that together represent the agreed transaction",
-        "• A temporary authorization hold",
-        "• A delay between payment submission and final ticket issuance",
+        { label: "Authorization", value: "A payment authorization" },
+        { label: "Completed charge", value: "A completed charge" },
+        { label: "Component charges", value: "Multiple component charges that together represent the agreed transaction" },
+        { label: "Hold", value: "A temporary authorization hold" },
+        { label: "Delayed issuance", value: "A delay between payment submission and final ticket issuance" },
         "The exact appearance and timing of a transaction may depend on the payment method, financial institution, payment processor, airline, supplier, and booking pathway.",
         "If payment cannot be completed, the fare changes before ticketing, or the applicable supplier cannot confirm the itinerary, Noam Flyers Inc. may notify the customer and explain the available next steps.",
         "If a payment has been authorized or charged but the requested booking cannot be fulfilled, Noam Flyers Inc. will process the applicable reversal, release, refund, or other transaction adjustment in accordance with the payment method, processor requirements, supplier rules, and applicable circumstances."
@@ -120,9 +120,9 @@ export default function FulfillmentPage() {
       content: [
         "Submitting a booking request does not necessarily mean that a ticket has been issued.",
         "A booking should generally be considered fully fulfilled only after:",
-        "• Required payment or payment authorization has been successfully completed;",
-        "• The applicable airline or travel supplier has confirmed the requested service; and",
-        "• A reservation confirmation and/or ticket number has been issued and communicated to the customer, as applicable.",
+        { label: "Payment", value: "Required payment or payment authorization has been successfully completed;" },
+        { label: "Supplier confirmation", value: "The applicable airline or travel supplier has confirmed the requested service; and" },
+        { label: "Confirmation", value: "A reservation confirmation and/or ticket number has been issued and communicated to the customer, as applicable." },
         "A confirmation that merely acknowledges receipt of a booking request should not automatically be interpreted as proof that a ticket has been issued."
       ]
     },
@@ -132,17 +132,17 @@ export default function FulfillmentPage() {
       content: [
         "For an air booking, the core fulfillment deliverable is a valid reservation record and, where applicable, an issued ticket number.",
         "A completed fulfillment communication should generally contain the essential booking information available for the transaction, which may include:",
-        "• Passenger names",
-        "• Origin and destination",
-        "• Travel dates",
-        "• Flight details",
-        "• Departure and arrival times",
-        "• Cabin class",
-        "• Booking reference or PNR",
-        "• Ticket number, where issued",
-        "• Applicable payment summary",
-        "• Relevant fare or booking conditions",
-        "• Instructions for obtaining assistance or checking the booking status",
+        { label: "Passengers", value: "Passenger names" },
+        { label: "Route", value: "Origin and destination" },
+        { label: "Dates", value: "Travel dates" },
+        { label: "Flights", value: "Flight details" },
+        { label: "Times", value: "Departure and arrival times" },
+        { label: "Cabin", value: "Cabin class" },
+        { label: "PNR", value: "Booking reference or PNR" },
+        { label: "Ticket", value: "Ticket number, where issued" },
+        { label: "Payment", value: "Applicable payment summary" },
+        { label: "Conditions", value: "Relevant fare or booking conditions" },
+        { label: "Support", value: "Instructions for obtaining assistance or checking the booking status" },
         "Customers should retain their confirmation and ticket information for future reference."
       ],
       twoColumn: true
@@ -153,16 +153,16 @@ export default function FulfillmentPage() {
       content: [
         "Some transactions may require additional review before fulfillment is completed.",
         "This may include:",
-        "• Payment verification",
-        "• Identity verification",
-        "• Fraud or risk review",
-        "• Card validation",
-        "• Manual ticketing",
-        "• Supplier queue processing",
-        "• Availability verification",
-        "• Special-service validation",
-        "• Documentation review",
-        "• Customer recontact",
+        { label: "Payment verification", value: "Payment verification" },
+        { label: "Identity verification", value: "Identity verification" },
+        { label: "Fraud review", value: "Fraud or risk review" },
+        { label: "Card validation", value: "Card validation" },
+        { label: "Manual ticketing", value: "Manual ticketing" },
+        { label: "Queue processing", value: "Supplier queue processing" },
+        { label: "Availability", value: "Availability verification" },
+        { label: "Special services", value: "Special-service validation" },
+        { label: "Documentation", value: "Documentation review" },
+        { label: "Recontact", value: "Customer recontact" },
         "Additional review does not necessarily mean that a booking has failed.",
         "It may simply mean that the transaction has not yet reached its final fulfillment stage.",
         "Where reasonably possible, Tickettooeurope.com will communicate the relevant status to the customer rather than allowing a customer to assume that a request has already resulted in an issued ticket."
@@ -175,21 +175,21 @@ export default function FulfillmentPage() {
       content: [
         "Not every booking request can necessarily be fulfilled exactly as originally selected.",
         "For example:",
-        "• The selected fare may no longer be available.",
-        "• Airline inventory may change before ticket issuance.",
-        "• The airline may require a schedule or fare adjustment.",
-        "• A payment method may fail validation.",
-        "• A supplier may reject the requested itinerary.",
-        "• A special-service request may require additional confirmation.",
-        "• A supplier may require direct carrier servicing.",
+        { label: "Fare unavailable", value: "The selected fare may no longer be available." },
+        { label: "Inventory changes", value: "Airline inventory may change before ticket issuance." },
+        { label: "Schedule change", value: "The airline may require a schedule or fare adjustment." },
+        { label: "Payment fails", value: "A payment method may fail validation." },
+        { label: "Supplier rejection", value: "A supplier may reject the requested itinerary." },
+        { label: "Special service", value: "A special-service request may require additional confirmation." },
+        { label: "Carrier servicing", value: "A supplier may require direct carrier servicing." },
         "When this occurs, Noam Flyers Inc. will seek to communicate the available options.",
         "Depending on the circumstances, available options may include:",
-        "• A revised itinerary",
-        "• A revised fare",
-        "• An alternate routing",
-        "• An alternative flight",
-        "• Cancellation of the booking request",
-        "• Applicable reversal or refund",
+        { label: "Revised itinerary", value: "A revised itinerary" },
+        { label: "Revised fare", value: "A revised fare" },
+        { label: "Alternate routing", value: "An alternate routing" },
+        { label: "Alternative flight", value: "An alternative flight" },
+        { label: "Cancellation", value: "Cancellation of the booking request" },
+        { label: "Refund", value: "Applicable reversal or refund" },
         "A failed fulfillment should not be represented as a successfully issued or fully delivered ticket."
       ],
       twoColumn: true
@@ -200,23 +200,23 @@ export default function FulfillmentPage() {
       content: [
         "After fulfillment, Tickettooeurope.com may provide applicable post-booking assistance.",
         "This may include:",
-        "• Re-sending itinerary information",
-        "• Booking-status assistance",
-        "• Schedule-change communication",
-        "• Assistance with eligible booking services",
-        "• Post-ticketing service handling",
-        "• Refund-routing assistance",
-        "• General booking support",
+        { label: "Re-send itinerary", value: "Re-sending itinerary information" },
+        { label: "Status assistance", value: "Booking-status assistance" },
+        { label: "Schedule changes", value: "Schedule-change communication" },
+        { label: "Booking services", value: "Assistance with eligible booking services" },
+        { label: "Post-ticketing", value: "Post-ticketing service handling" },
+        { label: "Refund assistance", value: "Refund-routing assistance" },
+        { label: "General support", value: "General booking support" },
         "However, certain functions remain under the control of the operating airline or travel supplier.",
         "Depending on the booking, customers may need to deal directly with the airline for matters such as:",
-        "• Online check-in",
-        "• Airport check-in",
-        "• Passport or travel-document verification",
-        "• Advance Passenger Information (API) requirements",
-        "• Operating-carrier seat maps",
-        "• Certain low-cost-carrier services",
-        "• Airline-controlled ancillary services",
-        "• Certain changes that must be processed directly by the carrier",
+        { label: "Check-in online", value: "Online check-in" },
+        { label: "Check-in airport", value: "Airport check-in" },
+        { label: "Travel documents", value: "Passport or travel-document verification" },
+        { label: "API", value: "Advance Passenger Information (API) requirements" },
+        { label: "Seat maps", value: "Operating-carrier seat maps" },
+        { label: "LCC services", value: "Certain low-cost-carrier services" },
+        { label: "Ancillary services", value: "Airline-controlled ancillary services" },
+        { label: "Direct changes", value: "Certain changes that must be processed directly by the carrier" },
         "Tickettooeurope.com will provide guidance where appropriate, but it cannot control airline systems or operational procedures."
       ],
       twoColumn: true
@@ -227,18 +227,18 @@ export default function FulfillmentPage() {
       content: [
         "Customers are responsible for reviewing their fulfillment confirmation when received.",
         "Customers should verify:",
-        "• Passenger names",
-        "• Origin and destination",
-        "• Travel dates",
-        "• Departure times",
-        "• Arrival times",
-        "• Number of passengers",
-        "• Cabin class",
-        "• Baggage inclusions",
-        "• Seat information, where applicable",
-        "• Booking reference",
-        "• Ticket number, where applicable",
-        "• Any important fare conditions",
+        { label: "Passengers", value: "Passenger names" },
+        { label: "Route", value: "Origin and destination" },
+        { label: "Dates", value: "Travel dates" },
+        { label: "Departures", value: "Departure times" },
+        { label: "Arrivals", value: "Arrival times" },
+        { label: "Count", value: "Number of passengers" },
+        { label: "Cabin", value: "Cabin class" },
+        { label: "Baggage", value: "Baggage inclusions" },
+        { label: "Seats", value: "Seat information, where applicable" },
+        { label: "PNR", value: "Booking reference" },
+        { label: "Ticket", value: "Ticket number, where applicable" },
+        { label: "Conditions", value: "Any important fare conditions" },
         "Any discrepancy should be reported to Tickettooeurope.com as soon as possible through the support channel provided with the booking.",
         "Prompt reporting is important because airline rules, fare conditions, and correction options may become more restrictive after ticket issuance or after the first departure."
       ],
@@ -249,11 +249,11 @@ export default function FulfillmentPage() {
       title: "11. Delivery of Fulfillment Information",
       content: [
         "Noam Flyers Inc. may use available communication channels to deliver booking and fulfillment information, including:",
-        "• Email",
-        "• SMS",
-        "• Telephone",
-        "• Chat",
-        "• In-account or Website messaging",
+        { label: "Email", value: "Email" },
+        { label: "SMS", value: "SMS" },
+        { label: "Phone", value: "Telephone" },
+        { label: "Chat", value: "Chat" },
+        { label: "In-app messages", value: "In-account or Website messaging" },
         "Customers are responsible for providing accurate and current contact information.",
         "Customers should also check spam, junk, promotions, or filtered folders if an expected confirmation email does not appear in their primary inbox.",
         "If travel is approaching and the expected confirmation or ticket information has not been received, customers should contact Tickettooeurope.com promptly rather than assuming that the booking has been completed.",
@@ -406,33 +406,60 @@ export default function FulfillmentPage() {
                       {section.title}
                     </h2>
                   </div>
-                  <div className="space-y-3 text-sm sm:text-base text-[#0A1628]/70 leading-relaxed ml-11">
+                  <div className="text-sm sm:text-base text-[#0A1628]/70 leading-relaxed ml-11">
                     {Array.isArray(section.content) ? (
                       <div className={isTwoColumn ? "grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3" : "space-y-3"}>
                         {section.content.map((paragraph, pIndex) => {
-                          // Check if paragraph is empty for spacing
+                          // 1. Empty spacer
                           if (paragraph === "") {
-                            return <div key={pIndex} className="h-2" />;
+                            return <div key={pIndex} className="h-2 col-span-2" />;
                           }
-                          // Check if paragraph starts with "•" to render as list item
-                          if (paragraph.startsWith("•")) {
+
+                          // 2. Render Label: Value objects (Fixes overlapping issue)
+                          if (typeof paragraph === 'object' && paragraph.label && paragraph.value) {
                             return (
-                              <div key={pIndex} className="flex items-start gap-2">
-                                <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 bg-[#4A8BCF]" />
-                                <span>{paragraph.substring(2)}</span>
+                              <div key={pIndex} className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-1.5 break-words col-span-2 md:col-span-1">
+                                <span className="font-medium text-[#2c5aa0] flex-shrink-0">
+                                  {paragraph.label}:
+                                </span>
+                                <span className="text-[#0A1628]/70">
+                                  {paragraph.value}
+                                </span>
                               </div>
                             );
                           }
-                          // Check if it's a bold header (Step, Stage, etc.)
-                          if (paragraph.startsWith("Step") || paragraph === "Online Self-Service Booking" || paragraph === "Assisted Booking" || paragraph === "Booking Request Received" || paragraph === "Payment Authorized" || paragraph === "Supplier Confirmation" || paragraph === "Ticket Issued" || paragraph === "Fulfillment Complete") {
-                            return <p key={pIndex} className="font-semibold text-[#0A1628] col-span-2">{paragraph}</p>;
+
+                          // 3. Handle string content
+                          if (typeof paragraph === 'string') {
+                            // Check if it's a bold header (Step, Stage, etc.)
+                            if (
+                              paragraph.startsWith("Step") || 
+                              paragraph === "Online Self-Service Booking" || 
+                              paragraph === "Assisted Booking" || 
+                              paragraph === "Booking Request Received" || 
+                              paragraph === "Payment Authorized" || 
+                              paragraph === "Supplier Confirmation" || 
+                              paragraph === "Ticket Issued" || 
+                              paragraph === "Fulfillment Complete" ||
+                              /^\d+\./.test(paragraph)
+                            ) {
+                              return <p key={pIndex} className="font-semibold text-[#0A1628] col-span-2">{paragraph}</p>;
+                            }
+
+                            // Normal paragraph
+                            return <p key={pIndex} className="col-span-2 leading-relaxed">{paragraph}</p>;
                           }
-                          return <p key={pIndex} className="col-span-2">{paragraph}</p>;
+                          
+                          return null;
                         })}
                       </div>
                     ) : (
-                      // If content is a React element (like the table), render it directly
-                      section.content
+                      // If content is a React element (like the table), wrap it for scrolling
+                      <div className="w-full overflow-x-auto overflow-y-hidden -mx-4 px-4 sm:mx-0 sm:px-0">
+                        <div className="min-w-[640px] sm:min-w-0">
+                          {section.content}
+                        </div>
+                      </div>
                     )}
                   </div>
                 </div>

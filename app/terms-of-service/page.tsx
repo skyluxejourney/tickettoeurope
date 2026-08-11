@@ -967,129 +967,89 @@ export default function TermsPage() {
               <div className="w-10 sm:w-12 h-0.5 sm:h-1 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-full mt-2 sm:mt-3" />
             </div>
 
-            {/* Sections */}
-            {sections.map((section, index) => {
-              const Icon = section.icon;
-              const isTwoColumn = section.twoColumn;
-              // Check if section has many bullet points
-              const bulletPoints = Array.isArray(section.content) 
-                ? section.content.filter(p => typeof p === 'string' && p.startsWith("•")) 
-                : [];
-              const hasManyItems = bulletPoints.length > 4;
-              
+           {/* Sections */}
+{sections.map((section, index) => {
+  const Icon = section.icon;
+  const isTwoColumn = section.twoColumn;
+
+  return (
+    <div key={index} className="mt-6 sm:mt-8">
+      {/* Heading */}
+      <div className="flex flex-wrap items-start gap-3 mb-3 min-w-0">
+        <div className="w-8 h-8 rounded-full bg-[#E8F0FE] flex items-center justify-center flex-shrink-0 mt-0.5">
+          <Icon size={16} className="text-[#1A3A6B]" />
+        </div>
+
+        <div className="flex-1 min-w-0">
+          <h2 className="text-base sm:text-lg lg:text-xl font-bold text-[#0A1628] leading-tight break-words">
+            {section.title}
+          </h2>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="text-xs sm:text-sm lg:text-base text-[#0A1628]/70 leading-relaxed ml-0 sm:ml-11 min-w-0">
+        {Array.isArray(section.content) ? (
+          <div
+            className={
+              isTwoColumn
+                ? "grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-3"
+                : "space-y-3"
+            }
+          >
+            {section.content.map((paragraph, pIndex) => {
+              // Empty spacer
+              if (paragraph === "") {
+                return <div key={pIndex} className="h-2 lg:col-span-2" />;
+              }
+
+              // Bullet item
+              if (paragraph.startsWith("•")) {
+                return (
+                  <div
+                    key={pIndex}
+                    className="flex items-start gap-2 min-w-0"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 bg-[#4A8BCF]" />
+                    <span className="break-words min-w-0">
+                      {paragraph.substring(2)}
+                    </span>
+                  </div>
+                );
+              }
+
+              // Numbered heading
+              if (/^\d+\./.test(paragraph)) {
+                return (
+                  <p
+                    key={pIndex}
+                    className="font-semibold text-[#0A1628] lg:col-span-2 break-words"
+                  >
+                    {paragraph}
+                  </p>
+                );
+              }
+
+              // Normal paragraph
               return (
-                <div key={index} id={`section-${index}`} data-expanded="false" className="mt-6 sm:mt-7 lg:mt-8">
-                  <div className="flex items-start gap-2.5 sm:gap-3 mb-2 sm:mb-3">
-                    <div className="w-5 h-5 sm:w-6 sm:h-7 lg:w-8 lg:h-8 rounded-full bg-[#E8F0FE] flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Icon size={14} className="text-[#1A3A6B]" />
-                    </div>
-                    <h2 className="text-sm sm:text-base lg:text-lg xl:text-xl font-bold text-[#0A1628] leading-tight">
-                      {section.title}
-                    </h2>
-                  </div>
-                  <div className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm lg:text-base text-[#0A1628]/70 leading-relaxed ml-4 sm:ml-6 lg:ml-11 break-words">
-                    {Array.isArray(section.content) ? (
-                      <>
-                        <div className={isTwoColumn ? "grid grid-cols-1 md:grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-2.5 sm:gap-y-3" : "space-y-2.5 sm:space-y-3"}>
-                          {section.content.map((paragraph, pIndex) => {
-                            if (paragraph === "") {
-                              return <div key={pIndex} className="h-1.5 sm:h-2" />;
-                            }
-                            
-                            // Check if it's a bullet point
-                            const isBullet = typeof paragraph === 'string' && paragraph.startsWith("•");
-                            const bulletIndex = isBullet ? bulletPoints.indexOf(paragraph) : -1;
-                            const shouldHideOnMobile = isBullet && hasManyItems && bulletIndex >= 4;
-                            
-                            if (isBullet) {
-                              return (
-                                <div 
-                                  key={pIndex} 
-                                  className={`flex items-start gap-1.5 sm:gap-2 ${shouldHideOnMobile ? 'hidden-mobile-item hidden sm:flex' : ''}`}
-                                >
-                                  <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full mt-1.5 sm:mt-2 flex-shrink-0 bg-[#4A8BCF]" />
-                                  <span className="text-[#0A1628]/70 text-xs sm:text-sm lg:text-base">{paragraph.substring(2)}</span>
-                                </div>
-                              );
-                            }
-                            
-                            // Check if it's a bold header
-                            const boldHeaders = [
-                              "Corporate Identity and Operator",
-                              "ARC Accreditation and Verification",
-                              "Independent Agency Status and Airline Non-Affiliation",
-                              "Definitions",
-                              "Booking Channels",
-                              "Booking Flow",
-                              "Dynamic Pricing and Fare Accuracy",
-                              "Fulfilment Policy and Ticket Issuance",
-                              "Traveller Responsibilities and Document Compliance",
-                              "Independent Agency Status",
-                              "ARC Accreditation Statement",
-                              "Booking Channel Statement",
-                              "Fare Volatility Statement",
-                              "Total Price Statement",
-                              "Ticketing Status Statement",
-                              "Refund Rights Statement",
-                              "24-Hour Statement",
-                              "No-Show Statement",
-                              "Name-Correction Statement",
-                              "Ancillary-Service Statement",
-                              "Baggage-Refund Statement",
-                              "Document-Responsibility Statement",
-                              "Chargeback Statement",
-                              "Cookie-Consent Statement"
-                            ];
-                            
-                            if (boldHeaders.includes(paragraph)) {
-                              return <p key={pIndex} className="font-semibold text-[#0A1628] col-span-2 text-sm sm:text-base">{paragraph}</p>;
-                            }
-                            return <p key={pIndex} className="col-span-2 text-xs sm:text-sm lg:text-base">{paragraph}</p>;
-                          })}
-                        </div>
-                        
-                        {/* "Show More" button for sections with many items */}
-                        {hasManyItems && (
-                          <div className="mt-2 sm:mt-3">
-                            <button
-                              onClick={() => {
-                                const parent = document.getElementById(`section-${index}`);
-                                if (parent) {
-                                  const items = parent.querySelectorAll('.hidden-mobile-item');
-                                  const isExpanded = parent.dataset.expanded === 'true';
-                                  items.forEach(el => {
-                                    if (isExpanded) {
-                                      el.classList.add('hidden');
-                                    } else {
-                                      el.classList.remove('hidden');
-                                    }
-                                  });
-                                  parent.dataset.expanded = isExpanded ? 'false' : 'true';
-                                  const btn = parent.querySelector('.read-more-btn');
-                                  if (btn) {
-                                    btn.textContent = isExpanded ? 'Show More ▼' : 'Show Less ▲';
-                                  }
-                                }
-                              }}
-                              className="read-more-btn text-[#1A3A6B] hover:text-[#4A8BCF] font-medium text-xs sm:text-sm transition-colors flex items-center gap-1"
-                            >
-                              Show More ▼
-                            </button>
-                          </div>
-                        )}
-                      </>
-                    ) : (
-                      // For tables, wrap in overflow container
-                      <div className="overflow-x-auto -mx-3 sm:mx-0">
-                        <div className="min-w-[600px] sm:min-w-0">
-                          {section.content}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
+                <p key={pIndex} className="break-words lg:col-span-2 leading-relaxed">
+                  {paragraph}
+                </p>
               );
             })}
+          </div>
+        ) : (
+          // React element (tables)
+          <div className="w-full overflow-x-auto overflow-y-hidden -mx-4 px-4 sm:mx-0 sm:px-0">
+            <div className="min-w-[640px] sm:min-w-0">
+              {section.content}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+})}
 
             {/* Call to Action */}
             <div className="mt-8 sm:mt-10 p-4 sm:p-5 lg:p-6 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-lg text-white">

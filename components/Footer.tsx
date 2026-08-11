@@ -36,7 +36,6 @@ export default function Footer() {
     { name: "Advertiser Disclosure", href: "/advertiser-disclosure-policy" },
     { name: "Cookies Policy", href: "/cookies" },
     { name: "Cancellation and Refund", href: "/cancellation-refund-policy" },
-    { name: "Post Ticketing Service Fees", href: "/post-ticketing-fees" },
     { name: "Taxes and Fees", href: "/taxes-fees" },
   ];
 

@@ -229,45 +229,47 @@ export default function PriceMatchPage() {
       icon: FileText,
       title: "Price Match Summary",
       content: (
-        <div className="overflow-x-auto mt-2">
-          <table className="w-full border-collapse text-sm">
-            <thead>
-              <tr className="bg-[#E8F0FE]">
-                <th className="border border-[#E2E8F0] px-4 py-3 text-left font-semibold text-[#0A1628]">Claim Component</th>
-                <th className="border border-[#E2E8F0] px-4 py-3 text-left font-semibold text-[#0A1628]">Tickettooeurope.com Rule</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="hover:bg-[#F5F9FF] transition-colors">
-                <td className="border border-[#E2E8F0] px-4 py-3 text-[#0A1628]/80 font-medium">Claim Window</td>
-                <td className="border border-[#E2E8F0] px-4 py-3 text-[#0A1628]/70">Within 24 hours of booking and before the first departure</td>
-              </tr>
-              <tr className="hover:bg-[#F5F9FF] transition-colors">
-                <td className="border border-[#E2E8F0] px-4 py-3 text-[#0A1628]/80 font-medium">Compared Price</td>
-                <td className="border border-[#E2E8F0] px-4 py-3 text-[#0A1628]/70">Same itinerary, passenger mix, cabin, fare conditions, and mandatory charges</td>
-              </tr>
-              <tr className="hover:bg-[#F5F9FF] transition-colors">
-                <td className="border border-[#E2E8F0] px-4 py-3 text-[#0A1628]/80 font-medium">Proof Required</td>
-                <td className="border border-[#E2E8F0] px-4 py-3 text-[#0A1628]/70">Booking reference, comparison URL where available, screenshots/evidence, timestamp, and currency</td>
-              </tr>
-              <tr className="hover:bg-[#F5F9FF] transition-colors">
-                <td className="border border-[#E2E8F0] px-4 py-3 text-[#0A1628]/80 font-medium">Mandatory Charges</td>
-                <td className="border border-[#E2E8F0] px-4 py-3 text-[#0A1628]/70">Base fare, applicable airline charges, known taxes, and known mandatory agency charges</td>
-              </tr>
-              <tr className="hover:bg-[#F5F9FF] transition-colors">
-                <td className="border border-[#E2E8F0] px-4 py-3 text-[#0A1628]/80 font-medium">Excluded Prices</td>
-                <td className="border border-[#E2E8F0] px-4 py-3 text-[#0A1628]/70">Optional ancillary services, member-only fares, coupon-only savings, opaque fares, loyalty redemptions, and non-public fares</td>
-              </tr>
-              <tr className="hover:bg-[#F5F9FF] transition-colors">
-                <td className="border border-[#E2E8F0] px-4 py-3 text-[#0A1628]/80 font-medium">Remedies</td>
-                <td className="border border-[#E2E8F0] px-4 py-3 text-[#0A1628]/70">Verified difference refund, agency credit, or eligible cancellation/reversal where operationally feasible</td>
-              </tr>
-              <tr className="hover:bg-[#F5F9FF] transition-colors">
-                <td className="border border-[#E2E8F0] px-4 py-3 text-[#0A1628]/80 font-medium">Online vs. Assisted</td>
-                <td className="border border-[#E2E8F0] px-4 py-3 text-[#0A1628]/70">Must be compared on a like-for-like service basis</td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="overflow-x-auto mt-2 -mx-2 sm:-mx-4 md:mx-0">
+          <div className="min-w-[480px] sm:min-w-full">
+            <table className="w-full border-collapse text-xs sm:text-sm">
+              <thead>
+                <tr className="bg-[#E8F0FE]">
+                  <th className="border border-[#E2E8F0] px-2 sm:px-4 py-2 sm:py-3 text-left font-semibold text-[#0A1628] text-xs sm:text-sm">Claim Component</th>
+                  <th className="border border-[#E2E8F0] px-2 sm:px-4 py-2 sm:py-3 text-left font-semibold text-[#0A1628] text-xs sm:text-sm">Tickettooeurope.com Rule</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="hover:bg-[#F5F9FF] transition-colors">
+                  <td className="border border-[#E2E8F0] px-2 sm:px-4 py-2 sm:py-3 text-[#0A1628]/80 font-medium text-xs sm:text-sm">Claim Window</td>
+                  <td className="border border-[#E2E8F0] px-2 sm:px-4 py-2 sm:py-3 text-[#0A1628]/70 text-xs sm:text-sm">Within 24 hours of booking and before the first departure</td>
+                </tr>
+                <tr className="hover:bg-[#F5F9FF] transition-colors">
+                  <td className="border border-[#E2E8F0] px-2 sm:px-4 py-2 sm:py-3 text-[#0A1628]/80 font-medium text-xs sm:text-sm">Compared Price</td>
+                  <td className="border border-[#E2E8F0] px-2 sm:px-4 py-2 sm:py-3 text-[#0A1628]/70 text-xs sm:text-sm">Same itinerary, passenger mix, cabin, fare conditions, and mandatory charges</td>
+                </tr>
+                <tr className="hover:bg-[#F5F9FF] transition-colors">
+                  <td className="border border-[#E2E8F0] px-2 sm:px-4 py-2 sm:py-3 text-[#0A1628]/80 font-medium text-xs sm:text-sm">Proof Required</td>
+                  <td className="border border-[#E2E8F0] px-2 sm:px-4 py-2 sm:py-3 text-[#0A1628]/70 text-xs sm:text-sm">Booking reference, comparison URL where available, screenshots/evidence, timestamp, and currency</td>
+                </tr>
+                <tr className="hover:bg-[#F5F9FF] transition-colors">
+                  <td className="border border-[#E2E8F0] px-2 sm:px-4 py-2 sm:py-3 text-[#0A1628]/80 font-medium text-xs sm:text-sm">Mandatory Charges</td>
+                  <td className="border border-[#E2E8F0] px-2 sm:px-4 py-2 sm:py-3 text-[#0A1628]/70 text-xs sm:text-sm">Base fare, applicable airline charges, known taxes, and known mandatory agency charges</td>
+                </tr>
+                <tr className="hover:bg-[#F5F9FF] transition-colors">
+                  <td className="border border-[#E2E8F0] px-2 sm:px-4 py-2 sm:py-3 text-[#0A1628]/80 font-medium text-xs sm:text-sm">Excluded Prices</td>
+                  <td className="border border-[#E2E8F0] px-2 sm:px-4 py-2 sm:py-3 text-[#0A1628]/70 text-xs sm:text-sm">Optional ancillary services, member-only fares, coupon-only savings, opaque fares, loyalty redemptions, and non-public fares</td>
+                </tr>
+                <tr className="hover:bg-[#F5F9FF] transition-colors">
+                  <td className="border border-[#E2E8F0] px-2 sm:px-4 py-2 sm:py-3 text-[#0A1628]/80 font-medium text-xs sm:text-sm">Remedies</td>
+                  <td className="border border-[#E2E8F0] px-2 sm:px-4 py-2 sm:py-3 text-[#0A1628]/70 text-xs sm:text-sm">Verified difference refund, agency credit, or eligible cancellation/reversal where operationally feasible</td>
+                </tr>
+                <tr className="hover:bg-[#F5F9FF] transition-colors">
+                  <td className="border border-[#E2E8F0] px-2 sm:px-4 py-2 sm:py-3 text-[#0A1628]/80 font-medium text-xs sm:text-sm">Online vs. Assisted</td>
+                  <td className="border border-[#E2E8F0] px-2 sm:px-4 py-2 sm:py-3 text-[#0A1628]/70 text-xs sm:text-sm">Must be compared on a like-for-like service basis</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       )
     },
@@ -296,10 +298,10 @@ export default function PriceMatchPage() {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-white pt-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+      <div className="min-h-screen bg-white pt-16 sm:pt-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm mb-6">
+          <nav className="flex items-center gap-2 text-xs sm:text-sm mb-4 sm:mb-6 overflow-x-auto whitespace-nowrap">
             <Link href="/" className="text-[#1A3A6B] hover:text-[#4A8BCF] transition-colors">
               Home
             </Link>
@@ -309,84 +311,118 @@ export default function PriceMatchPage() {
 
           <div className="max-w-4xl mx-auto">
             {/* Header Section */}
-            <div className="mb-8">
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0A1628] leading-tight">
+            <div className="mb-6 sm:mb-8">
+              <h1 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-[#0A1628] leading-tight">
                 Price Match Promise
               </h1>
-              <p className="text-sm text-[#0A1628]/60 mt-2">
+              <p className="text-xs sm:text-sm text-[#0A1628]/60 mt-2 leading-relaxed">
                 Tickettooeurope.com, operated by Noam Flyers Inc., is committed to presenting travel pricing in a transparent, reviewable, and fair manner.
               </p>
-              <p className="text-sm text-[#0A1628]/60 mt-1">
+              <p className="text-xs sm:text-sm text-[#0A1628]/60 mt-2 leading-relaxed">
                 Tickettooeurope.com is an independent travel agency and is not an airline. Airline names, route information, schedules, fare brands, trademarks, and logos may appear on the Website solely to identify available travel inventory or supplier content. Their appearance does not imply any affiliation, endorsement, sponsorship, or ownership relationship between Noam Flyers Inc. and any airline unless expressly stated.
               </p>
-              <p className="text-sm text-[#0A1628]/60 mt-1">
+              <p className="text-xs sm:text-sm text-[#0A1628]/60 mt-2 leading-relaxed">
                 Tickettooeurope.com may provide both online self-service booking and optional assisted booking through telephone, chat, or email. Pricing displayed online and pricing quoted through an assisted channel may differ when the service level differs, an assisted-booking fee applies, or availability and pricing change between channels.
               </p>
-              <div className="w-12 h-1 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-full mt-3" />
+              <div className="w-12 h-1 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-full mt-3 sm:mt-4" />
             </div>
 
-            {/* Sections */}
-            {sections.map((section, index) => {
-              const Icon = section.icon;
-              const isTwoColumn = section.twoColumn;
-              
+          {/* Sections */}
+{sections.map((section, index) => {
+  const Icon = section.icon;
+  const isTwoColumn = section.twoColumn;
+
+  return (
+    <div key={index} className="mt-6 sm:mt-8">
+      {/* Heading */}
+      <div className="flex flex-wrap items-start gap-3 mb-3 min-w-0">
+        <div className="w-8 h-8 rounded-full bg-[#E8F0FE] flex items-center justify-center flex-shrink-0 mt-0.5">
+          <Icon size={16} className="text-[#1A3A6B]" />
+        </div>
+
+        <div className="flex-1 min-w-0">
+          <h2 className="text-base sm:text-lg lg:text-xl font-bold text-[#0A1628] leading-tight break-words">
+            {section.title}
+          </h2>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="text-xs sm:text-sm lg:text-base text-[#0A1628]/70 leading-relaxed ml-0 sm:ml-11 min-w-0">
+        {Array.isArray(section.content) ? (
+          <div
+            className={
+              isTwoColumn
+                ? "grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-3"
+                : "space-y-3"
+            }
+          >
+            {section.content.map((paragraph, pIndex) => {
+              // Empty spacer
+              if (paragraph === "") {
+                return <div key={pIndex} className="h-2 lg:col-span-2" />;
+              }
+
+              // Bullet item
+              if (paragraph.startsWith("•")) {
+                return (
+                  <div
+                    key={pIndex}
+                    className="flex items-start gap-2 min-w-0"
+                  >
+                    <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 bg-[#4A8BCF]" />
+                    <span className="break-words min-w-0">
+                      {paragraph.substring(2)}
+                    </span>
+                  </div>
+                );
+              }
+
+              // Numbered heading
+              if (/^\d+\./.test(paragraph)) {
+                return (
+                  <p
+                    key={pIndex}
+                    className="font-semibold text-[#0A1628] lg:col-span-2 break-words"
+                  >
+                    {paragraph}
+                  </p>
+                );
+              }
+
+              // Normal paragraph
               return (
-                <div key={index} className="mt-8">
-                  <div className="flex items-start gap-3 mb-3">
-                    <div className="w-8 h-8 rounded-full bg-[#E8F0FE] flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Icon size={16} className="text-[#1A3A6B]" />
-                    </div>
-                    <h2 className="text-lg sm:text-xl font-bold text-[#0A1628]">
-                      {section.title}
-                    </h2>
-                  </div>
-                  <div className="space-y-3 text-sm sm:text-base text-[#0A1628]/70 leading-relaxed ml-11">
-                    {Array.isArray(section.content) ? (
-                      <div className={isTwoColumn ? "grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3" : "space-y-3"}>
-                        {section.content.map((paragraph, pIndex) => {
-                          // Check if paragraph is empty for spacing
-                          if (paragraph === "") {
-                            return <div key={pIndex} className="h-2" />;
-                          }
-                          // Check if paragraph starts with "•" to render as list item
-                          if (paragraph.startsWith("•")) {
-                            return (
-                              <div key={pIndex} className="flex items-start gap-2">
-                                <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 bg-[#4A8BCF]" />
-                                <span>{paragraph.substring(2)}</span>
-                              </div>
-                            );
-                          }
-                          // Check if it's a numbered item (starts with number followed by dot)
-                          if (/^\d+\./.test(paragraph)) {
-                            return <p key={pIndex} className="font-semibold text-[#0A1628] col-span-2">{paragraph}</p>;
-                          }
-                          return <p key={pIndex} className="col-span-2">{paragraph}</p>;
-                        })}
-                      </div>
-                    ) : (
-                      // If content is a React element (like the table), render it directly
-                      section.content
-                    )}
-                  </div>
-                </div>
+                <p key={pIndex} className="break-words lg:col-span-2 leading-relaxed">
+                  {paragraph}
+                </p>
               );
             })}
+          </div>
+        ) : (
+          // React element (table)
+          <div className="w-full overflow-hidden">
+            {section.content}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+})}
 
             {/* Call to Action */}
-            <div className="mt-10 p-6 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-lg text-white">
-              <h3 className="text-lg sm:text-xl font-bold mb-2 !text-white">
+            <div className="mt-8 sm:mt-10 p-4 sm:p-6 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-lg text-white">
+              <h3 className="text-base sm:text-lg lg:text-xl font-bold mb-2 !text-white">
                 Need Help With Your Travel Plans?
               </h3>
-              <p className="text-sm mb-4 !text-white/80">
+              <p className="text-xs sm:text-sm mb-3 sm:mb-4 !text-white/80 leading-relaxed">
                 Our travel experts are here to assist you with flight bookings, changes, and more.
               </p>
               <a
                 href={`tel:${CONTACT.phoneRaw}`}
-                className="inline-flex items-center gap-2 bg-white text-[#1A3A6B] px-5 py-2.5 rounded-lg font-semibold hover:bg-[#E8F0FE] transition-all duration-300 shadow-lg hover:scale-105"
+                className="inline-flex items-center gap-2 bg-white text-[#1A3A6B] px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg font-semibold hover:bg-[#E8F0FE] transition-all duration-300 shadow-lg hover:scale-105 text-sm sm:text-base"
               >
-                <Phone size={16} />
-                Call Us Now: {CONTACT.phone}
+                <Phone size={16} className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="text-xs sm:text-sm">Call Us Now: {CONTACT.phone}</span>
               </a>
             </div>
           </div>

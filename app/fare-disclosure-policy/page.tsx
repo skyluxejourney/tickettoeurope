@@ -6,7 +6,7 @@ import {
   Scale, 
   Globe, 
   CheckCircle,
-   ChevronDown,
+  ChevronDown,
   Phone,
   Lock,
   Eye,
@@ -41,13 +41,13 @@ export default function FareDisclosurePage() {
       content: [
         "An airfare displayed on Tickettooeurope.com may consist of several pricing components.",
         "Depending on the itinerary and booking channel, these may include:",
-        "• Airline base fare",
-        "• Airline-imposed surcharges or carrier-imposed charges",
-        "• Government taxes",
-        "• Airport or passenger facility charges",
-        "• Other mandatory charges",
-        "• Applicable Noam Flyers Inc. service fees",
-        "• Optional services selected by the customer",
+        { label: "Base fare", value: "Airline base fare" },
+        { label: "Surcharges", value: "Airline-imposed surcharges or carrier-imposed charges" },
+        { label: "Taxes", value: "Government taxes" },
+        { label: "Airport charges", value: "Airport or passenger facility charges" },
+        { label: "Other charges", value: "Other mandatory charges" },
+        { label: "Service fees", value: "Applicable Noam Flyers Inc. service fees" },
+        { label: "Optional services", value: "Optional services selected by the customer" },
         "The total amount displayed immediately before payment authorization is the most important price for the transaction and should be reviewed carefully before payment is submitted."
       ],
       twoColumn: true
@@ -57,22 +57,22 @@ export default function FareDisclosurePage() {
       title: "2. Displayed and Promotional Fares",
       content: [
         "Prices displayed on Tickettooeurope.com may appear in different contexts, including:",
-        "• Search results",
-        "• Fare displays",
-        "• Route pages",
-        "• Promotional offers",
-        "• Destination pages",
-        "• Marketing communications",
+        { label: "Search results", value: "Search results" },
+        { label: "Fare displays", value: "Fare displays" },
+        { label: "Route pages", value: "Route pages" },
+        { label: "Promotions", value: "Promotional offers" },
+        { label: "Destination pages", value: "Destination pages" },
+        { label: "Marketing", value: "Marketing communications" },
         "A displayed price may be presented as a one-way fare, round-trip fare, or other itinerary-specific amount depending on the search and display context.",
         "Unless the applicable fare or itinerary specifically states otherwise, customers should not assume that the displayed fare automatically includes optional services such as:",
-        "• Checked baggage",
-        "• Seat selection",
-        "• Priority boarding",
-        "• Lounge access",
-        "• Travel protection",
-        "• Optional upgrades",
-        "• Change flexibility",
-        "• Airline loyalty benefits",
+        { label: "Checked baggage", value: "Checked baggage" },
+        { label: "Seat selection", value: "Seat selection" },
+        { label: "Priority boarding", value: "Priority boarding" },
+        { label: "Lounge access", value: "Lounge access" },
+        { label: "Travel protection", value: "Travel protection" },
+        { label: "Optional upgrades", value: "Optional upgrades" },
+        { label: "Change flexibility", value: "Change flexibility" },
+        { label: "Loyalty benefits", value: "Airline loyalty benefits" },
         "These services may be unavailable, optional, airline-specific, or sold separately."
       ],
       twoColumn: true
@@ -88,13 +88,13 @@ export default function FareDisclosurePage() {
         "",
         "Assisted-Booking Fare",
         "An assisted-booking fare is a price quoted through a supported customer-service channel where a Noam Flyers Inc. representative assists with matters such as:",
-        "• Itinerary selection",
-        "• Fare information",
-        "• Manual booking",
-        "• Payment processing",
-        "• Travel planning",
-        "• Booking support",
-        "• Post-booking assistance",
+        { label: "Itinerary selection", value: "Itinerary selection" },
+        { label: "Fare information", value: "Fare information" },
+        { label: "Manual booking", value: "Manual booking" },
+        { label: "Payment processing", value: "Payment processing" },
+        { label: "Travel planning", value: "Travel planning" },
+        { label: "Booking support", value: "Booking support" },
+        { label: "Post-booking", value: "Post-booking assistance" },
         "An assisted-booking transaction may include an applicable agency service fee that is different from an online self-service transaction.",
         "Any applicable service fee should be disclosed before the customer authorizes payment.",
         "A difference between online and assisted pricing does not by itself mean that either price is inaccurate, provided the total amount payable and applicable services are clearly communicated before the transaction is completed."
@@ -107,14 +107,14 @@ export default function FareDisclosurePage() {
       content: [
         "Airline fares and availability are dynamic and may change without prior notice.",
         "A fare may change because:",
-        "• The last seat in a particular booking class was sold",
-        "• The airline withdrew a fare",
-        "• The airline changed its fare filing",
-        "• A different fare brand became available",
-        "• Taxes or carrier-imposed charges changed",
-        "• Another customer completed a purchase",
-        "• Supplier inventory was revalidated",
-        "• The selected itinerary was no longer available",
+        { label: "Seat class sold", value: "The last seat in a particular booking class was sold" },
+        { label: "Withdrawn", value: "The airline withdrew a fare" },
+        { label: "Fare filing", value: "The airline changed its fare filing" },
+        { label: "Fare brand change", value: "A different fare brand became available" },
+        { label: "Tax changes", value: "Taxes or carrier-imposed charges changed" },
+        { label: "Purchase by another", value: "Another customer completed a purchase" },
+        { label: "Inventory revalidation", value: "Supplier inventory was revalidated" },
+        { label: "Unavailable itinerary", value: "The selected itinerary was no longer available" },
         "For these reasons, Noam Flyers Inc. does not guarantee that a price displayed during an initial search will remain available until payment is successfully authorized and the applicable reservation is confirmed or ticketed.",
         "If the fare changes before the transaction is completed, the customer should be informed of the revised amount where applicable and given the opportunity to accept or decline the revised price."
       ],
@@ -138,12 +138,12 @@ export default function FareDisclosurePage() {
         "For an air booking to be considered completed, the applicable reservation generally must be accepted, payment must be successfully authorized or captured, and the applicable ticket number or confirmation identifier must be issued.",
         "If a booking request fails before ticket issuance, Noam Flyers Inc. will not represent the itinerary as a completed ticketed booking.",
         "Depending on the circumstances, the transaction may be:",
-        "• Retried",
-        "• Repriced",
-        "• Revalidated",
-        "• Revised",
-        "• Cancelled",
-        "• Reversed or refunded where applicable",
+        { label: "Retried", value: "Retried" },
+        { label: "Repriced", value: "Repriced" },
+        { label: "Revalidated", value: "Revalidated" },
+        { label: "Revised", value: "Revised" },
+        { label: "Cancelled", value: "Cancelled" },
+        { label: "Refunded", value: "Reversed or refunded where applicable" },
         "A temporary payment authorization or hold does not necessarily mean that a ticket has been issued."
       ],
       twoColumn: true
@@ -155,20 +155,20 @@ export default function FareDisclosurePage() {
         "Historical, recently observed, promotional, or \"from\" fares should be treated as illustrative rather than guaranteed.",
         "A fare shown in a route page, destination page, blog post, advertisement, or promotional communication may no longer be available when another customer searches for the same itinerary.",
         "Where applicable, Tickettooeurope.com may identify such prices as:",
-        "• \"From\" prices",
-        "• Recently found fares",
-        "• Sample fares",
-        "• Historical fares",
-        "• Promotional fares",
+        { label: "From prices", value: "\"From\" prices" },
+        { label: "Recently found", value: "Recently found fares" },
+        { label: "Sample fares", value: "Sample fares" },
+        { label: "Historical fares", value: "Historical fares" },
+        { label: "Promotional fares", value: "Promotional fares" },
         "A promotional fare may also be subject to specific conditions involving:",
-        "• Travel dates",
-        "• Booking dates",
-        "• Specific routes",
-        "• Passenger eligibility",
-        "• Coupon requirements",
-        "• Membership",
-        "• Limited inventory",
-        "• Specific booking channels",
+        { label: "Travel dates", value: "Travel dates" },
+        { label: "Booking dates", value: "Booking dates" },
+        { label: "Specific routes", value: "Specific routes" },
+        { label: "Passenger eligibility", value: "Passenger eligibility" },
+        { label: "Coupon requirements", value: "Coupon requirements" },
+        { label: "Membership", value: "Membership" },
+        { label: "Limited inventory", value: "Limited inventory" },
+        { label: "Booking channels", value: "Specific booking channels" },
         "Any material restrictions applicable to a promotion should be disclosed with or near the applicable offer."
       ],
       twoColumn: true
@@ -179,17 +179,17 @@ export default function FareDisclosurePage() {
       content: [
         "Airline fares can contain significant restrictions.",
         "Depending on the selected fare, conditions may include:",
-        "• Non-refundable status",
-        "• Non-transferability",
-        "• Name restrictions",
-        "• No-show restrictions",
-        "• Change fees",
-        "• Fare differences for changes",
-        "• Limited cancellation rights",
-        "• Limited travel-credit eligibility",
-        "• Restrictions on route changes",
-        "• Baggage limitations",
-        "• Seat-selection restrictions",
+        { label: "Non-refundable", value: "Non-refundable status" },
+        { label: "Non-transferable", value: "Non-transferability" },
+        { label: "Name restrictions", value: "Name restrictions" },
+        { label: "No-show", value: "No-show restrictions" },
+        { label: "Change fees", value: "Change fees" },
+        { label: "Fare differences", value: "Fare differences for changes" },
+        { label: "Limited cancellations", value: "Limited cancellation rights" },
+        { label: "Limited credit", value: "Limited travel-credit eligibility" },
+        { label: "Route changes", value: "Restrictions on route changes" },
+        { label: "Baggage limits", value: "Baggage limitations" },
+        { label: "Seat restrictions", value: "Seat-selection restrictions" },
         "Many promotional and basic-economy fares may carry particularly restrictive conditions.",
         "Customers should carefully review the applicable fare rules before authorizing payment.",
         "Name changes may be prohibited, while even certain name corrections may require airline approval and may be subject to additional requirements or charges."
@@ -202,14 +202,14 @@ export default function FareDisclosurePage() {
       content: [
         "Government taxes, airport charges, passenger facility charges, and other mandatory charges may be displayed separately depending on the itinerary, jurisdiction, and booking environment.",
         "The applicable amount may vary based on factors such as:",
-        "• Origin",
-        "• Destination",
-        "• Number of flight segments",
-        "• Point of sale",
-        "• Passenger type",
-        "• Travel dates",
-        "• Applicable government rules",
-        "• Airline or supplier fare construction",
+        { label: "Origin", value: "Origin" },
+        { label: "Destination", value: "Destination" },
+        { label: "Segments", value: "Number of flight segments" },
+        { label: "Point of sale", value: "Point of sale" },
+        { label: "Passenger type", value: "Passenger type" },
+        { label: "Travel dates", value: "Travel dates" },
+        { label: "Government rules", value: "Applicable government rules" },
+        { label: "Fare construction", value: "Airline or supplier fare construction" },
         "Some charges may be recalculated when the itinerary or point of sale changes.",
         "The customer should rely on the final applicable total presented during the booking process rather than an isolated tax estimate or promotional fare displayed elsewhere."
       ],
@@ -221,15 +221,15 @@ export default function FareDisclosurePage() {
       content: [
         "Optional services are not necessarily included in the advertised base airfare.",
         "Depending on the airline and itinerary, optional services may include:",
-        "• Checked baggage",
-        "• Additional baggage",
-        "• Seat selection",
-        "• Preferred seating",
-        "• Priority services",
-        "• Meals",
-        "• Travel protection",
-        "• Cabin upgrades",
-        "• Other airline ancillary services",
+        { label: "Checked baggage", value: "Checked baggage" },
+        { label: "Additional baggage", value: "Additional baggage" },
+        { label: "Seat selection", value: "Seat selection" },
+        { label: "Preferred seating", value: "Preferred seating" },
+        { label: "Priority services", value: "Priority services" },
+        { label: "Meals", value: "Meals" },
+        { label: "Travel protection", value: "Travel protection" },
+        { label: "Cabin upgrades", value: "Cabin upgrades" },
+        { label: "Other ancillaries", value: "Other airline ancillary services" },
         "Where an optional service is selected during the booking process and added to the transaction, its applicable charge should be reflected in the final amount before payment authorization."
       ],
       twoColumn: true
@@ -240,22 +240,22 @@ export default function FareDisclosurePage() {
       content: [
         "Noam Flyers Inc. processes payments for bookings made through Tickettooeurope.com.",
         "Depending on the applicable payment pathway, the final transaction may appear as:",
-        "• One charge",
-        "• Multiple component charges",
-        "• A temporary authorization followed by a completed charge",
-        "• Another payment presentation determined by the applicable processor",
+        { label: "One charge", value: "One charge" },
+        { label: "Multiple charges", value: "Multiple component charges" },
+        { label: "Auth then charge", value: "A temporary authorization followed by a completed charge" },
+        { label: "Processor variation", value: "Another payment presentation determined by the applicable processor" },
         "Where multiple charges are used, they should collectively correspond to the applicable amount disclosed or quoted to the customer before authorization, subject to any subsequently agreed or separately authorized services.",
         "Before submitting payment, customers should carefully review:",
-        "• Final total",
-        "• Currency",
-        "• Passenger names",
-        "• Itinerary",
-        "• Cabin class",
-        "• Fare conditions",
-        "• Baggage provisions",
-        "• Change and cancellation restrictions",
-        "• Selected optional services",
-        "• Applicable agency service fees",
+        { label: "Final total", value: "Final total" },
+        { label: "Currency", value: "Currency" },
+        { label: "Passengers", value: "Passenger names" },
+        { label: "Itinerary", value: "Itinerary" },
+        { label: "Cabin", value: "Cabin class" },
+        { label: "Conditions", value: "Fare conditions" },
+        { label: "Baggage", value: "Baggage provisions" },
+        { label: "Restrictions", value: "Change and cancellation restrictions" },
+        { label: "Optionals", value: "Selected optional services" },
+        { label: "Fees", value: "Applicable agency service fees" },
         "If the customer does not agree with the final amount or applicable fare conditions, the customer should not proceed with payment."
       ],
       twoColumn: true
@@ -370,12 +370,12 @@ export default function FareDisclosurePage() {
       content: [
         "Nothing in this Fare Disclosure creates an obligation on the part of an airline beyond the airline's own fare rules, conditions of carriage, and applicable law.",
         "Tickettooeurope.com and Noam Flyers Inc., however, are committed to:",
-        "• Clearly identifying applicable agency fees",
-        "• Distinguishing mandatory charges from optional services",
-        "• Avoiding misleading airline-affiliation or \"official airline\" implications",
-        "• Providing the final applicable total before payment authorization",
-        "• Communicating material fare changes before the customer commits to the revised price",
-        "• Presenting applicable fare restrictions as clearly as reasonably possible"
+        { label: "Agency fees", value: "Clearly identifying applicable agency fees" },
+        { label: "Mandatory vs optional", value: "Distinguishing mandatory charges from optional services" },
+        { label: "No implied affiliation", value: "Avoiding misleading airline-affiliation or \"official airline\" implications" },
+        { label: "Final total", value: "Providing the final applicable total before payment authorization" },
+        { label: "Fare changes", value: "Communicating material fare changes before the customer commits to the revised price" },
+        { label: "Fare restrictions", value: "Presenting applicable fare restrictions as clearly as reasonably possible" }
       ],
       twoColumn: true
     },
@@ -385,233 +385,233 @@ export default function FareDisclosurePage() {
       content: [
         "Before authorizing payment, customers should review the final booking information carefully.",
         "By selecting \"Pay Now\" or an equivalent payment button, the customer confirms that they have had an opportunity to review:",
-        "• The final total price",
-        "• The currency",
-        "• Passenger names",
-        "• Travel itinerary",
-        "• Cabin class",
-        "• Applicable baggage provisions",
-        "• Selected optional services",
-        "• Applicable fare restrictions",
-        "• Change and cancellation conditions",
-        "• Any disclosed agency service fee",
+        { label: "Final total", value: "The final total price" },
+        { label: "Currency", value: "The currency" },
+        { label: "Passengers", value: "Passenger names" },
+        { label: "Itinerary", value: "Travel itinerary" },
+        { label: "Cabin", value: "Cabin class" },
+        { label: "Baggage", value: "Applicable baggage provisions" },
+        { label: "Optionals", value: "Selected optional services" },
+        { label: "Restrictions", value: "Applicable fare restrictions" },
+        { label: "Changes/Cancellations", value: "Change and cancellation conditions" },
+        { label: "Fees", value: "Any disclosed agency service fee" },
         "Once payment is submitted and ticketing or booking processing begins, the applicable fare conditions and change or refund restrictions will govern the transaction."
       ],
       twoColumn: true
     },
-{
-  icon: FileText,
-  title: "16. Pricing Process",
-  content: (
-    <div className="mt-2">
-      <p className="text-sm sm:text-base text-[#0A1628]/70 leading-relaxed mb-6">
-        The typical pricing process may be summarized as follows:
-      </p>
-      
-      <div className="relative">
-        {/* Vertical Line */}
-        <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#4A8BCF] to-[#1A3A6B] opacity-30" />
-        
-        <div className="space-y-0">
-          {/* Step 1 */}
-          <div className="relative flex items-start gap-4 py-3">
-            <div className="relative z-10 flex-shrink-0">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-[#1A3A6B]/20">
-                1
+    {
+      icon: FileText,
+      title: "16. Pricing Process",
+      content: (
+        <div className="mt-2">
+          <p className="text-sm sm:text-base text-[#0A1628]/70 leading-relaxed mb-6">
+            The typical pricing process may be summarized as follows:
+          </p>
+          
+          <div className="relative">
+            {/* Vertical Line */}
+            <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#4A8BCF] to-[#1A3A6B] opacity-30" />
+            
+            <div className="space-y-0">
+              {/* Step 1 */}
+              <div className="relative flex items-start gap-4 py-3">
+                <div className="relative z-10 flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-[#1A3A6B]/20">
+                    1
+                  </div>
+                </div>
+                <div className="flex-1 pt-1.5">
+                  <p className="text-sm sm:text-base font-medium text-[#0A1628]">Search Result Fare</p>
+                  <p className="text-xs text-[#0A1628]/50">Initial fare displayed based on search criteria</p>
+                </div>
+              </div>
+
+              {/* Arrow 1 */}
+              <div className="flex justify-center py-1">
+                <div className="flex flex-col items-center">
+                  <div className="w-px h-4 bg-gradient-to-b from-[#4A8BCF] to-[#4A8BCF]/50" />
+                  <ChevronDown size={16} className="text-[#4A8BCF] -mt-1" />
+                </div>
+              </div>
+
+              {/* Step 2 */}
+              <div className="relative flex items-start gap-4 py-3">
+                <div className="relative z-10 flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[#E8F0FE] border-2 border-[#4A8BCF]/30 flex items-center justify-center text-[#1A3A6B] font-bold text-sm">
+                    2
+                  </div>
+                </div>
+                <div className="flex-1 pt-1.5">
+                  <p className="text-sm sm:text-base font-medium text-[#0A1628]">Passenger and Itinerary Details</p>
+                  <p className="text-xs text-[#0A1628]/50">Passenger information and travel preferences are entered</p>
+                </div>
+              </div>
+
+              {/* Arrow 2 */}
+              <div className="flex justify-center py-1">
+                <div className="flex flex-col items-center">
+                  <div className="w-px h-4 bg-gradient-to-b from-[#4A8BCF] to-[#4A8BCF]/50" />
+                  <ChevronDown size={16} className="text-[#4A8BCF] -mt-1" />
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div className="relative flex items-start gap-4 py-3">
+                <div className="relative z-10 flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[#E8F0FE] border-2 border-[#4A8BCF]/30 flex items-center justify-center text-[#1A3A6B] font-bold text-sm">
+                    3
+                  </div>
+                </div>
+                <div className="flex-1 pt-1.5">
+                  <p className="text-sm sm:text-base font-medium text-[#0A1628]">Live Fare and Availability Revalidation</p>
+                  <p className="text-xs text-[#0A1628]/50">System checks real-time availability and fare accuracy</p>
+                </div>
+              </div>
+
+              {/* Arrow 3 */}
+              <div className="flex justify-center py-1">
+                <div className="flex flex-col items-center">
+                  <div className="w-px h-4 bg-gradient-to-b from-[#4A8BCF] to-[#4A8BCF]/50" />
+                  <ChevronDown size={16} className="text-[#4A8BCF] -mt-1" />
+                </div>
+              </div>
+
+              {/* Step 4 */}
+              <div className="relative flex items-start gap-4 py-3">
+                <div className="relative z-10 flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[#E8F0FE] border-2 border-[#4A8BCF]/30 flex items-center justify-center text-[#1A3A6B] font-bold text-sm">
+                    4
+                  </div>
+                </div>
+                <div className="flex-1 pt-1.5">
+                  <p className="text-sm sm:text-base font-medium text-[#0A1628]">Mandatory Taxes and Applicable Agency Fees</p>
+                  <p className="text-xs text-[#0A1628]/50">Taxes, fees, and service charges are calculated</p>
+                </div>
+              </div>
+
+              {/* Arrow 4 */}
+              <div className="flex justify-center py-1">
+                <div className="flex flex-col items-center">
+                  <div className="w-px h-4 bg-gradient-to-b from-[#4A8BCF] to-[#4A8BCF]/50" />
+                  <ChevronDown size={16} className="text-[#4A8BCF] -mt-1" />
+                </div>
+              </div>
+
+              {/* Step 5 */}
+              <div className="relative flex items-start gap-4 py-3">
+                <div className="relative z-10 flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[#E8F0FE] border-2 border-[#4A8BCF]/30 flex items-center justify-center text-[#1A3A6B] font-bold text-sm">
+                    5
+                  </div>
+                </div>
+                <div className="flex-1 pt-1.5">
+                  <p className="text-sm sm:text-base font-medium text-[#0A1628]">Customer Selects Optional Services</p>
+                  <p className="text-xs text-[#0A1628]/50">Add-ons like baggage, seats, or insurance are chosen</p>
+                </div>
+              </div>
+
+              {/* Arrow 5 */}
+              <div className="flex justify-center py-1">
+                <div className="flex flex-col items-center">
+                  <div className="w-px h-4 bg-gradient-to-b from-[#4A8BCF] to-[#4A8BCF]/50" />
+                  <ChevronDown size={16} className="text-[#4A8BCF] -mt-1" />
+                </div>
+              </div>
+
+              {/* Step 6 - Highlighted */}
+              <div className="relative flex items-start gap-4 py-3">
+                <div className="relative z-10 flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-[#1A3A6B]/20 animate-pulse">
+                    6
+                  </div>
+                </div>
+                <div className="flex-1 pt-1.5">
+                  <p className="text-sm sm:text-base font-bold text-[#1A3A6B]">Final Total Displayed</p>
+                  <p className="text-xs text-[#0A1628]/50">Complete price breakdown is shown for review</p>
+                </div>
+              </div>
+
+              {/* Arrow 6 */}
+              <div className="flex justify-center py-1">
+                <div className="flex flex-col items-center">
+                  <div className="w-px h-4 bg-gradient-to-b from-[#4A8BCF] to-[#4A8BCF]/50" />
+                  <ChevronDown size={16} className="text-[#4A8BCF] -mt-1" />
+                </div>
+              </div>
+
+              {/* Step 7 */}
+              <div className="relative flex items-start gap-4 py-3">
+                <div className="relative z-10 flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[#E8F0FE] border-2 border-[#4A8BCF]/30 flex items-center justify-center text-[#1A3A6B] font-bold text-sm">
+                    7
+                  </div>
+                </div>
+                <div className="flex-1 pt-1.5">
+                  <p className="text-sm sm:text-base font-medium text-[#0A1628]">Customer Reviews Fare Conditions</p>
+                  <p className="text-xs text-[#0A1628]/50">Terms, restrictions, and policies are reviewed</p>
+                </div>
+              </div>
+
+              {/* Arrow 7 */}
+              <div className="flex justify-center py-1">
+                <div className="flex flex-col items-center">
+                  <div className="w-px h-4 bg-gradient-to-b from-[#4A8BCF] to-[#4A8BCF]/50" />
+                  <ChevronDown size={16} className="text-[#4A8BCF] -mt-1" />
+                </div>
+              </div>
+
+              {/* Step 8 */}
+              <div className="relative flex items-start gap-4 py-3">
+                <div className="relative z-10 flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[#E8F0FE] border-2 border-[#4A8BCF]/30 flex items-center justify-center text-[#1A3A6B] font-bold text-sm">
+                    8
+                  </div>
+                </div>
+                <div className="flex-1 pt-1.5">
+                  <p className="text-sm sm:text-base font-medium text-[#0A1628]">Payment Authorization</p>
+                  <p className="text-xs text-[#0A1628]/50">Payment is submitted and authorized</p>
+                </div>
+              </div>
+
+              {/* Arrow 8 */}
+              <div className="flex justify-center py-1">
+                <div className="flex flex-col items-center">
+                  <div className="w-px h-4 bg-gradient-to-b from-[#4A8BCF] to-[#4A8BCF]/50" />
+                  <ChevronDown size={16} className="text-[#4A8BCF] -mt-1" />
+                </div>
+              </div>
+
+              {/* Step 9 - Final */}
+              <div className="relative flex items-start gap-4 py-3">
+                <div className="relative z-10 flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-[#1A3A6B]/30 ring-2 ring-[#4A8BCF]/20">
+                    9
+                  </div>
+                </div>
+                <div className="flex-1 pt-1.5">
+                  <p className="text-sm sm:text-base font-bold text-[#1A3A6B]">Ticketing / Reservation Confirmation</p>
+                  <p className="text-xs text-[#0A1628]/50">Ticket is issued and booking is confirmed</p>
+                </div>
               </div>
             </div>
-            <div className="flex-1 pt-1.5">
-              <p className="text-sm sm:text-base font-medium text-[#0A1628]">Search Result Fare</p>
-              <p className="text-xs text-[#0A1628]/50">Initial fare displayed based on search criteria</p>
-            </div>
-          </div>
 
-          {/* Arrow 1 */}
-          <div className="flex justify-center py-1">
-            <div className="flex flex-col items-center">
-              <div className="w-px h-4 bg-gradient-to-b from-[#4A8BCF] to-[#4A8BCF]/50" />
-              <ChevronDown size={16} className="text-[#4A8BCF] -mt-1" />
-            </div>
-          </div>
-
-          {/* Step 2 */}
-          <div className="relative flex items-start gap-4 py-3">
-            <div className="relative z-10 flex-shrink-0">
-              <div className="w-10 h-10 rounded-full bg-[#E8F0FE] border-2 border-[#4A8BCF]/30 flex items-center justify-center text-[#1A3A6B] font-bold text-sm">
-                2
+            {/* Completion Badge */}
+            <div className="mt-6 flex items-center justify-center gap-2">
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#4A8BCF]/30" />
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E8F0FE] border border-[#4A8BCF]/20">
+                <CheckCircle size={14} className="text-[#1A3A6B]" />
+                <span className="text-xs font-medium text-[#1A3A6B]">Booking Complete</span>
               </div>
+              <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#4A8BCF]/30" />
             </div>
-            <div className="flex-1 pt-1.5">
-              <p className="text-sm sm:text-base font-medium text-[#0A1628]">Passenger and Itinerary Details</p>
-              <p className="text-xs text-[#0A1628]/50">Passenger information and travel preferences are entered</p>
-            </div>
-          </div>
 
-          {/* Arrow 2 */}
-          <div className="flex justify-center py-1">
-            <div className="flex flex-col items-center">
-              <div className="w-px h-4 bg-gradient-to-b from-[#4A8BCF] to-[#4A8BCF]/50" />
-              <ChevronDown size={16} className="text-[#4A8BCF] -mt-1" />
-            </div>
-          </div>
-
-          {/* Step 3 */}
-          <div className="relative flex items-start gap-4 py-3">
-            <div className="relative z-10 flex-shrink-0">
-              <div className="w-10 h-10 rounded-full bg-[#E8F0FE] border-2 border-[#4A8BCF]/30 flex items-center justify-center text-[#1A3A6B] font-bold text-sm">
-                3
-              </div>
-            </div>
-            <div className="flex-1 pt-1.5">
-              <p className="text-sm sm:text-base font-medium text-[#0A1628]">Live Fare and Availability Revalidation</p>
-              <p className="text-xs text-[#0A1628]/50">System checks real-time availability and fare accuracy</p>
-            </div>
-          </div>
-
-          {/* Arrow 3 */}
-          <div className="flex justify-center py-1">
-            <div className="flex flex-col items-center">
-              <div className="w-px h-4 bg-gradient-to-b from-[#4A8BCF] to-[#4A8BCF]/50" />
-              <ChevronDown size={16} className="text-[#4A8BCF] -mt-1" />
-            </div>
-          </div>
-
-          {/* Step 4 */}
-          <div className="relative flex items-start gap-4 py-3">
-            <div className="relative z-10 flex-shrink-0">
-              <div className="w-10 h-10 rounded-full bg-[#E8F0FE] border-2 border-[#4A8BCF]/30 flex items-center justify-center text-[#1A3A6B] font-bold text-sm">
-                4
-              </div>
-            </div>
-            <div className="flex-1 pt-1.5">
-              <p className="text-sm sm:text-base font-medium text-[#0A1628]">Mandatory Taxes and Applicable Agency Fees</p>
-              <p className="text-xs text-[#0A1628]/50">Taxes, fees, and service charges are calculated</p>
-            </div>
-          </div>
-
-          {/* Arrow 4 */}
-          <div className="flex justify-center py-1">
-            <div className="flex flex-col items-center">
-              <div className="w-px h-4 bg-gradient-to-b from-[#4A8BCF] to-[#4A8BCF]/50" />
-              <ChevronDown size={16} className="text-[#4A8BCF] -mt-1" />
-            </div>
-          </div>
-
-          {/* Step 5 */}
-          <div className="relative flex items-start gap-4 py-3">
-            <div className="relative z-10 flex-shrink-0">
-              <div className="w-10 h-10 rounded-full bg-[#E8F0FE] border-2 border-[#4A8BCF]/30 flex items-center justify-center text-[#1A3A6B] font-bold text-sm">
-                5
-              </div>
-            </div>
-            <div className="flex-1 pt-1.5">
-              <p className="text-sm sm:text-base font-medium text-[#0A1628]">Customer Selects Optional Services</p>
-              <p className="text-xs text-[#0A1628]/50">Add-ons like baggage, seats, or insurance are chosen</p>
-            </div>
-          </div>
-
-          {/* Arrow 5 */}
-          <div className="flex justify-center py-1">
-            <div className="flex flex-col items-center">
-              <div className="w-px h-4 bg-gradient-to-b from-[#4A8BCF] to-[#4A8BCF]/50" />
-              <ChevronDown size={16} className="text-[#4A8BCF] -mt-1" />
-            </div>
-          </div>
-
-          {/* Step 6 - Highlighted */}
-          <div className="relative flex items-start gap-4 py-3">
-            <div className="relative z-10 flex-shrink-0">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-[#1A3A6B]/20 animate-pulse">
-                6
-              </div>
-            </div>
-            <div className="flex-1 pt-1.5">
-              <p className="text-sm sm:text-base font-bold text-[#1A3A6B]">Final Total Displayed</p>
-              <p className="text-xs text-[#0A1628]/50">Complete price breakdown is shown for review</p>
-            </div>
-          </div>
-
-          {/* Arrow 6 */}
-          <div className="flex justify-center py-1">
-            <div className="flex flex-col items-center">
-              <div className="w-px h-4 bg-gradient-to-b from-[#4A8BCF] to-[#4A8BCF]/50" />
-              <ChevronDown size={16} className="text-[#4A8BCF] -mt-1" />
-            </div>
-          </div>
-
-          {/* Step 7 */}
-          <div className="relative flex items-start gap-4 py-3">
-            <div className="relative z-10 flex-shrink-0">
-              <div className="w-10 h-10 rounded-full bg-[#E8F0FE] border-2 border-[#4A8BCF]/30 flex items-center justify-center text-[#1A3A6B] font-bold text-sm">
-                7
-              </div>
-            </div>
-            <div className="flex-1 pt-1.5">
-              <p className="text-sm sm:text-base font-medium text-[#0A1628]">Customer Reviews Fare Conditions</p>
-              <p className="text-xs text-[#0A1628]/50">Terms, restrictions, and policies are reviewed</p>
-            </div>
-          </div>
-
-          {/* Arrow 7 */}
-          <div className="flex justify-center py-1">
-            <div className="flex flex-col items-center">
-              <div className="w-px h-4 bg-gradient-to-b from-[#4A8BCF] to-[#4A8BCF]/50" />
-              <ChevronDown size={16} className="text-[#4A8BCF] -mt-1" />
-            </div>
-          </div>
-
-          {/* Step 8 */}
-          <div className="relative flex items-start gap-4 py-3">
-            <div className="relative z-10 flex-shrink-0">
-              <div className="w-10 h-10 rounded-full bg-[#E8F0FE] border-2 border-[#4A8BCF]/30 flex items-center justify-center text-[#1A3A6B] font-bold text-sm">
-                8
-              </div>
-            </div>
-            <div className="flex-1 pt-1.5">
-              <p className="text-sm sm:text-base font-medium text-[#0A1628]">Payment Authorization</p>
-              <p className="text-xs text-[#0A1628]/50">Payment is submitted and authorized</p>
-            </div>
-          </div>
-
-          {/* Arrow 8 */}
-          <div className="flex justify-center py-1">
-            <div className="flex flex-col items-center">
-              <div className="w-px h-4 bg-gradient-to-b from-[#4A8BCF] to-[#4A8BCF]/50" />
-              <ChevronDown size={16} className="text-[#4A8BCF] -mt-1" />
-            </div>
-          </div>
-
-          {/* Step 9 - Final */}
-          <div className="relative flex items-start gap-4 py-3">
-            <div className="relative z-10 flex-shrink-0">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-[#1A3A6B]/30 ring-2 ring-[#4A8BCF]/20">
-                9
-              </div>
-            </div>
-            <div className="flex-1 pt-1.5">
-              <p className="text-sm sm:text-base font-bold text-[#1A3A6B]">Ticketing / Reservation Confirmation</p>
-              <p className="text-xs text-[#0A1628]/50">Ticket is issued and booking is confirmed</p>
-            </div>
+            <p className="mt-4 text-xs text-[#0A1628]/60 text-center">
+              Pricing and availability may change at any stage before the transaction is successfully completed.
+            </p>
           </div>
         </div>
-
-        {/* Completion Badge */}
-        <div className="mt-6 flex items-center justify-center gap-2">
-          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#4A8BCF]/30" />
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E8F0FE] border border-[#4A8BCF]/20">
-            <CheckCircle size={14} className="text-[#1A3A6B]" />
-            <span className="text-xs font-medium text-[#1A3A6B]">Booking Complete</span>
-          </div>
-          <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#4A8BCF]/30" />
-        </div>
-
-        <p className="mt-4 text-xs text-[#0A1628]/60 text-center">
-          Pricing and availability may change at any stage before the transaction is successfully completed.
-        </p>
-      </div>
-    </div>
-  )
-},
+      )
+    },
     {
       icon: FileText,
       title: "17. Changes to This Fare Disclosure",
@@ -673,33 +673,50 @@ export default function FareDisclosurePage() {
                       {section.title}
                     </h2>
                   </div>
-                  <div className="space-y-3 text-sm sm:text-base text-[#0A1628]/70 leading-relaxed ml-11">
+                  <div className="text-sm sm:text-base text-[#0A1628]/70 leading-relaxed ml-11">
                     {Array.isArray(section.content) ? (
                       <div className={isTwoColumn ? "grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3" : "space-y-3"}>
                         {section.content.map((paragraph, pIndex) => {
-                          // Check if paragraph is empty for spacing
+                          // 1. Empty spacer
                           if (paragraph === "") {
-                            return <div key={pIndex} className="h-2" />;
+                            return <div key={pIndex} className="h-2 col-span-2" />;
                           }
-                          // Check if paragraph starts with "•" to render as list item
-                          if (paragraph.startsWith("•")) {
+
+                          // 2. Render Label: Value objects (Fixes overlapping issue)
+                          if (typeof paragraph === 'object' && paragraph.label && paragraph.value) {
                             return (
-                              <div key={pIndex} className="flex items-start gap-2">
-                                <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 bg-[#4A8BCF]" />
-                                <span>{paragraph.substring(2)}</span>
+                              <div key={pIndex} className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-1.5 break-words col-span-2 md:col-span-1">
+                                <span className="font-medium text-[#2c5aa0] flex-shrink-0">
+                                  {paragraph.label}:
+                                </span>
+                                <span className="text-[#0A1628]/70">
+                                  {paragraph.value}
+                                </span>
                               </div>
                             );
                           }
-                          // Check if it's a bold header
-                          if (paragraph === "Online Self-Service Fare" || paragraph === "Assisted-Booking Fare" || paragraph === "Search Result Fare" || paragraph === "↓") {
-                            return <p key={pIndex} className={paragraph === "↓" ? "text-center text-[#4A8BCF] col-span-2" : "font-semibold text-[#0A1628] col-span-2"}>{paragraph}</p>;
+
+                          // 3. Handle string content
+                          if (typeof paragraph === 'string') {
+                            // Check if it's a bold header
+                            if (paragraph === "Online Self-Service Fare" || paragraph === "Assisted-Booking Fare") {
+                              return <p key={pIndex} className="font-semibold text-[#0A1628] col-span-2">{paragraph}</p>;
+                            }
+
+                            // Normal paragraph
+                            return <p key={pIndex} className="col-span-2 leading-relaxed">{paragraph}</p>;
                           }
-                          return <p key={pIndex} className="col-span-2">{paragraph}</p>;
+                          
+                          return null;
                         })}
                       </div>
                     ) : (
-                      // If content is a React element (like the table), render it directly
-                      section.content
+                      // If content is a React element (like the table), wrap it for scrolling
+                      <div className="w-full overflow-x-auto overflow-y-hidden -mx-4 px-4 sm:mx-0 sm:px-0">
+                        <div className="min-w-[640px] sm:min-w-0">
+                          {section.content}
+                        </div>
+                      </div>
                     )}
                   </div>
                 </div>

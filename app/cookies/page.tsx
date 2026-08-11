@@ -582,7 +582,6 @@ export default function CookiePolicyPage() {
               </p>
               <div className="w-12 h-1 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-full mt-3" />
             </div>
-
             {/* Sections */}
             {sections.map((section, index) => {
               const Icon = section.icon;
@@ -598,35 +597,55 @@ export default function CookiePolicyPage() {
                       {section.title}
                     </h2>
                   </div>
-                  <div className="space-y-3 text-sm sm:text-base text-[#0A1628]/70 leading-relaxed ml-11">
+                  <div className="text-sm sm:text-base text-[#0A1628]/70 leading-relaxed ml-11">
                     {Array.isArray(section.content) ? (
                       <div className={isTwoColumn ? "grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3" : "space-y-3"}>
-                        {section.content.map((paragraph, pIndex) => {
+                        {section.content.map((paragraph: any, pIndex) => {
+                          // 1. Empty spacer
                           if (paragraph === "") {
-                            return <div key={pIndex} className="h-2" />;
+                            return <div key={pIndex} className="h-2 col-span-2" />;
                           }
-                          if (paragraph.startsWith("•")) {
+
+                          // 2. Render Label: Value objects (Fixes overlapping issue)
+                          if (paragraph && typeof paragraph === 'object' && paragraph.label && paragraph.value) {
                             return (
-                              <div key={pIndex} className="flex items-start gap-2">
-                                <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 bg-[#4A8BCF]" />
-                                <span>{paragraph.substring(2)}</span>
+                              <div key={pIndex} className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-1.5 break-words col-span-2 md:col-span-1">
+                                <span className="font-medium text-[#2c5aa0] flex-shrink-0">
+                                  {paragraph.label}:
+                                </span>
+                                <span className="text-[#0A1628]/70">
+                                  {paragraph.value}
+                                </span>
                               </div>
                             );
                           }
-                          if (paragraph === "Session Technologies" || paragraph === "Persistent Technologies") {
-                            return <p key={pIndex} className="font-semibold text-[#0A1628] col-span-2">{paragraph}</p>;
+
+                          // 3. Handle string content
+                          if (typeof paragraph === 'string') {
+                            // Check for specific headers
+                            if (paragraph === "Session Technologies" || paragraph === "Persistent Technologies") {
+                              return <p key={pIndex} className="font-semibold text-[#0A1628] col-span-2">{paragraph}</p>;
+                            }
+
+                            // Normal paragraph
+                            return <p key={pIndex} className="col-span-2 leading-relaxed">{paragraph}</p>;
                           }
-                          return <p key={pIndex} className="col-span-2">{paragraph}</p>;
+                          
+                          return null;
                         })}
                       </div>
                     ) : (
-                      section.content
+                      // If content is a React element (like the table), wrap it for scrolling
+                      <div className="w-full overflow-x-auto overflow-y-hidden -mx-4 px-4 sm:mx-0 sm:px-0">
+                        <div className="min-w-[640px] sm:min-w-0">
+                          {section.content}
+                        </div>
+                      </div>
                     )}
                   </div>
                 </div>
               );
             })}
-
             {/* Call to Action */}
             <div className="mt-10 p-6 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-lg text-white">
               <h3 className="text-lg sm:text-xl font-bold mb-2 !text-white">
