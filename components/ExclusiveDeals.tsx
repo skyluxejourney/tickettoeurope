@@ -4,7 +4,7 @@ import { Phone, ArrowRight, Star, Users, Shield, Tag, Sparkles, Clock, Award, Pl
 import { COMPANY, CONTACT } from "@/app/constants";
 
 export default function ExclusiveDealsPoster() {
-  // Use static positions instead of Math.random() to avoid hydration mismatches
+  // Use static positions instead of Math.random() 
   const particles = [
     { left: "10%", top: "20%", delay: "0s", duration: "4s" },
     { left: "25%", top: "45%", delay: "0.5s", duration: "5s" },
