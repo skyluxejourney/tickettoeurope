@@ -15,7 +15,7 @@ export const swissData = {
     reviews: 654,
     highlights: ["SWISS First", "Business Class", "Premium Economy", "SWISS Travel Club"],
     phoneNumber: "18889960735",
-    email: "support@swiss.com",
+    email: "Reservations@tickettooeurope.com",
   },
   metadata: {
     title: "SWISS International Air Lines Flight Change, Cancellation & Upgrades",

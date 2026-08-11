@@ -15,7 +15,7 @@ export const airFranceData = {
     reviews: 876,
     highlights: ["La Première", "Business Class", "Premium Economy", "Flying Blue"],
     phoneNumber: "18666520433",
-    email: "support@airfrance.com",
+    email: "Reservations@tickettooeurope.com",
   },
   metadata: {
     title: "Air France Airlines Flight Change, Cancellation & Upgrades",

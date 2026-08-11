@@ -15,7 +15,7 @@ export const klmData = {
     reviews: 765,
     highlights: ["World Business Class", "Premium Comfort Class", "Economy Comfort", "Flying Blue"],
     phoneNumber: "18774800746",
-    email: "support@klm.com",
+    email: "Reservations@tickettooeurope.com",
   },
   metadata: {
     title: "KLM Royal Dutch Airlines Flight Change, Cancellation & Upgrades",

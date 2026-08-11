@@ -15,7 +15,7 @@ export const virginAtlanticData = {
     reviews: 543,
     highlights: ["Upper Class", "Premium", "Economy Delight", "Virgin Flying Club"],
     phoneNumber: "18772177078",
-    email: "support@virginatlantic.com",
+    email: "Reservations@tickettooeurope.com",
   },
   metadata: {
     title: "Virgin Atlantic Flight Change, Cancellation & Upgrades",

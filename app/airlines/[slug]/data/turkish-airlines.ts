@@ -15,7 +15,7 @@ export const turkishAirlinesData = {
     reviews: 1543,
     highlights: ["Business Class", "Comfort Class", "Miles&Smiles", "Chef on Board"],
     phoneNumber: "18886042280",
-    email: "support@turkishairlines.com",
+    email: "Reservations@tickettooeurope.com",
   },
   metadata: {
     title: "Turkish Airlines Flight Change, Cancellation & Upgrades",

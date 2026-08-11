@@ -15,7 +15,7 @@ export const lufthansaData = {
     reviews: 985,
     highlights: ["First Class", "Business Class", "Premium Economy", "Miles & More"],
     phoneNumber: "18668025082",
-    email: "support@lufthansa.com",
+    email: "Reservations@tickettooeurope.com",
   },
   metadata: {
     title: "Lufthansa Airlines Flight Change, Cancellation & Upgrades",

@@ -15,7 +15,7 @@ export const britishAirwaysData = {
     reviews: 1247,
     highlights: ["Premium Economy", "Business Class", "Executive Club", "First Class"],
     phoneNumber: "18559630556",
-    email: "support@britishairways.com",
+    email: "Reservations@tickettooeurope.com",
   },
   metadata: {
     title: "British Airways Flight Change, Cancellation & Upgrades",
