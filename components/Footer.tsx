@@ -9,6 +9,7 @@ import {
   Clock,
   Award,
   Shield,
+  AlertCircle,
 } from "lucide-react";
 import ContactModal from "./ContactModal";
 import Link from "next/link";
@@ -214,6 +215,25 @@ export default function Footer() {
                   Subscribe
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Disclaimer Section - Full Width */}
+        <div className="w-full bg-[#0A1628]/5 border-t border-b border-[#1A3A6B]/10">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-5">
+            <div className="flex items-start gap-3">
+              <AlertCircle className="w-5 h-5 text-[#1A3A6B] flex-shrink-0 mt-0.5" />
+              <p className="text-xs text-[#0A1628]/60 leading-relaxed">
+                <span className="font-semibold text-[#0A1628]/80">Disclaimer:</span>{" "}
+                This Disclaimer governs the use of the website www.tickettooeurope.com 
+                (the "Website"), operated by Noam Flyers Inc. ("Company," "we," "us," 
+                or "our"), a USA-registered travel company. Tickettooeurope.com is an 
+                independent online travel agency and is not an airline. We are not 
+                affiliated with, owned by, or operated by any airline. Our role is to 
+                facilitate travel bookings and provide customers with access to available 
+                travel options from airlines and other travel service providers.
+              </p>
             </div>
           </div>
         </div>
