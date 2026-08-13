@@ -369,7 +369,7 @@ export default function TravelDealsSection() {
             {/* Close Button */}
             <button
               onClick={closeModal}
-              className="absolute top-4 right-4 text-[#0A1628]/40 hover:text-[#0A1628] transition-all duration-300 hover:scale-110 active:scale-90 z-10"
+              className="absolute top-4 right-4 text-white/80 hover:text-white transition-all duration-300 hover:scale-110 active:scale-90 z-10"
             >
               <X size={24} />
             </button>
@@ -378,10 +378,10 @@ export default function TravelDealsSection() {
             <div className="bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-t-lg p-6 text-white">
               <div className="flex items-center gap-3">
                 <div className="bg-white/20 p-2 rounded-lg animate-in zoom-in duration-500">
-                  <Plane size={20} />
+                  <Plane size={20} className="text-white" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold animate-in slide-in-from-left duration-300">
+                  <h3 className="text-lg font-bold !text-white animate-in slide-in-from-left duration-300">
                     Book Your Trip
                   </h3>
                   <p className="text-white/80 text-sm animate-in slide-in-from-left duration-400 delay-100">

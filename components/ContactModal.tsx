@@ -21,7 +21,7 @@ export default function ContactModal({ isOpen, onClose, selectedItem = "" }: Con
       />
 
       {/* Modal */}
-      <div className="relative bg-white rounded-2xl max-w-md w-full shadow-2xl animate-in slide-in-from-bottom-8 duration-400 ease-out border border-[#E2E8F0]">
+      <div className="relative bg-white rounded-2xl max-w-md w-full shadow-2xl animate-in slide-in-from-bottom-8 duration-400 ease-out border border-[#E2E8F0] mx-4 sm:mx-0">
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -64,16 +64,16 @@ export default function ContactModal({ isOpen, onClose, selectedItem = "" }: Con
               href={`tel:${CONTACT.phoneRaw}`}
               className="flex items-center gap-4 p-4 bg-[#F5F9FF] rounded-xl hover:bg-[#E8F0FE] transition-all duration-300 group border border-[#E2E8F0] hover:border-[#4A8BCF]/30 hover:shadow-md animate-in slide-in-from-left duration-400 delay-150"
             >
-              <div className="bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] p-3 rounded-xl text-white shadow-lg shadow-[#1A3A6B]/20 group-hover:shadow-[#1A3A6B]/30 transition-all duration-300 group-hover:scale-105">
+              <div className="bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] p-3 rounded-xl text-white shadow-lg shadow-[#1A3A6B]/20 group-hover:shadow-[#1A3A6B]/30 transition-all duration-300 group-hover:scale-105 flex-shrink-0">
                 <Phone size={20} />
               </div>
-              <div className="flex-1">
+              <div className="flex-1 min-w-0">
                 <p className="text-xs text-[#0A1628]/60">Call Us Now</p>
-                <p className="text-sm font-semibold text-[#0A1628] group-hover:text-[#1A3A6B] transition-colors duration-300">
+                <p className="text-sm font-semibold text-[#0A1628] group-hover:text-[#1A3A6B] transition-colors duration-300 truncate">
                   {CONTACT.phone}
                 </p>
               </div>
-              <PhoneCall size={16} className="text-[#4A8BCF] opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1" />
+              <PhoneCall size={16} className="text-[#4A8BCF] opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:translate-x-1 flex-shrink-0" />
             </a>
 
             {/* Email */}
@@ -81,12 +81,12 @@ export default function ContactModal({ isOpen, onClose, selectedItem = "" }: Con
               href={`mailto:${COMPANY.email}`}
               className="flex items-center gap-4 p-4 bg-[#F5F9FF] rounded-xl hover:bg-[#E8F0FE] transition-all duration-300 group border border-[#E2E8F0] hover:border-[#4A8BCF]/30 hover:shadow-md animate-in slide-in-from-left duration-400 delay-200"
             >
-              <div className="bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] p-3 rounded-xl text-white shadow-lg shadow-[#1A3A6B]/20 group-hover:shadow-[#1A3A6B]/30 transition-all duration-300 group-hover:scale-105">
+              <div className="bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] p-3 rounded-xl text-white shadow-lg shadow-[#1A3A6B]/20 group-hover:shadow-[#1A3A6B]/30 transition-all duration-300 group-hover:scale-105 flex-shrink-0">
                 <Mail size={20} />
               </div>
-              <div className="flex-1">
+              <div className="flex-1 min-w-0">
                 <p className="text-xs text-[#0A1628]/60">Email Us</p>
-                <p className="text-sm font-semibold text-[#0A1628] group-hover:text-[#1A3A6B] transition-colors duration-300">
+                <p className="text-xs font-semibold text-[#0A1628] group-hover:text-[#1A3A6B] transition-colors duration-300 break-words">
                   {COMPANY.email}
                 </p>
               </div>
