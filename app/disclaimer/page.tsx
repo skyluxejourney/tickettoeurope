@@ -145,7 +145,7 @@ export default function DisclaimerPage() {
             <span className="text-[#0A1628]/60">Disclaimer</span>
           </nav>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="w-full">
             {/* Header Section */}
             <div className="mb-8">
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0A1628] leading-tight">
@@ -173,12 +173,12 @@ export default function DisclaimerPage() {
                       {section.title}
                     </h2>
                   </div>
-                  <div className="space-y-3 text-sm sm:text-base text-[#0A1628]/70 leading-relaxed ml-11">
+                  <div className="space-y-3 text-sm sm:text-base text-[#0A1628]/70 leading-relaxed">
                     {section.content.map((paragraph, pIndex) => {
                       // Check if paragraph starts with "•" to render as list item
                       if (paragraph.startsWith("•")) {
                         return (
-                          <div key={pIndex} className="flex items-start gap-2 ml-4">
+                          <div key={pIndex} className="flex items-start gap-2">
                             <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 bg-[#4A8BCF]" />
                             <span className="text-justify">{paragraph.substring(2)}</span>
                           </div>

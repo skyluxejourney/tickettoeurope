@@ -476,28 +476,28 @@ export default function CancellationRefundPage() {
             <span className="text-[#0A1628]/60">Cancellation & Refund Policy</span>
           </nav>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="w-full">
             {/* Header Section */}
             <div className="mb-8">
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0A1628] leading-tight">
                 Cancellation & Refund Policy
               </h1>
-              <p className="text-sm text-[#0A1628]/60 mt-2">
+              <p className="text-sm text-[#0A1628]/60 mt-2 text-justify">
                 Tickettooeurope.com is operated by Noam Flyers Inc. Tickettooeurope.com is an independent travel agency and is not an airline. Noam Flyers Inc. facilitates the sale of airline inventory and may provide both online self-service booking and optional assisted booking and customer-support services.
               </p>
-              <p className="text-sm text-[#0A1628]/60 mt-1">
+              <p className="text-sm text-[#0A1628]/60 mt-1 text-justify">
                 Airline tickets, airline schedules, aircraft changes, baggage handling, fare-family restrictions, no-show consequences, and many refund rights are controlled by the applicable airline and its fare rules, rather than by Noam Flyers Inc. Noam Flyers Inc. does, however, control its own agency service fees, its refund-request handling process, and refunds of amounts that Noam Flyers Inc. is required to return when it is the applicable merchant of record.
               </p>
-              <p className="text-sm text-[#0A1628]/60 mt-1">
+              <p className="text-sm text-[#0A1628]/60 mt-1 text-justify">
                 This Cancellation & Refund Policy explains how voluntary cancellations, voluntary refund requests, airline disruptions, future travel credits, airline waivers, ancillary-service refunds, and Noam Flyers Inc. service-fee reversals are handled.
               </p>
-              <p className="text-sm text-[#0A1628]/60 mt-1">
+              <p className="text-sm text-[#0A1628]/60 mt-1 text-justify">
                 This policy should be read together with the applicable Fare Disclosure, Taxes & Fees, and Post-Ticketing Service Fees information published on Tickettooeurope.com.
               </p>
               <div className="w-12 h-1 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-full mt-3" />
             </div>
 
-                   {/* Sections */}
+            {/* Sections */}
             {sections.map((section, index) => {
               const Icon = section.icon;
               const isTwoColumn = section.twoColumn;
@@ -512,7 +512,7 @@ export default function CancellationRefundPage() {
                       {section.title}
                     </h2>
                   </div>
-                  <div className="text-sm sm:text-base text-[#0A1628]/70 leading-relaxed ml-11 text-justify">
+                  <div className="text-sm sm:text-base text-[#0A1628]/70 leading-relaxed text-justify">
                     {Array.isArray(section.content) ? (
                       <div className={isTwoColumn ? "grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3" : "space-y-3"}>
                         {section.content.map((paragraph: any, pIndex) => {
@@ -521,16 +521,12 @@ export default function CancellationRefundPage() {
                             return <div key={pIndex} className="h-2 col-span-2" />;
                           }
 
-                          // 2. Render Label: Value objects (Fixes overlapping issue)
-                          if (paragraph && typeof paragraph === 'object' && paragraph.label && paragraph.value) {
+                          // 2. Check if paragraph starts with "•" to render as list item
+                          if (typeof paragraph === 'string' && paragraph.startsWith("•")) {
                             return (
-                              <div key={pIndex} className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-1.5 break-words col-span-2 md:col-span-1 text-justify">
-                                <span className="font-medium text-[#2c5aa0] flex-shrink-0">
-                                  {paragraph.label}:
-                                </span>
-                                <span className="text-[#0A1628]/70">
-                                  {paragraph.value}
-                                </span>
+                              <div key={pIndex} className="flex items-start gap-2 col-span-2 md:col-span-1">
+                                <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0 bg-[#4A8BCF]" />
+                                <span className="text-justify">{paragraph.substring(2)}</span>
                               </div>
                             );
                           }

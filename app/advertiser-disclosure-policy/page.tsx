@@ -442,34 +442,34 @@ export default function AdvertiserDisclosurePage() {
       <Header />
       <div className="min-h-screen bg-white pt-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
-     {/* Breadcrumb */}
-<nav className="flex items-center gap-2 text-sm mb-6">
-  <NextLink href="/" className="text-[#1A3A6B] hover:text-[#4A8BCF] transition-colors">
-    Home
-  </NextLink>
-  <span className="text-[#0A1628]/30">›</span>
-  <span className="text-[#0A1628]/60">Advertiser Disclosure</span>
-</nav>
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-2 text-sm mb-6">
+            <NextLink href="/" className="text-[#1A3A6B] hover:text-[#4A8BCF] transition-colors">
+              Home
+            </NextLink>
+            <span className="text-[#0A1628]/30">›</span>
+            <span className="text-[#0A1628]/60">Advertiser Disclosure</span>
+          </nav>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="w-full">
             {/* Header Section */}
             <div className="mb-8">
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0A1628] leading-tight">
                 Advertiser Disclosure
               </h1>
-              <p className="text-sm text-[#0A1628]/60 mt-2">
+              <p className="text-sm text-[#0A1628]/60 mt-2 text-justify">
                 This Advertiser Disclosure explains how Tickettooeurope.com, operated by Noam Flyers Inc., may display advertising, sponsored placements, affiliate links, compensated recommendations, referral arrangements, promotional offers, and other commercial content across its Website and related communication channels.
               </p>
-              <p className="text-sm text-[#0A1628]/60 mt-1">
+              <p className="text-sm text-[#0A1628]/60 mt-1 text-justify">
                 Tickettooeurope.com is an independent travel agency and is not an airline, hotel operator, cruise line, airport authority, government agency, or other transportation operator.
               </p>
-              <p className="text-sm text-[#0A1628]/60 mt-1">
+              <p className="text-sm text-[#0A1628]/60 mt-1 text-justify">
                 The presence of an airline, hotel, travel supplier, financial product, destination, brand, or other third-party advertiser on Tickettooeurope.com does not by itself mean that Noam Flyers Inc. owns, operates, controls, or officially represents that company.
               </p>
               <div className="w-12 h-1 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-full mt-3" />
             </div>
 
-                     {/* Sections */}
+            {/* Sections */}
             {sections.map((section, index) => {
               const Icon = section.icon;
               const isTwoColumn = section.twoColumn;
@@ -484,7 +484,7 @@ export default function AdvertiserDisclosurePage() {
                       {section.title}
                     </h2>
                   </div>
-                  <div className="text-sm sm:text-base text-[#0A1628]/70 leading-relaxed ml-11">
+                  <div className="text-sm sm:text-base text-[#0A1628]/70 leading-relaxed">
                     {Array.isArray(section.content) ? (
                       <div className={isTwoColumn ? "grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3" : "space-y-3"}>
                         {section.content.map((paragraph: any, pIndex) => {
@@ -493,7 +493,17 @@ export default function AdvertiserDisclosurePage() {
                             return <div key={pIndex} className="h-2 col-span-2" />;
                           }
 
-                          // 2. Render Label: Value objects (Fixes overlapping issue)
+                          // 2. Check if paragraph starts with "•" to render as list item
+                          if (typeof paragraph === 'string' && paragraph.startsWith("•")) {
+                            return (
+                              <div key={pIndex} className="flex items-start gap-2 col-span-2 md:col-span-1">
+                                <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0 bg-[#4A8BCF]" />
+                                <span className="text-justify">{paragraph.substring(2)}</span>
+                              </div>
+                            );
+                          }
+
+                          // 3. Render Label: Value objects
                           if (paragraph && typeof paragraph === 'object' && paragraph.label && paragraph.value) {
                             return (
                               <div key={pIndex} className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-1.5 break-words col-span-2 md:col-span-1">
@@ -507,9 +517,9 @@ export default function AdvertiserDisclosurePage() {
                             );
                           }
 
-                          // 3. Handle string content (Normal paragraph)
+                          // 4. Handle string content (Normal paragraph)
                           if (typeof paragraph === 'string') {
-                            return <p key={pIndex} className="col-span-2 leading-relaxed">{paragraph}</p>;
+                            return <p key={pIndex} className="col-span-2 leading-relaxed text-justify">{paragraph}</p>;
                           }
                           
                           return null;

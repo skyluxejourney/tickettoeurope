@@ -359,7 +359,7 @@ export default function PrivacyPage() {
             <span className="text-[#0A1628]/60">Privacy Policy</span>
           </nav>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="w-full">
             {/* Header Section */}
             <div className="mb-8">
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0A1628] leading-tight">
@@ -387,31 +387,38 @@ export default function PrivacyPage() {
                       {section.title}
                     </h2>
                   </div>
-                  <div className="space-y-3 text-sm sm:text-base text-[#0A1628]/70 leading-relaxed ml-11">
+                  <div className="space-y-3 text-sm sm:text-base text-[#0A1628]/70 leading-relaxed">
                     {Array.isArray(section.content) ? (
                       section.content.map((paragraph, pIndex) => {
                         // Check if paragraph is empty for spacing
                         if (paragraph === "") {
                           return <div key={pIndex} className="h-2" />;
                         }
-                        // Check if paragraph starts with "•" to render as list item (not justified)
+                        // Check if paragraph starts with "•" to render as list item
                         if (paragraph.startsWith("•")) {
                           return (
-                            <div key={pIndex} className="flex items-start gap-2 ml-4">
+                            <div key={pIndex} className="flex items-start gap-2">
                               <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 bg-[#4A8BCF]" />
-                              <span>{paragraph.substring(2)}</span>
+                              <span className="text-justify">{paragraph.substring(2)}</span>
                             </div>
                           );
                         }
                         // Check if it's a bold header in data map
-                        if (paragraph.includes("Data Category:") || paragraph.includes("Examples:") || paragraph.includes("Main Use:") || paragraph.includes("Typical Recipients:")) {
+                        if (paragraph.includes("Data Category:") || 
+                            paragraph.includes("Examples:") || 
+                            paragraph.includes("Main Use:") || 
+                            paragraph.includes("Typical Recipients:")) {
                           return <p key={pIndex} className="font-semibold text-[#0A1628] text-justify">{paragraph}</p>;
                         }
                         return <p key={pIndex} className="text-justify">{paragraph}</p>;
                       })
                     ) : (
                       // If content is a React element (like the table), render it directly
-                      section.content
+                      <div className="w-full overflow-x-auto overflow-y-hidden -mx-4 px-4 sm:mx-0 sm:px-0">
+                        <div className="min-w-[640px] sm:min-w-0">
+                          {section.content}
+                        </div>
+                      </div>
                     )}
                   </div>
                 </div>

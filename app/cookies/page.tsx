@@ -565,23 +565,24 @@ export default function CookiePolicyPage() {
             <span className="text-[#0A1628]/60">Cookie Policy</span>
           </nav>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="w-full">
             {/* Header Section */}
             <div className="mb-8">
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0A1628] leading-tight">
                 Cookie Policy
               </h1>
-              <p className="text-sm text-[#0A1628]/60 mt-2">
+              <p className="text-sm text-[#0A1628]/60 mt-2 text-justify">
                 This Cookie Policy explains how Tickettooeurope.com, operated by Noam Flyers Inc., uses cookies and similar technologies when you visit or interact with the Website, booking pages, landing pages, communications, and related digital interfaces.
               </p>
-              <p className="text-sm text-[#0A1628]/60 mt-1">
+              <p className="text-sm text-[#0A1628]/60 mt-1 text-justify">
                 Tickettooeurope.com is an independent travel agency and is not an airline.
               </p>
-              <p className="text-sm text-[#0A1628]/60 mt-1">
+              <p className="text-sm text-[#0A1628]/60 mt-1 text-justify">
                 For purposes of this policy, the term "cookies" is used broadly to include cookies and similar technologies that store information on, or access information from, a device, browser, or application environment. These technologies may include pixels, tags, scripts, software development kits (SDKs), local storage objects, and comparable identifiers.
               </p>
               <div className="w-12 h-1 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-full mt-3" />
             </div>
+
             {/* Sections */}
             {sections.map((section, index) => {
               const Icon = section.icon;
@@ -597,7 +598,7 @@ export default function CookiePolicyPage() {
                       {section.title}
                     </h2>
                   </div>
-                  <div className="text-sm sm:text-base text-[#0A1628]/70 leading-relaxed ml-11">
+                  <div className="text-sm sm:text-base text-[#0A1628]/70 leading-relaxed">
                     {Array.isArray(section.content) ? (
                       <div className={isTwoColumn ? "grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3" : "space-y-3"}>
                         {section.content.map((paragraph: any, pIndex) => {
@@ -606,29 +607,24 @@ export default function CookiePolicyPage() {
                             return <div key={pIndex} className="h-2 col-span-2" />;
                           }
 
-                          // 2. Render Label: Value objects (Fixes overlapping issue)
-                          if (paragraph && typeof paragraph === 'object' && paragraph.label && paragraph.value) {
+                          // 2. Check if paragraph starts with "•" to render as list item
+                          if (typeof paragraph === 'string' && paragraph.startsWith("•")) {
                             return (
-                              <div key={pIndex} className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-1.5 break-words col-span-2 md:col-span-1">
-                                <span className="font-medium text-[#2c5aa0] flex-shrink-0">
-                                  {paragraph.label}:
-                                </span>
-                                <span className="text-[#0A1628]/70">
-                                  {paragraph.value}
-                                </span>
+                              <div key={pIndex} className="flex items-start gap-2 col-span-2 md:col-span-1">
+                                <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0 bg-[#4A8BCF]" />
+                                <span className="text-justify">{paragraph.substring(2)}</span>
                               </div>
                             );
                           }
 
-                          // 3. Handle string content
-                          if (typeof paragraph === 'string') {
-                            // Check for specific headers
-                            if (paragraph === "Session Technologies" || paragraph === "Persistent Technologies") {
-                              return <p key={pIndex} className="font-semibold text-[#0A1628] col-span-2">{paragraph}</p>;
-                            }
+                          // 3. Handle special headers
+                          if (typeof paragraph === 'string' && (paragraph === "Session Technologies" || paragraph === "Persistent Technologies")) {
+                            return <p key={pIndex} className="font-semibold text-[#0A1628] col-span-2">{paragraph}</p>;
+                          }
 
-                            // Normal paragraph
-                            return <p key={pIndex} className="col-span-2 leading-relaxed">{paragraph}</p>;
+                          // 4. Handle string content (Normal paragraph)
+                          if (typeof paragraph === 'string') {
+                            return <p key={pIndex} className="col-span-2 leading-relaxed text-justify">{paragraph}</p>;
                           }
                           
                           return null;
@@ -646,6 +642,7 @@ export default function CookiePolicyPage() {
                 </div>
               );
             })}
+
             {/* Call to Action */}
             <div className="mt-10 p-6 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-lg text-white">
               <h3 className="text-lg sm:text-xl font-bold mb-2 !text-white">

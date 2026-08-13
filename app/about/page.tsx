@@ -111,7 +111,7 @@ export default function AboutPage() {
             <span className="text-[#0A1628]/60">About Us</span>
           </nav>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="w-full">
             {/* Header Section */}
             <div className="mb-8">
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0A1628] leading-tight">

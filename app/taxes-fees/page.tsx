@@ -398,19 +398,19 @@ export default function TaxesFeesPage() {
             <span className="text-[#0A1628]/60">Taxes & Fees</span>
           </nav>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="w-full">
             {/* Header Section */}
             <div className="mb-8">
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0A1628] leading-tight">
                 Taxes & Fees
               </h1>
-              <p className="text-sm text-[#0A1628]/60 mt-2">
+              <p className="text-sm text-[#0A1628]/60 mt-2 text-justify">
                 Tickettooeurope.com is operated by Noam Flyers Inc. Tickettooeurope.com is an independent travel agency and is not an airline. This page explains the difference between government taxes, airport or passenger charges, airline-imposed charges, and Noam Flyers Inc.'s own service fees.
               </p>
               <div className="w-12 h-1 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-full mt-3" />
             </div>
 
-                     {/* Sections */}
+            {/* Sections */}
             {sections.map((section, index) => {
               const Icon = section.icon;
               const isTwoColumn = section.twoColumn;
@@ -425,7 +425,7 @@ export default function TaxesFeesPage() {
                       {section.title}
                     </h2>
                   </div>
-                  <div className="text-sm sm:text-base text-[#0A1628]/70 leading-relaxed ml-11 text-justify">
+                  <div className="text-sm sm:text-base text-[#0A1628]/70 leading-relaxed">
                     {Array.isArray(section.content) ? (
                       <div className={isTwoColumn ? "grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3" : "space-y-3"}>
                         {section.content.map((paragraph: any, pIndex) => {
@@ -434,16 +434,12 @@ export default function TaxesFeesPage() {
                             return <div key={pIndex} className="h-2 col-span-2" />;
                           }
 
-                          // 2. Render Label: Value objects (Fixes overlapping issue)
-                          if (paragraph && typeof paragraph === 'object' && paragraph.label && paragraph.value) {
+                          // 2. Check if paragraph starts with "•" to render as list item
+                          if (typeof paragraph === 'string' && paragraph.startsWith("•")) {
                             return (
-                              <div key={pIndex} className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-1.5 break-words col-span-2 md:col-span-1 text-justify">
-                                <span className="font-medium text-[#2c5aa0] flex-shrink-0">
-                                  {paragraph.label}:
-                                </span>
-                                <span className="text-[#0A1628]/70">
-                                  {paragraph.value}
-                                </span>
+                              <div key={pIndex} className="flex items-start gap-2 col-span-2 md:col-span-1">
+                                <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0 bg-[#4A8BCF]" />
+                                <span className="text-justify">{paragraph.substring(2)}</span>
                               </div>
                             );
                           }

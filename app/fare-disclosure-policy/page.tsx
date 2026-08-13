@@ -521,7 +521,7 @@ export default function FareDisclosurePage() {
               {/* Step 6 - Highlighted */}
               <div className="relative flex items-start gap-4 py-3">
                 <div className="relative z-10 flex-shrink-0">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-[#1A3A6B]/20 animate-pulse">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-[#1A3A6B]/20">
                     6
                   </div>
                 </div>
@@ -640,19 +640,19 @@ export default function FareDisclosurePage() {
             <span className="text-[#0A1628]/60">Fare Disclosure</span>
           </nav>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="w-full">
             {/* Header Section */}
             <div className="mb-8">
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0A1628] leading-tight">
                 Fare Disclosure
               </h1>
-              <p className="text-sm text-[#0A1628]/60 mt-2">
+              <p className="text-sm text-[#0A1628]/60 mt-2 text-justify">
                 This Fare Disclosure explains how pricing is presented on Tickettooeurope.com, what an advertised or displayed fare may include, what may be excluded, why airline prices can change, how online and assisted-booking prices may differ, and what customers should verify before authorizing payment.
               </p>
-              <p className="text-sm text-[#0A1628]/60 mt-1">
+              <p className="text-sm text-[#0A1628]/60 mt-1 text-justify">
                 Tickettooeurope.com is operated by Noam Flyers Inc. and is an independent travel agency. Tickettooeurope.com is not an airline and is not affiliated with, owned by, or operated by any airline unless expressly stated otherwise.
               </p>
-              <p className="text-sm text-[#0A1628]/60 mt-1">
+              <p className="text-sm text-[#0A1628]/60 mt-1 text-justify">
                 Our objective is to present travel pricing clearly and to distinguish between airline fares, mandatory charges, agency service fees, and optional services.
               </p>
               <div className="w-12 h-1 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-full mt-3" />
@@ -673,7 +673,7 @@ export default function FareDisclosurePage() {
                       {section.title}
                     </h2>
                   </div>
-                  <div className="text-sm sm:text-base text-[#0A1628]/70 leading-relaxed ml-11">
+                  <div className="text-sm sm:text-base text-[#0A1628]/70 leading-relaxed">
                     {Array.isArray(section.content) ? (
                       <div className={isTwoColumn ? "grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3" : "space-y-3"}>
                         {section.content.map((paragraph, pIndex) => {
@@ -682,7 +682,17 @@ export default function FareDisclosurePage() {
                             return <div key={pIndex} className="h-2 col-span-2" />;
                           }
 
-                          // 2. Render Label: Value objects (Fixes overlapping issue)
+                          // 2. Check if paragraph starts with "•" to render as list item
+                          if (typeof paragraph === 'string' && paragraph.startsWith("•")) {
+                            return (
+                              <div key={pIndex} className="flex items-start gap-2 col-span-2 md:col-span-1">
+                                <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0 bg-[#4A8BCF]" />
+                                <span className="text-justify">{paragraph.substring(2)}</span>
+                              </div>
+                            );
+                          }
+
+                          // 3. Render Label: Value objects
                           if (typeof paragraph === 'object' && paragraph.label && paragraph.value) {
                             return (
                               <div key={pIndex} className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-1.5 break-words col-span-2 md:col-span-1">
@@ -696,7 +706,7 @@ export default function FareDisclosurePage() {
                             );
                           }
 
-                          // 3. Handle string content
+                          // 4. Handle string content
                           if (typeof paragraph === 'string') {
                             // Check if it's a bold header
                             if (paragraph === "Online Self-Service Fare" || paragraph === "Assisted-Booking Fare") {
@@ -704,7 +714,7 @@ export default function FareDisclosurePage() {
                             }
 
                             // Normal paragraph
-                            return <p key={pIndex} className="col-span-2 leading-relaxed">{paragraph}</p>;
+                            return <p key={pIndex} className="col-span-2 leading-relaxed text-justify">{paragraph}</p>;
                           }
                           
                           return null;

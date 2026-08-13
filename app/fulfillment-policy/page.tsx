@@ -376,16 +376,16 @@ export default function FulfillmentPage() {
             <span className="text-[#0A1628]/60">Fulfillment Policy</span>
           </nav>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="w-full">
             {/* Header Section */}
             <div className="mb-8">
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0A1628] leading-tight">
                 Fulfillment Policy
               </h1>
-              <p className="text-sm text-[#0A1628]/60 mt-2">
+              <p className="text-sm text-[#0A1628]/60 mt-2 text-justify">
                 This Fulfillment Policy explains how Tickettooeurope.com, operated by Noam Flyers Inc., processes and fulfills travel booking requests, what happens after payment, how online and assisted booking channels operate, when a booking becomes final, and what confirmation customers should expect.
               </p>
-              <p className="text-sm text-[#0A1628]/60 mt-1">
+              <p className="text-sm text-[#0A1628]/60 mt-1 text-justify">
                 Tickettooeurope.com is an independent travel agency and is not an airline. Noam Flyers Inc. does not operate flights, control air-traffic operations, board passengers, load baggage, or determine airline schedules. Those operational functions remain the responsibility of the applicable airlines, airports, and other relevant service providers.
               </p>
               <div className="w-12 h-1 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-full mt-3" />
@@ -406,7 +406,7 @@ export default function FulfillmentPage() {
                       {section.title}
                     </h2>
                   </div>
-                  <div className="text-sm sm:text-base text-[#0A1628]/70 leading-relaxed ml-11">
+                  <div className="text-sm sm:text-base text-[#0A1628]/70 leading-relaxed">
                     {Array.isArray(section.content) ? (
                       <div className={isTwoColumn ? "grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-3" : "space-y-3"}>
                         {section.content.map((paragraph, pIndex) => {
@@ -415,7 +415,17 @@ export default function FulfillmentPage() {
                             return <div key={pIndex} className="h-2 col-span-2" />;
                           }
 
-                          // 2. Render Label: Value objects (Fixes overlapping issue)
+                          // 2. Check if paragraph starts with "•" to render as list item
+                          if (typeof paragraph === 'string' && paragraph.startsWith("•")) {
+                            return (
+                              <div key={pIndex} className="flex items-start gap-2 col-span-2 md:col-span-1">
+                                <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0 bg-[#4A8BCF]" />
+                                <span className="text-justify">{paragraph.substring(2)}</span>
+                              </div>
+                            );
+                          }
+
+                          // 3. Render Label: Value objects
                           if (typeof paragraph === 'object' && paragraph.label && paragraph.value) {
                             return (
                               <div key={pIndex} className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-1.5 break-words col-span-2 md:col-span-1">
@@ -429,7 +439,7 @@ export default function FulfillmentPage() {
                             );
                           }
 
-                          // 3. Handle string content
+                          // 4. Handle string content
                           if (typeof paragraph === 'string') {
                             // Check if it's a bold header (Step, Stage, etc.)
                             if (
@@ -447,7 +457,7 @@ export default function FulfillmentPage() {
                             }
 
                             // Normal paragraph
-                            return <p key={pIndex} className="col-span-2 leading-relaxed">{paragraph}</p>;
+                            return <p key={pIndex} className="col-span-2 leading-relaxed text-justify">{paragraph}</p>;
                           }
                           
                           return null;
