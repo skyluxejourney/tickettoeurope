@@ -5,8 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next export",
+    "build:export": "next build && next export",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "clean": "rm -rf .next out",
+    "prebuild": "npm run clean",
+    "deploy": "npm run build:export && echo 'Build complete! Copy out folder to your hosting provider.'"
   },
   "dependencies": {
     "lucide-react": "^1.28.0",
