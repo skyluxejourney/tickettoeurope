@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Inter, Plus_Jakarta_Sans, DM_Sans, Outfit } from 'next/font/google';
+import StatCounter from '@/components/StatCounter';
 
-// Primary font - Clean, modern sans-serif (similar to Qatar Airways)
 const headingFont = Outfit({
   variable: '--font-heading',
   subsets: ['latin'],
@@ -10,7 +10,7 @@ const headingFont = Outfit({
   weight: ['300', '400', '500', '600', '700'],
 });
 
-// Secondary font - Clean body text
+
 const bodyFont = DM_Sans({
   variable: '--font-body',
   subsets: ['latin'],
@@ -18,12 +18,6 @@ const bodyFont = DM_Sans({
   weight: ['300', '400', '500', '600', '700'],
 });
 
-// Alternative: If you prefer Inter for body
-// const bodyFont = Inter({
-//   variable: '--font-body',
-//   subsets: ['latin'],
-//   display: 'swap',
-// });
 
 export const metadata: Metadata = {
   title: 'TicketToEurope | Luxury Travel & Holiday Packages',
@@ -54,6 +48,9 @@ export default function RootLayout({
       lang="en"
       className={`${headingFont.variable} ${bodyFont.variable} h-full antialiased`}
     >
+      <head>
+        <StatCounter />
+      </head>
       <body className="min-h-full bg-white text-gray-900 flex flex-col">
         {children}
       </body>

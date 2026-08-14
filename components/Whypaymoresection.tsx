@@ -26,7 +26,7 @@ export default function WhyPayMoreSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-12 sm:py-16 lg:py-20 bg-[#F5F9FF] overflow-hidden">
+    <section ref={sectionRef} className="pt-12 sm:pt-16 lg:pt-20 bg-[#F5F9FF] overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           {/* Heading - Top Left */}

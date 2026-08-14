@@ -24,7 +24,7 @@ export default function Footer() {
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about" },
     { name: "Disclaimer", href: "/disclaimer" },
-    { name: "Contact Us", href: "#", isModal: true },
+    { name: "Contact Us", href: "/contact" },
     { name: "Site Map", href: "/sitemap" },
   ];
 
@@ -62,6 +62,14 @@ export default function Footer() {
     setShowModal(false);
     setSelectedLink("");
   };
+
+  // Find if Contact Us is in quickLinks and remove modal flag
+  const updatedQuickLinks = quickLinks.map(link => {
+    if (link.name === "Contact Us") {
+      return { ...link, isModal: false };
+    }
+    return link;
+  });
 
   return (
     <>
@@ -113,18 +121,9 @@ export default function Footer() {
                 <span className="absolute -bottom-1 left-0 w-8 h-0.5 bg-gradient-to-r from-[#1A3A6B] to-[#4A8BCF] rounded-full" />
               </h3>
               <ul className="space-y-2.5">
-                {quickLinks.map((link) => (
+                {updatedQuickLinks.map((link) => (
                   <li key={link.name}>
-                    {link.isModal ? (
-                      <a
-                        href={link.href}
-                        onClick={(e) => handleLinkClick(e, link.name, true)}
-                        className="text-sm text-[#0A1628]/60 hover:text-[#1A3A6B] transition-colors duration-200 flex items-center gap-2 group cursor-pointer"
-                      >
-                        <span className="w-1 h-1 bg-[#1A3A6B]/40 rounded-full group-hover:bg-[#1A3A6B] transition-colors" />
-                        {link.name}
-                      </a>
-                    ) : link.name === "Home" ? (
+                    {link.name === "Home" ? (
                       <a
                         href={link.href}
                         onClick={(e) => {
@@ -263,7 +262,7 @@ export default function Footer() {
         </div>
       </footer>
 
-      {/* Contact Modal */}
+      {/* Contact Modal - Only used for other modal links */}
       <ContactModal 
         isOpen={showModal}
         onClose={closeModal}
