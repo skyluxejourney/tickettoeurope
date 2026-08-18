@@ -20,7 +20,7 @@ const bodyFont = DM_Sans({
 
 
 export const metadata: Metadata = {
-  title: 'TicketToEurope | Luxury Travel & Holiday Packages',
+  title: 'tickettooeurope | Luxury Travel & Holiday Packages',
   description:
     'Book luxury holiday packages, flights, hotels and customized trips with Skyluxe Journey.',
   keywords: [

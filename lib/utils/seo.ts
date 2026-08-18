@@ -207,9 +207,9 @@ export const generateLocalBusinessSchema = () => {
     priceRange: '$$',
     openingHours: 'Mo-Su 00:00-23:59',
     sameAs: [
-      'https://facebook.com/tickettoeurope',
-      'https://instagram.com/tickettoeurope',
-      'https://youtube.com/tickettoeurope',
+      'https://facebook.com/tickettooeurope',
+      'https://instagram.com/tickettooeurope',
+      'https://youtube.com/tickettooeurope',
     ],
   }
 }
@@ -254,9 +254,9 @@ export const generateOrganizationSchema = () => {
       addressCountry: 'US',
     },
     sameAs: [
-      'https://facebook.com/tickettoeurope',
-      'https://instagram.com/tickettoeurope',
-      'https://youtube.com/tickettoeurope',
+      'https://facebook.com/tickettooeurope',
+      'https://instagram.com/tickettooeurope',
+      'https://youtube.com/tickettooeurope',
     ],
   }
 }

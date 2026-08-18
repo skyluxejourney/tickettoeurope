@@ -31,9 +31,9 @@ export default function Home() {
     "@type": "TravelAgency",
     name: "Ticket To Europe",
     description: "Affordable Europe travel deals, tour packages, and exclusive vacation offers.",
-    url: "https://tickettoeurope.com",
+    url: "https://tickettooeurope.com",
     telephone: "+1-800-555-0199",
-    email: "info@tickettoeurope.com",
+    email: "info@tickettooeurope.com",
     address: {
       "@type": "PostalAddress",
       addressCountry: "US"
@@ -42,7 +42,7 @@ export default function Home() {
       "@type": "AggregateOffer",
       priceCurrency: "USD",
       availability: "https://schema.org/InStock",
-      url: "https://tickettoeurope.com"
+      url: "https://tickettooeurope.com"
     }
   };
 
@@ -68,7 +68,7 @@ export default function Home() {
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://tickettoeurope.com/" />
+        <meta property="og:url" content="https://tickettooeurope.com/" />
         <meta property="og:title" content="Ticket To Europe | Best Europe Travel Deals & Tour Packages 2025" />
         <meta 
           property="og:description" 
@@ -76,7 +76,7 @@ export default function Home() {
         />
         <meta 
           property="og:image" 
-          content="https://tickettoeurope.com/og-image.jpg" 
+          content="https://tickettooeurope.com/og-image.jpg" 
         />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -85,7 +85,7 @@ export default function Home() {
 
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://tickettoeurope.com/" />
+        <meta property="twitter:url" content="https://tickettooeurope.com/" />
         <meta property="twitter:title" content="Ticket To Europe | Best Europe Travel Deals & Tour Packages 2025" />
         <meta 
           property="twitter:description" 
@@ -93,11 +93,11 @@ export default function Home() {
         />
         <meta 
           property="twitter:image" 
-          content="https://tickettoeurope.com/twitter-image.jpg" 
+          content="https://tickettooeurope.com/twitter-image.jpg" 
         />
 
         {/* Canonical URL */}
-        <link rel="canonical" href="https://tickettoeurope.com/" />
+        <link rel="canonical" href="https://tickettooeurope.com/" />
 
         {/* Mobile Optimization */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />

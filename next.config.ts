@@ -1,13 +1,11 @@
-// next.config.ts
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   // Static export for frontend-only site
   output: 'export',
-
-  // Image optimization
+  
   images: {
-    unoptimized: true,
+    unoptimized: true, // Required for static export
     remotePatterns: [
       {
         protocol: 'https',
@@ -41,8 +39,6 @@ const nextConfig: NextConfig = {
   // React strict mode
   reactStrictMode: true,
 
-
-
   // Production source maps (disable for smaller builds)
   productionBrowserSourceMaps: false,
 
@@ -51,20 +47,15 @@ const nextConfig: NextConfig = {
 
   // Environment variables
   env: {
-    NEXT_PUBLIC_SITE_URL: 'https://tickettoeurope.com',
+    NEXT_PUBLIC_SITE_URL: 'https://tickettooeurope.com',
     NEXT_PUBLIC_SITE_NAME: 'Ticket to Europe',
     NEXT_PUBLIC_CONTACT_PHONE: '+1-18554937655',
   },
 
-  // ⚠️ IMPORTANT: Turbopack config (replaces webpack for Next.js 16+)
+  // Turbopack config for Next.js 16+
   turbopack: {
-    // No custom rules needed for this project
-    // But we need to define it to avoid the error
     resolveExtensions: ['.tsx', '.ts', '.jsx', '.js', '.mjs', '.json'],
   },
-
-  // ⚠️ Note: "redirects" and "headers" don't work with "output: export"
-  // For static export, use server config (Netlify/Vercel) instead
 
   // Experimental features
   experimental: {
@@ -72,9 +63,6 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['lucide-react', 'date-fns'],
     scrollRestoration: true,
   },
-
-  // Output directory
-  distDir: 'out',
 
   // Generate static 404 page
   generateEtags: true,
