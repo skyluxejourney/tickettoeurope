@@ -1,0 +1,36 @@
+# public/robots.txt
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /_next/
+Disallow: /static/
+
+# Sitemap locations
+Sitemap: https://tickettoeurope.com/sitemap.xml
+
+# Crawl delay (be nice to the server)
+Crawl-delay: 1
+
+# Host
+Host: https://tickettoeurope.com
+
+# Clean URL parameters (remove tracking)
+Clean-param: ref&utm_source&utm_medium&utm_campaign&utm_term&utm_content
+
+# Mobile user agent
+User-agent: Googlebot-Mobile
+Allow: /
+
+# Image bot (Google will find images naturally)
+User-agent: Googlebot-Image
+Allow: /images/
+Disallow: /_next/static/
+
+# News bot (when you have news/blog content)
+User-agent: Googlebot-News
+Allow: /blog/
+Allow: /deals/
+Allow: /airlines/
+Disallow: /
