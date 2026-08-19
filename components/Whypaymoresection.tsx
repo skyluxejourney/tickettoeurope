@@ -28,7 +28,7 @@ export default function WhyPayMoreSection() {
   return (
     <section ref={sectionRef} className="pt-12 sm:pt-16 lg:pt-20 bg-[#F5F9FF] overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-auto mx-auto">
           {/* Heading - Top Left */}
           <div className="mb-6 sm:mb-8">
             <h2
@@ -156,7 +156,7 @@ export default function WhyPayMoreSection() {
       >
         <div className="overflow-hidden">
           <img
-            src="/images/bookyourflight.png"
+            src="/images/bookdetails.png"
             alt="Book your next flight - domestic and international travel"
             className="w-full h-auto object-cover"
           />

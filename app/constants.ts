@@ -9,13 +9,7 @@ export const COMPANY = {
   year: new Date().getFullYear(),
 };
 
-// Social Media Links
-export const SOCIAL = {
-  facebook: "https://facebook.com/tickettoeurope",
-  twitter: "https://twitter.com/tickettoeurope",
-  instagram: "https://instagram.com/tickettoeurope",
-  youtube: "https://youtube.com/tickettoeurope",
-};
+
 
 // Contact Information
 export const CONTACT = {
@@ -51,8 +45,7 @@ export const META = {
 };
 
 export default {
-  COMPANY,
-  SOCIAL,
+  COMPANY, 
   CONTACT,
   BRAND,
   META,
