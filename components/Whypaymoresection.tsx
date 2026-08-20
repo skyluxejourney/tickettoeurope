@@ -74,7 +74,7 @@ export default function WhyPayMoreSection() {
               `}
             >
               Whether you are planning a family vacation, solo trip, 
-              honeymoon trip, or friend's trip, {BRAND.name} helps you get 
+              honeymoon trip, or friend&apos;s trip, {BRAND.name} helps you get 
               cheap flight tickets. From budget traveling to luxury traveling, 
               we have everything you need for your comfortable journey.
             </p>
@@ -110,7 +110,7 @@ export default function WhyPayMoreSection() {
                 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
               `}
             >
-              If you're planning to explore the new city as per your travel 
+              If you&apos;re planning to explore the new city as per your travel 
               bucket list, we are here to help in make the best travel 
               arrangements. We have a team of dedicated travel experts who are 
               always ready to help you in choosing the best deals.
@@ -137,7 +137,7 @@ export default function WhyPayMoreSection() {
                 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
               `}
             >
-              When you're getting guaranteed cheap flight tickets at {BRAND.name}, 
+              When you&apos;re getting guaranteed cheap flight tickets at {BRAND.name}, 
               why are you delaying your exploration? Explore the world at 
               minimal cost. This world is waiting for you. Go grab the best 
               deals and save your hard-earned money.
@@ -156,7 +156,7 @@ export default function WhyPayMoreSection() {
       >
         <div className="overflow-hidden">
           <img
-            src="/images/bookdetails.png"
+            src="/images/bookingdetails.png"
             alt="Book your next flight - domestic and international travel"
             className="w-full h-auto object-cover"
           />

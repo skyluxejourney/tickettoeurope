@@ -51,7 +51,7 @@ export default function WhyTrustSection() {
       <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent" />
       
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-auto mx-auto">
           {/* Heading - Left Aligned */}
           <div className="mb-8 sm:mb-10">
             <h2

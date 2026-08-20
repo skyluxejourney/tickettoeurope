@@ -5,7 +5,7 @@ export const COMPANY = {
   email: "Reservations@tickettooeurope.com",
   phone: "+1-18554937655",
   phoneRaw: "18554937655",
-  address: "123 Travel Street, New York, USA",
+  address: "Alexandria, VA 22310",
   year: new Date().getFullYear(),
 };
 

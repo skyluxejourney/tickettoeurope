@@ -44,7 +44,7 @@ export default function ContactPage() {
               Get In <span className="font-bold text-[#1A3A6B]">Touch</span>
             </h1>
             <p className="text-sm text-[#0A1628]/60 max-w-xl font-light">
-              Have questions about your next adventure? We're here to help you plan the perfect journey.
+              Have questions about your next adventure? We&apos;re here to help you plan the perfect journey.
             </p>
           </div>
 
@@ -91,9 +91,8 @@ export default function ContactPage() {
                 Address
               </h3>
               <p className="text-xs font-medium text-[#0A1628] leading-relaxed">
-                Basement Plot Number 35<br />
-                Sector 11, Dwarka<br />
-                New Delhi, 110075
+                Alexandria, VA 22310<br />
+                
               </p>
             </div>
 

@@ -190,7 +190,7 @@ export default function TravelDealsSection() {
   return (
     <section ref={sectionRef} className="py-16 sm:py-20 lg:py-20 bg-gradient-to-b from-[#F5F9FF] to-white overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-auto mx-auto">
           {/* Heading - Left Aligned */}
           <div className="mb-6 sm:mb-8">
             <div
