@@ -30,7 +30,7 @@ export default function ContactPage() {
     setMapZoom(15);
   };
 
-  const mapSrc = `https://www.google.com/maps/embed/v1/place?q=Basement+Plot+Number+35+Sector+11+Dwarka+New+Delhi+110075&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&zoom=${mapZoom}`;
+const mapSrc = `https://www.google.com/maps/embed/v1/place?q=Alexandria+VA+22310&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&zoom=${mapZoom}`;
 
   return (
     <>
@@ -181,7 +181,7 @@ export default function ContactPage() {
                 </button>
                 <div className="w-px h-6 bg-[#E2E8F0]" />
                 <a 
-                  href="https://www.google.com/maps/search/Basement+Plot+Number+35+Sector+11+Dwarka+New+Delhi+110075"
+                  href="https://www.google.com/maps/search/Alexandria+VA+22310"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[10px] font-medium text-[#1A3A6B] hover:text-[#4A8BCF] transition-colors"
@@ -199,7 +199,7 @@ export default function ContactPage() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Company Location - Basement Plot Number 35, Sector 11, Dwarka, New Delhi"
+                title="Company Location - Alexandria, VA 22310"
               />
             </div>
             <div className="mt-1 text-[9px] text-[#0A1628]/30 text-right">
