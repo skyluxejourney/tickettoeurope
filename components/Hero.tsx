@@ -239,11 +239,12 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ---------- ARROW BUTTONS (simple white chevrons) ---------- */}
+      {/* ---------- ARROW BUTTONS - hidden on mobile, visible sm and up ---------- */}
       <button
         onClick={prevSlide}
         aria-label="Previous slide"
         className="
+          hidden sm:block
           absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30
           text-white/80 hover:text-white transition-colors duration-300
           focus:outline-none drop-shadow-lg
@@ -256,6 +257,7 @@ export default function Hero() {
         onClick={nextSlide}
         aria-label="Next slide"
         className="
+          hidden sm:block
           absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30
           text-white/80 hover:text-white transition-colors duration-300
           focus:outline-none drop-shadow-lg
@@ -264,8 +266,8 @@ export default function Hero() {
         <ChevronRight className="h-8 w-8 sm:h-10 sm:w-10" />
       </button>
 
-      {/* ---------- DOTS WITH DARK GRADIENT THEME ---------- */}
-      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-30 flex gap-2">
+      {/* ---------- DOTS - hidden on mobile, visible sm and up ---------- */}
+      <div className="hidden sm:flex absolute bottom-24 left-1/2 -translate-x-1/2 z-30 gap-2">
         {slides.map((_, idx) => (
           <button
             key={idx}
