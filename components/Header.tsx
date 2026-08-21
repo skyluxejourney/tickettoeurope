@@ -1,11 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import {
-  Menu,
-  X,
-  Phone,
-} from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import ContactModal from "./ContactModal";
 import Link from "next/link";
 import Image from "next/image";
@@ -30,29 +26,17 @@ export default function Header() {
       const offset = window.scrollY;
       setScrolled(offset > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
-    // Trigger entrance animation
     setTimeout(() => setIsVisible(true), 100);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleNavClick = (item: { name: string; isActive?: boolean; isContact?: boolean; path?: string }) => {
-    // If it's the Contact Us link, let it navigate normally
-    if (item.isContact) {
-      return;
-    }
-    
-    if (item.isActive) {
-      return;
-    }
-    
+    if (item.isContact) return;
+    if (item.isActive) return;
     setSelectedTab(item.name);
     setShowModal(true);
-    
-    if (open) {
-      setOpen(false);
-    }
+    if (open) setOpen(false);
   };
 
   const closeModal = () => {
@@ -72,7 +56,7 @@ export default function Header() {
       >
         <div
           className={`
-            max-w-[90vw] mx-auto rounded-lg border transition-all duration-500 ease-in-out
+            max-w-[90vw] sm:max-w-[80vw] mx-auto rounded-lg border transition-all duration-500 ease-in-out
             ${scrolled
               ? "border-[#E2E8F0] bg-white shadow-lg"
               : "border-[#E2E8F0] bg-white shadow-md"
@@ -87,15 +71,18 @@ export default function Header() {
               ${scrolled ? "py-1.5" : "py-2"}
             `}
           >
-            {/* LOGO - Ticket to Europe with Homepage Link */}
+            {/* LOGO - Responsive sizes */}
             <Link href="/" className="flex items-center gap-2 sm:gap-3 group cursor-pointer flex-shrink-0">
               <div className="relative flex-shrink-0">
                 <Image
                   src={BRAND.logo}
                   alt={BRAND.name}
-                  width={scrolled ? 30 : 34}
-                  height={scrolled ? 30 : 34}
-                  className="transition-all duration-500 group-hover:scale-105 group-hover:rotate-3"
+                  width={40}
+                  height={40}
+                  className={`
+                    transition-all duration-500 group-hover:scale-105 group-hover:rotate-3
+                    ${scrolled ? "w-8 h-8 sm:w-9 sm:h-9" : "w-9 h-9 sm:w-10 sm:h-10"}
+                  `}
                   priority
                 />
               </div>
@@ -103,13 +90,9 @@ export default function Header() {
               <div>
                 <h1
                   className={`
-                    font-bold
-                    text-[#0A1628]
-                    italic
-                    tracking-tight
-                    leading-tight
+                    font-bold text-[#0A1628] italic tracking-tight leading-tight
                     transition-all duration-500 ease-in-out
-                    ${scrolled ? "text-sm" : "text-base"}
+                    ${scrolled ? "text-base sm:text-lg" : "text-lg sm:text-xl"}
                     group-hover:text-[#1A3A6B] transition-colors duration-300
                   `}
                 >
@@ -117,13 +100,9 @@ export default function Header() {
                 </h1>
                 <p
                   className={`
-                    text-[#4A8BCF]
-                    leading-tight
-                    font-medium
-                    tracking-[0.15em]
-                    uppercase
+                    text-[#4A8BCF] leading-tight font-medium tracking-[0.15em] uppercase
                     transition-all duration-500 ease-in-out
-                    ${scrolled ? "text-[6px]" : "text-[7px]"}
+                    ${scrolled ? "text-[6px] sm:text-[7px]" : "text-[7px] sm:text-[8px]"}
                   `}
                 >
                   {BRAND.tagline}
@@ -131,7 +110,7 @@ export default function Header() {
               </div>
             </Link>
 
-            {/* DESKTOP NAV */}
+            {/* DESKTOP NAV - Responsive link sizes */}
             <nav className="hidden lg:flex items-center justify-center flex-1 gap-2 px-4">
               {navItems.map((item, index) => (
                 <Link
@@ -139,13 +118,9 @@ export default function Header() {
                   href={item.path || "#"}
                   onClick={() => handleNavClick(item)}
                   className={`
-                    relative
-                    font-medium
-                    transition-all
-                    duration-300
-                    px-2.5
-                    py-1.5
-                    text-xs
+                    relative font-medium transition-all duration-300
+                    px-2.5 py-1.5
+                    text-xs sm:text-sm md:text-base
                     tracking-wider
                     ${item.isActive
                       ? "text-[#1A3A6B] cursor-default"
@@ -153,7 +128,6 @@ export default function Header() {
                     }
                     hover:scale-105 active:scale-95
                     ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"}
-                    ${item.isContact ? "cursor-pointer" : "cursor-pointer"}
                   `}
                   style={{ transitionDelay: `${index * 50}ms` }}
                 >
@@ -177,29 +151,27 @@ export default function Header() {
                 href={`tel:${CONTACT.phoneRaw}`}
                 className={`
                   flex items-center gap-2
-                  bg-[#1A3A6B]
-                  hover:bg-[#2B5A9E]
+                  bg-[#1A3A6B] hover:bg-[#2B5A9E]
                   transition-all duration-300
                   rounded-lg
-                  px-3 py-1.5
+                  px-3 py-1.5 sm:px-4 sm:py-2
                   cursor-pointer
                   hover:scale-105 active:scale-95
-                  shadow-md
-                  hover:shadow-lg
+                  shadow-md hover:shadow-lg
                   group
                   ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}
                 `}
                 style={{ transitionDelay: "150ms" }}
               >
-                <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-white/30 group-hover:scale-110">
-                  <Phone size={12} className="text-white transition-transform duration-300 group-hover:rotate-12" />
+                <div className="w-6 h-6 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110">
+                  <Phone size={20} className="text-white transition-transform duration-300 group-hover:rotate-12" />
                 </div>
                 
                 <div className="flex flex-col">
-                  <span className="text-[7px] font-bold text-white/70 tracking-[0.1em] uppercase">
+                  <span className="text-[10px] sm:text-[12px] font-bold text-white/70 tracking-[0.1em] uppercase">
                     Call Only Deals
                   </span>
-                  <span className="text-[10px] font-bold text-white transition-colors duration-300 group-hover:text-[#9AC4E8]">
+                  <span className="text-[12px] sm:text-[14px] font-bold text-white transition-colors duration-300 group-hover:text-[#9AC4E8]">
                     {CONTACT.phone}
                   </span>
                 </div>
@@ -211,12 +183,9 @@ export default function Header() {
               onClick={() => setOpen(!open)}
               className="
                 lg:hidden
-                text-[#0A1628]
-                hover:text-[#1A3A6B]
-                transition-all
-                duration-300
-                p-1.5
-                rounded-lg
+                text-[#0A1628] hover:text-[#1A3A6B]
+                transition-all duration-300
+                p-1.5 rounded-lg
                 hover:bg-[#E8F0FE]
                 flex-shrink-0
                 hover:scale-110 active:scale-90
@@ -224,9 +193,9 @@ export default function Header() {
               aria-label="Toggle menu"
             >
               {open ? (
-                <X size={20} className="animate-in spin-in duration-300" />
+                <X size={22} className="animate-in spin-in duration-300" />
               ) : (
-                <Menu size={20} className="animate-in slide-in-from-left duration-300" />
+                <Menu size={22} className="animate-in slide-in-from-left duration-300" />
               )}
             </button>
           </div>
@@ -239,10 +208,7 @@ export default function Header() {
                 px-4 sm:px-6
                 pb-4
                 space-y-1
-                animate-in
-                slide-in-from-top-2
-                duration-300
-                fade-in
+                animate-in slide-in-from-top-2 duration-300 fade-in
               "
             >
               <div className="pt-2 border-t border-[#E8F0FE]">
@@ -258,15 +224,10 @@ export default function Header() {
                       handleNavClick(item);
                     }}
                     className={`
-                      w-full
-                      flex items-center justify-between
-                      transition-all
-                      duration-300
-                      px-3 py-2.5
-                      rounded-lg
-                      text-sm
-                      font-medium
-                      tracking-wider
+                      w-full flex items-center justify-between
+                      transition-all duration-300
+                      px-3 py-2.5 rounded-lg
+                      text-base sm:text-lg font-medium tracking-wider
                       ${item.isActive
                         ? "text-[#1A3A6B] bg-[#E8F0FE] cursor-default"
                         : "text-[#0A1628]/70 hover:text-[#1A3A6B] hover:bg-[#E8F0FE]"
@@ -278,7 +239,7 @@ export default function Header() {
                   >
                     <span>{item.name}</span>
                     {item.isActive && (
-                      <span className="w-1 h-1 rounded-full bg-[#1A3A6B] animate-pulse" />
+                      <span className="w-3 h-3 rounded-full bg-[#1A3A6B] animate-pulse" />
                     )}
                   </Link>
                 ))}
@@ -288,7 +249,7 @@ export default function Header() {
                     href={`tel:${CONTACT.phoneRaw}`}
                     className="flex items-center gap-3 bg-[#1A3A6B] rounded-lg px-4 py-3 hover:bg-[#2B5A9E] transition-all duration-300 hover:scale-[1.02] active:scale-95"
                   >
-                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-white/30">
+                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
                       <Phone size={14} className="text-white" />
                     </div>
                     <div>
@@ -307,8 +268,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Contact Modal */}
-      <ContactModal 
+      <ContactModal
         isOpen={showModal}
         onClose={closeModal}
         selectedItem={selectedTab}
